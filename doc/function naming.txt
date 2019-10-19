@@ -1,0 +1,26 @@
+My style of function naming may seem a little bit odd (and, I would agree) but
+there is a method to the madness that I will try and explain here for you all:
+
+I'm making an attempt to modularize as many datastructures as I can, making it
+so people can only interact with them through the header files; I'm guessing it
+will cut down on bugs by forcing people to reuse already existing functions
+instead of writing their own, which are known to (hopefully) work correctly. 
+I've tried to distinguish between functions designed to interact directly with 
+datastructures (e.g. get and set methods) and those that actually have some 
+functionality to them (e.g. sending messages to sockets, combat routines, etc) 
+by using different casing. Functions that are deisgned to interact directly 
+with a datastructure are in CamelCase and everything else is in snakey_case.
+
+For functions in CamelCase, functions should take a naming syntax like:
+[datatype][routine][target] (e.g. roomGetName, roomRead). The exception is
+for creating and deleting datastructures. For doing these things, it is always
+[new | delete][datatye] (e.g. newList, deleteChar).
+
+Hopefully this will explain the seemingly odd programming style you see in my
+code. Undoubtedly, this is a very bad convention to use (I would be better off
+using one type of casing or the other) but that's life, I guess. Perhaps in a
+later version, I will go through and redo the function naming conventions.
+
+Geoff Hollis
+hollisgf@email.uc.edu
+http://www.uc.edu/~hollisgf/

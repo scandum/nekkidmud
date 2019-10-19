@@ -1,0 +1,14 @@
+NakedMud is free to use for any purpose you would like to use it for, without 
+restriction from the creator, Geoff Hollis. By using it, or any pieces of the 
+code, you agree to absolve responsibility from the creator, Geoff Hollis, and 
+take full responsibility for anything NakedMud or pieces of the NakedMud code 
+may cause to happen.
+
+Since NakedMud was based on SocketMud by Brian Graversen, I ask that you follow
+Brian's requests as per giving credit to Erwin Andreasen for the snippets he
+supplied in SocketMud's code (see README). I also request you credit Brian for
+the work he put into SocketMud, and myself for the work I put into NakedMud.
+
+Geoff Hollis
+hollisgf@email.uc.edu
+http://www.uc.edu/~hollisgf/

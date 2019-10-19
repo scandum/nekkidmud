@@ -1,0 +1,9 @@
+This is a list of useful commands I've learned, which I never remember. Maybe
+you can benefit from them, too:
+
+
+# a perl command fo replacing oldtext with newtext in all files listed
+perl -pi -e "s/oldtext/newtext/g;" files
+
+# how to set a new environment variable
+export <varname>=<val>
