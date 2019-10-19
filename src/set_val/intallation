@@ -1,0 +1,5 @@
+installation of the set_val module:
+
+Install the module in the same way you would install any other module. However,
+make sure that the set_val module is initialized before any other module that
+tries to add a new set command!!
