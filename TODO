@@ -1,0 +1,49 @@
+GEOFF'S TO DO LIST
++-- CONSIDERATIONS FOR THE FUTURE
+  * A config script for generating neccessary info in /src/scripts/module.mk?
+  * Java client? GUI OLC?
+
++-- KNOWN BUGS
+  * Python accounts aren't dereferencing properly
+  * Input handlers, specifically the editors, tend to output information
+    twice when in a sub-menu such as the quest stage editor
+  * Script dictionaries aren't fully dereferenced if a script creates a method.
+    This is a known memory leak. Figure out how to fix!
+ 
++-- NOT COMPLETE
+ +-- HIGH PRIORITY
+   * make ch.get_slots and ch.get_slot_types congruent
+   * expose set_val to Python
+   * flesh out functionality of the file buffer
+   * flexible color customization
+   * make the script editor properly indent with /i and /e 
+   * get_fullkey is dangerous, since it can be changed due to recursive calls.
+     really really need to fix this.
+   * give Python access to extra descriptions
+   * expose races and extra descriptions to Python
+   * Make OLC display which fields are inherited
+   * make dates of logs print numerically, not as a string 
+   * Allow NPCs and objects to have commands attached to them. Possibly with
+     some sort of "to" or "with" command to call upon them?
+   * let generic_find accept comma-separated names (e.g. tom, jerry, bob)
+   * track last command
+   * redo communicate() and logging. Allow log messages to go to different
+     user groups (i.e. script errors to scriptors, bad zone loads to builders) 
+   * make property tables auto-enlarge theirselves when they get too big 
+   * scripts for zone initialization/reset
+   * worldGetRoom and worldPutRoom should be part of utils, not world
+   * redo sets to be in a tree form rather than a table form
+   * Rewrite character positions to be string-based and extensible
+
+ +-- LOW PRIORITY
+   * Snoop module
+   * IP banning module
+   * mudFTP module
+   * soft-code chat channels
+   * spellchecking in the text editor
+   * stackable objects
+   * mountable characters
+   * OLC for mud settings
+   * Rewrite MCCP as its own module
+
++-- NEEDS DEBUGGING
