@@ -1,0 +1,190 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: mudsys</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>mudsys</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>The&nbsp;mudsys&nbsp;module,&nbsp;for&nbsp;all&nbsp;MUD&nbsp;system&nbsp;utils.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-account_creating"><strong>account_creating</strong></a>(...)</dt><dd><tt><a href="#-account_creating">account_creating</a>(name)<br>
+&nbsp;<br>
+returns&nbsp;whether&nbsp;an&nbsp;account&nbsp;with&nbsp;the&nbsp;name&nbsp;is&nbsp;creating.</tt></dd></dl>
+ <dl><dt><a name="-account_exists"><strong>account_exists</strong></a>(...)</dt><dd><tt><a href="#-account_exists">account_exists</a>(name)<br>
+&nbsp;<br>
+Returns&nbsp;whether&nbsp;an&nbsp;account&nbsp;with&nbsp;the&nbsp;name&nbsp;exists.</tt></dd></dl>
+ <dl><dt><a name="-add_acct_method"><strong>add_acct_method</strong></a>(...)</dt><dd><tt><a href="#-add_acct_method">add_acct_method</a>(name,&nbsp;method)<br>
+&nbsp;<br>
+Adds&nbsp;a&nbsp;function&nbsp;or&nbsp;property&nbsp;to&nbsp;the&nbsp;Account&nbsp;class.</tt></dd></dl>
+ <dl><dt><a name="-add_char_method"><strong>add_char_method</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;add_acct_method&nbsp;for&nbsp;characters.</tt></dd></dl>
+ <dl><dt><a name="-add_cmd"><strong>add_cmd</strong></a>(...)</dt><dd><tt><a href="#-add_cmd">add_cmd</a>(name,&nbsp;shorthand,&nbsp;cmd_func,&nbsp;user_group,&nbsp;interrupts_action)<br>
+&nbsp;<br>
+Add&nbsp;a&nbsp;new&nbsp;command&nbsp;to&nbsp;the&nbsp;master&nbsp;command&nbsp;table.&nbsp;If&nbsp;a&nbsp;preferred&nbsp;shorthand<br>
+exists,&nbsp;e.g.,&nbsp;'n'&nbsp;for&nbsp;'north',&nbsp;it&nbsp;can&nbsp;be&nbsp;specified.&nbsp;Otherwise,&nbsp;shorthand<br>
+should&nbsp;be&nbsp;None.&nbsp;Command&nbsp;functions&nbsp;take&nbsp;three&nbsp;arguments:&nbsp;a&nbsp;character<br>
+issuing&nbsp;the&nbsp;command,&nbsp;the&nbsp;command&nbsp;name,&nbsp;and&nbsp;a&nbsp;string&nbsp;argument&nbsp;supplied<br>
+to&nbsp;the&nbsp;command.&nbsp;Commands&nbsp;must&nbsp;be&nbsp;tied&nbsp;to&nbsp;a&nbsp;specific&nbsp;user&nbsp;group,&nbsp;and&nbsp;they<br>
+can&nbsp;optionally&nbsp;interupt&nbsp;character&nbsp;actions.</tt></dd></dl>
+ <dl><dt><a name="-add_cmd_check"><strong>add_cmd_check</strong></a>(...)</dt><dd><tt><a href="#-add_cmd_check">add_cmd_check</a>(name,&nbsp;check_func)<br>
+&nbsp;<br>
+Add&nbsp;a&nbsp;new&nbsp;command&nbsp;check&nbsp;to&nbsp;a&nbsp;registered&nbsp;command.&nbsp;Check&nbsp;functions&nbsp;take<br>
+two&nbsp;arguments:&nbsp;the&nbsp;character&nbsp;issuing&nbsp;the&nbsp;command,&nbsp;and&nbsp;the&nbsp;command&nbsp;name.<br>
+If&nbsp;a&nbsp;check&nbsp;fails,&nbsp;it&nbsp;should&nbsp;return&nbsp;False&nbsp;and&nbsp;send&nbsp;the&nbsp;character&nbsp;a<br>
+message&nbsp;why.</tt></dd></dl>
+ <dl><dt><a name="-add_exit_method"><strong>add_exit_method</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;add_acct_method&nbsp;for&nbsp;exits.</tt></dd></dl>
+ <dl><dt><a name="-add_help"><strong>add_help</strong></a>(...)</dt><dd><tt><a href="#-add_help">add_help</a>(keywords,&nbsp;info,&nbsp;user_groups='',&nbsp;related='')<br>
+&nbsp;<br>
+Add&nbsp;a&nbsp;new,&nbsp;non-persistent&nbsp;helpfile&nbsp;to&nbsp;the&nbsp;mud's&nbsp;help&nbsp;database.</tt></dd></dl>
+ <dl><dt><a name="-add_obj_method"><strong>add_obj_method</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;add_acct_method&nbsp;for&nbsp;objects.</tt></dd></dl>
+ <dl><dt><a name="-add_room_method"><strong>add_room_method</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;add_acct_method&nbsp;for&nbsp;rooms.</tt></dd></dl>
+ <dl><dt><a name="-add_sock_method"><strong>add_sock_method</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;add_acct_method&nbsp;for&nbsp;sockets.</tt></dd></dl>
+ <dl><dt><a name="-add_worn_type"><strong>add_worn_type</strong></a>(...)</dt><dd><tt><a href="#-add_worn_type">add_worn_type</a>(type,&nbsp;postypes)<br>
+&nbsp;<br>
+Register&nbsp;a&nbsp;new&nbsp;type&nbsp;of&nbsp;worn&nbsp;item.&nbsp;Postypes&nbsp;is&nbsp;a&nbsp;comma-separated&nbsp;list&nbsp;of<br>
+body&nbsp;position&nbsp;types&nbsp;this&nbsp;object&nbsp;must&nbsp;be&nbsp;equipped&nbsp;to&nbsp;e.g.,&nbsp;<br>
+shirt&nbsp;:&nbsp;torso,&nbsp;arm,&nbsp;arm.</tt></dd></dl>
+ <dl><dt><a name="-attach_account_socket"><strong>attach_account_socket</strong></a>(...)</dt><dd><tt><a href="#-attach_account_socket">attach_account_socket</a>(acct,&nbsp;sock)<br>
+&nbsp;<br>
+Link&nbsp;a&nbsp;loaded&nbsp;account&nbsp;to&nbsp;a&nbsp;connected&nbsp;socket.</tt></dd></dl>
+ <dl><dt><a name="-attach_char_socket"><strong>attach_char_socket</strong></a>(...)</dt><dd><tt><a href="#-attach_char_socket">attach_char_socket</a>(ch,&nbsp;sock)<br>
+&nbsp;<br>
+Link&nbsp;a&nbsp;loaded&nbsp;character&nbsp;to&nbsp;a&nbsp;connected&nbsp;socket.</tt></dd></dl>
+ <dl><dt><a name="-can_edit_zone"><strong>can_edit_zone</strong></a>(...)</dt><dd><tt><a href="#-can_edit_zone">can_edit_zone</a>(ch,&nbsp;zone)<br>
+&nbsp;<br>
+True&nbsp;or&nbsp;False&nbsp;if&nbsp;a&nbsp;character&nbsp;has&nbsp;permission&nbsp;to&nbsp;edit&nbsp;a&nbsp;zone.</tt></dd></dl>
+ <dl><dt><a name="-create_account"><strong>create_account</strong></a>(...)</dt><dd><tt><a href="#-create_account">create_account</a>(acctname)<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;new&nbsp;account&nbsp;by&nbsp;the&nbsp;specified&nbsp;name,&nbsp;or&nbsp;None&nbsp;if&nbsp;an&nbsp;account&nbsp;by.<br>
+the&nbsp;specified&nbsp;name&nbsp;is&nbsp;already&nbsp;registered&nbsp;or&nbsp;creating.&nbsp;After&nbsp;the&nbsp;accountgeneration&nbsp;process&nbsp;is&nbsp;complete,&nbsp;mudsys.<a href="#-do_register">do_register</a>(acct)&nbsp;must&nbsp;be&nbsp;called.</tt></dd></dl>
+ <dl><dt><a name="-create_bit"><strong>create_bit</strong></a>(...)</dt><dd><tt><a href="#-create_bit">create_bit</a>(bitvector,&nbsp;bit)<br>
+&nbsp;<br>
+Creates&nbsp;a&nbsp;new&nbsp;bit&nbsp;on&nbsp;the&nbsp;specified&nbsp;bitvector.</tt></dd></dl>
+ <dl><dt><a name="-create_bitvector"><strong>create_bitvector</strong></a>(...)</dt><dd><tt>Not&nbsp;yet&nbsp;implemented.</tt></dd></dl>
+ <dl><dt><a name="-create_player"><strong>create_player</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;mudsys.create_account&nbsp;for&nbsp;player&nbsp;characters.</tt></dd></dl>
+ <dl><dt><a name="-detach_char_socket"><strong>detach_char_socket</strong></a>(...)</dt><dd><tt><a href="#-detach_char_socket">detach_char_socket</a>(ch)<br>
+&nbsp;<br>
+Unlink&nbsp;a&nbsp;character&nbsp;from&nbsp;its&nbsp;attached&nbsp;socket.</tt></dd></dl>
+ <dl><dt><a name="-do_copyover"><strong>do_copyover</strong></a>(...)</dt><dd><tt><a href="#-do_copyover">do_copyover</a>()<br>
+&nbsp;<br>
+performs&nbsp;a&nbsp;copyover&nbsp;on&nbsp;the&nbsp;mud.</tt></dd></dl>
+ <dl><dt><a name="-do_disconnect"><strong>do_disconnect</strong></a>(...)</dt><dd><tt><a href="#-do_disconnect">do_disconnect</a>(ch)<br>
+&nbsp;<br>
+call&nbsp;detach_char_socket,&nbsp;then&nbsp;close&nbsp;the&nbsp;socket.</tt></dd></dl>
+ <dl><dt><a name="-do_quit"><strong>do_quit</strong></a>(...)</dt><dd><tt><a href="#-do_quit">do_quit</a>(ch)<br>
+&nbsp;<br>
+Extract&nbsp;a&nbsp;character&nbsp;from&nbsp;game.</tt></dd></dl>
+ <dl><dt><a name="-do_register"><strong>do_register</strong></a>(...)</dt><dd><tt><a href="#-do_register">do_register</a>(char_or_account)<br>
+&nbsp;<br>
+Register&nbsp;a&nbsp;PC&nbsp;or&nbsp;account&nbsp;for&nbsp;the&nbsp;first&nbsp;time.&nbsp;Should&nbsp;be&nbsp;called&nbsp;after&nbsp;creation.</tt></dd></dl>
+ <dl><dt><a name="-do_save"><strong>do_save</strong></a>(...)</dt><dd><tt><a href="#-do_save">do_save</a>(char_or_account)<br>
+&nbsp;<br>
+Save&nbsp;a&nbsp;character&nbsp;or&nbsp;account's&nbsp;information.</tt></dd></dl>
+ <dl><dt><a name="-do_shutdown"><strong>do_shutdown</strong></a>(...)</dt><dd><tt><a href="#-do_shutdown">do_shutdown</a>()<br>
+&nbsp;<br>
+shuts&nbsp;the&nbsp;mud&nbsp;down.</tt></dd></dl>
+ <dl><dt><a name="-get_help"><strong>get_help</strong></a>(...)</dt><dd><tt><a href="#-get_help">get_help</a>(keyword)<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;tuple&nbsp;of&nbsp;a&nbsp;helpfile's&nbsp;keywords,&nbsp;info,&nbsp;user_groups,&nbsp;and&nbsp;related<br>
+or&nbsp;None&nbsp;if&nbsp;the&nbsp;helpfile&nbsp;does&nbsp;not&nbsp;exist.</tt></dd></dl>
+ <dl><dt><a name="-get_player"><strong>get_player</strong></a>(...)</dt><dd><tt><a href="#-get_player">get_player</a>(name)<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;saved&nbsp;character&nbsp;of&nbsp;specified&nbsp;name,&nbsp;or&nbsp;None.</tt></dd></dl>
+ <dl><dt><a name="-handle_cmd_input"><strong>handle_cmd_input</strong></a>(...)</dt><dd><tt><a href="#-handle_cmd_input">handle_cmd_input</a>(sock,&nbsp;cmd)<br>
+&nbsp;<br>
+Equivalent&nbsp;to&nbsp;char.Char.act(cmd)</tt></dd></dl>
+ <dl><dt><a name="-item_add_type"><strong>item_add_type</strong></a>(...)</dt><dd><tt><a href="#-item_add_type">item_add_type</a>(name,&nbsp;type_data)<br>
+&nbsp;<br>
+Register&nbsp;a&nbsp;new&nbsp;item&nbsp;type&nbsp;and&nbsp;its&nbsp;data.</tt></dd></dl>
+ <dl><dt><a name="-list_help"><strong>list_help</strong></a>(...)</dt><dd><tt><a href="#-list_help">list_help</a>(keyword='')<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;helpfiles&nbsp;that&nbsp;match&nbsp;the&nbsp;specified&nbsp;keyword.&nbsp;If&nbsp;no<br>
+keywordi&nbsp;s&nbsp;supplied,&nbsp;return&nbsp;all&nbsp;helpfiles.</tt></dd></dl>
+ <dl><dt><a name="-list_zone_contents"><strong>list_zone_contents</strong></a>(...)</dt><dd><tt><a href="#-list_zone_contents">list_zone_contents</a>(zone,&nbsp;type)<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;content&nbsp;keys&nbsp;of&nbsp;the&nbsp;given&nbsp;type,&nbsp;for&nbsp;the&nbsp;specified<br>
+zone.</tt></dd></dl>
+ <dl><dt><a name="-load_account"><strong>load_account</strong></a>(...)</dt><dd><tt><a href="#-load_account">load_account</a>(name)<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;saved&nbsp;account&nbsp;of&nbsp;specified&nbsp;name,&nbsp;or&nbsp;None.</tt></dd></dl>
+ <dl><dt><a name="-load_char"><strong>load_char</strong></a>(...)</dt><dd><tt>Alias&nbsp;for&nbsp;mudsys.<a href="#-get_player">get_player</a>(name).</tt></dd></dl>
+ <dl><dt><a name="-next_uid"><strong>next_uid</strong></a>(...)</dt><dd><tt><a href="#-next_uid">next_uid</a>()<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;next&nbsp;available&nbsp;universal&nbsp;identification&nbsp;number.</tt></dd></dl>
+ <dl><dt><a name="-password_matches"><strong>password_matches</strong></a>(...)</dt><dd><tt><a href="#-password_matches">password_matches</a>(acct,&nbsp;psswd)<br>
+&nbsp;<br>
+Returns&nbsp;True&nbsp;or&nbsp;False&nbsp;if&nbsp;the&nbsp;given&nbsp;password&nbsp;matches&nbsp;the&nbsp;account's&nbsp;password.</tt></dd></dl>
+ <dl><dt><a name="-player_creating"><strong>player_creating</strong></a>(...)</dt><dd><tt><a href="#-player_creating">player_creating</a>(name)<br>
+&nbsp;<br>
+returns&nbsp;whether&nbsp;a&nbsp;player&nbsp;with&nbsp;the&nbsp;name&nbsp;is&nbsp;creating.</tt></dd></dl>
+ <dl><dt><a name="-player_exists"><strong>player_exists</strong></a>(...)</dt><dd><tt><a href="#-player_exists">player_exists</a>(name)<br>
+&nbsp;<br>
+Returns&nbsp;whether&nbsp;a&nbsp;player&nbsp;with&nbsp;the&nbsp;name&nbsp;exists.</tt></dd></dl>
+ <dl><dt><a name="-register_char_cansee"><strong>register_char_cansee</strong></a>(...)</dt><dd><tt><a href="#-register_char_cansee">register_char_cansee</a>(check_function(observer,&nbsp;observee))<br>
+&nbsp;<br>
+Register&nbsp;a&nbsp;new&nbsp;check&nbsp;of&nbsp;whether&nbsp;one&nbsp;character&nbsp;can&nbsp;see&nbsp;another.</tt></dd></dl>
+ <dl><dt><a name="-register_dflt_move_cmd"><strong>register_dflt_move_cmd</strong></a>(...)</dt><dd><tt><a href="#-register_dflt_move_cmd">register_dflt_move_cmd</a>(cmdname)<br>
+&nbsp;<br>
+registers&nbsp;a&nbsp;new&nbsp;default&nbsp;movement&nbsp;command,&nbsp;e.g.,&nbsp;north</tt></dd></dl>
+ <dl><dt><a name="-register_exit_cansee"><strong>register_exit_cansee</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;register_char_cansee&nbsp;for&nbsp;exits.</tt></dd></dl>
+ <dl><dt><a name="-register_move_check"><strong>register_move_check</strong></a>(...)</dt><dd><tt><a href="#-register_move_check">register_move_check</a>(check_func)<br>
+&nbsp;<br>
+Register&nbsp;a&nbsp;check&nbsp;to&nbsp;perform&nbsp;movement&nbsp;commands.&nbsp;See&nbsp;mudsys.add_cmd_check<br>
+for&nbsp;information&nbsp;about&nbsp;command&nbsp;checks.</tt></dd></dl>
+ <dl><dt><a name="-register_obj_cansee"><strong>register_obj_cansee</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;register_char_cansee&nbsp;for&nbsp;objects.</tt></dd></dl>
+ <dl><dt><a name="-remove_cmd"><strong>remove_cmd</strong></a>(...)</dt><dd><tt><a href="#-remove_cmd">remove_cmd</a>(name)<br>
+&nbsp;<br>
+Removes&nbsp;a&nbsp;command&nbsp;from&nbsp;the&nbsp;master&nbsp;command&nbsp;table.</tt></dd></dl>
+ <dl><dt><a name="-set_cmd_move"><strong>set_cmd_move</strong></a>(...)</dt><dd><tt><a href="#-set_cmd_move">set_cmd_move</a>(cmd_func)<br>
+&nbsp;<br>
+Register&nbsp;a&nbsp;player&nbsp;command&nbsp;for&nbsp;handling&nbsp;all&nbsp;default&nbsp;movement&nbsp;commands.<br>
+See&nbsp;mudsys.add_cmd&nbsp;for&nbsp;information&nbsp;about&nbsp;commands.</tt></dd></dl>
+ <dl><dt><a name="-set_password"><strong>set_password</strong></a>(...)</dt><dd><tt><a href="#-set_password">set_password</a>(acct,&nbsp;passwd)<br>
+&nbsp;<br>
+Set&nbsp;an&nbsp;account's&nbsp;password.</tt></dd></dl>
+ <dl><dt><a name="-show_prompt"><strong>show_prompt</strong></a>(...)</dt><dd><tt><a href="#-show_prompt">show_prompt</a>(sock)<br>
+&nbsp;<br>
+Display&nbsp;the&nbsp;default&nbsp;game&nbsp;prompt&nbsp;to&nbsp;the&nbsp;socket.&nbsp;Can&nbsp;be&nbsp;replaced&nbsp;in&nbsp;Python<br>
+by&nbsp;assigning&nbsp;a&nbsp;new&nbsp;function&nbsp;to&nbsp;show_prompt.</tt></dd></dl>
+ <dl><dt><a name="-sys_getval"><strong>sys_getval</strong></a>(...)</dt><dd><tt><a href="#-sys_getval">sys_getval</a>(name)<br>
+&nbsp;<br>
+returns&nbsp;a&nbsp;value&nbsp;registered&nbsp;in&nbsp;the&nbsp;system&nbsp;settings.</tt></dd></dl>
+ <dl><dt><a name="-sys_getvar"><strong>sys_getvar</strong></a>(...)</dt><dd><tt>Alias&nbsp;to&nbsp;mudsys.sys_getval</tt></dd></dl>
+ <dl><dt><a name="-sys_setval"><strong>sys_setval</strong></a>(...)</dt><dd><tt>set_sysval(name,&nbsp;val)<br>
+&nbsp;<br>
+sets&nbsp;a&nbsp;value&nbsp;registered&nbsp;in&nbsp;the&nbsp;system&nbsp;settings.</tt></dd></dl>
+ <dl><dt><a name="-sys_setvar"><strong>sys_setvar</strong></a>(...)</dt><dd><tt>Alias&nbsp;to&nbsp;mudsys.sys_setval</tt></dd></dl>
+ <dl><dt><a name="-try_enter_game"><strong>try_enter_game</strong></a>(...)</dt><dd><tt><a href="#-try_enter_game">try_enter_game</a>(ch)<br>
+&nbsp;<br>
+Tries&nbsp;to&nbsp;add&nbsp;a&nbsp;character&nbsp;the&nbsp;game&nbsp;world.</tt></dd></dl>
+ <dl><dt><a name="-world_add_type"><strong>world_add_type</strong></a>(...)</dt><dd><tt><a href="#-world_add_type">world_add_type</a>(typename,&nbsp;class_data)<br>
+&nbsp;<br>
+Registers&nbsp;a&nbsp;new&nbsp;type&nbsp;to&nbsp;the&nbsp;world&nbsp;database.&nbsp;Like,&nbsp;e.g.,&nbsp;mob,&nbsp;obj,&nbsp;and<br>
+room&nbsp;prototypes.&nbsp;Assumes&nbsp;class&nbsp;has&nbsp;a&nbsp;store&nbsp;and&nbsp;setKey&nbsp;method.&nbsp;Init<br>
+method&nbsp;should&nbsp;take&nbsp;one&nbsp;optional&nbsp;argument:&nbsp;a&nbsp;storage&nbsp;set&nbsp;to&nbsp;parse&nbsp;the<br>
+type&nbsp;data&nbsp;from,&nbsp;when&nbsp;loaded.</tt></dd></dl>
+ <dl><dt><a name="-world_get_type"><strong>world_get_type</strong></a>(...)</dt><dd><tt><a href="#-world_get_type">world_get_type</a>(typename,&nbsp;key)<br>
+&nbsp;<br>
+Returns&nbsp;registered&nbsp;entry&nbsp;of&nbsp;the&nbsp;specified&nbsp;type&nbsp;from&nbsp;the&nbsp;world&nbsp;database.<br>
+Assumes&nbsp;it&nbsp;is&nbsp;a&nbsp;python&nbsp;type,&nbsp;and&nbsp;not&nbsp;a&nbsp;C&nbsp;type.&nbsp;If&nbsp;no&nbsp;type&nbsp;exists<br>
+return&nbsp;None.</tt></dd></dl>
+ <dl><dt><a name="-world_put_type"><strong>world_put_type</strong></a>(...)</dt><dd><tt><a href="#-world_put_type">world_put_type</a>(typename,&nbsp;key,&nbsp;data)<br>
+&nbsp;<br>
+Put&nbsp;and&nbsp;save&nbsp;an&nbsp;entry&nbsp;of&nbsp;the&nbsp;specified&nbsp;type&nbsp;to&nbsp;the&nbsp;world&nbsp;database.</tt></dd></dl>
+ <dl><dt><a name="-world_remove_type"><strong>world_remove_type</strong></a>(...)</dt><dd><tt><a href="#-world_remove_type">world_remove_type</a>(typename,&nbsp;key)<br>
+&nbsp;<br>
+Remove&nbsp;and&nbsp;return&nbsp;an&nbsp;entry&nbsp;from&nbsp;the&nbsp;world&nbsp;database,&nbsp;or&nbsp;None.</tt></dd></dl>
+ <dl><dt><a name="-world_save_type"><strong>world_save_type</strong></a>(...)</dt><dd><tt><a href="#-world_save_type">world_save_type</a>(typename,&nbsp;key)<br>
+&nbsp;<br>
+Saves&nbsp;an&nbsp;entry&nbsp;in&nbsp;the&nbsp;world&nbsp;database&nbsp;if&nbsp;it&nbsp;exists.</tt></dd></dl>
+</td></tr></table>
+</body></html>

@@ -1,0 +1,56 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: inform</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>inform</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hollis/Desktop/nakedmud/lib/pymodules/inform.py">/Users/hollis/Desktop/nakedmud/lib/pymodules/inform.py</a></font></td></tr></table>
+    <p><tt>inform.py<br>
+&nbsp;<br>
+Python's&nbsp;mirror&nbsp;of&nbsp;C's&nbsp;inform.c&nbsp;--&nbsp;contains&nbsp;various&nbsp;functions&nbsp;that&nbsp;perform<br>
+informative&nbsp;duties.&nbsp;Examining&nbsp;places/things,&nbsp;displaying&nbsp;proper&nbsp;names,&nbsp;etc...</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="char.html">char</a><br>
+<a href="display.html">display</a><br>
+</td><td width="25%" valign=top><a href="hooks.html">hooks</a><br>
+<a href="mud.html">mud</a><br>
+</td><td width="25%" valign=top><a href="mudsock.html">mudsock</a><br>
+<a href="string.html">string</a><br>
+</td><td width="25%" valign=top><a href="utils.html">utils</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-__unload__"><strong>__unload__</strong></a>()</dt><dd><tt>things&nbsp;that&nbsp;need&nbsp;to&nbsp;be&nbsp;detached&nbsp;when&nbsp;the&nbsp;module&nbsp;is&nbsp;un/reloaded</tt></dd></dl>
+ <dl><dt><a name="-build_who"><strong>build_who</strong></a>(ch<font color="#909090">=None</font>)</dt><dd><tt>returns&nbsp;a&nbsp;formatted&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;people&nbsp;currently&nbsp;online</tt></dd></dl>
+ <dl><dt><a name="-equipment_look_hook"><strong>equipment_look_hook</strong></a>(info)</dt><dd><tt>displays&nbsp;a&nbsp;character's&nbsp;equipment&nbsp;when&nbsp;looked&nbsp;at</tt></dd></dl>
+ <dl><dt><a name="-exit_look_hook"><strong>exit_look_hook</strong></a>(info)</dt></dl>
+ <dl><dt><a name="-list_one_exit"><strong>list_one_exit</strong></a>(ch, ex, dir)</dt></dl>
+ <dl><dt><a name="-list_one_furniture"><strong>list_one_furniture</strong></a>(ch, obj)</dt><dd><tt>list&nbsp;the&nbsp;contents&nbsp;of&nbsp;a&nbsp;piece&nbsp;of&nbsp;furniture&nbsp;to&nbsp;the&nbsp;character.</tt></dd></dl>
+ <dl><dt><a name="-list_room_contents"><strong>list_room_contents</strong></a>(ch, room)</dt></dl>
+ <dl><dt><a name="-list_room_exits"><strong>list_room_exits</strong></a>(ch, room, filter_compass<font color="#909090">=False</font>)</dt></dl>
+ <dl><dt><a name="-room_look_hook"><strong>room_look_hook</strong></a>(info)</dt><dd><tt>diplays&nbsp;info&nbsp;about&nbsp;the&nbsp;room&nbsp;contents</tt></dd></dl>
+ <dl><dt><a name="-show_equipment"><strong>show_equipment</strong></a>(ch, tgt)</dt><dd><tt>shows&nbsp;ch&nbsp;tgt's&nbsp;equipment</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>cardinal_dirs</strong> = ['north', 'south', 'east', 'west']<br>
+<strong>compass_dirs</strong> = ['north', 'south', 'east', 'west', 'northwest', 'northeast', 'southwest', 'southeast']</td></tr></table>
+</body></html>

@@ -1,0 +1,127 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: cmd_manip</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>cmd_manip</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hollis/Desktop/nakedmud/lib/pymodules/cmd_manip.py">/Users/hollis/Desktop/nakedmud/lib/pymodules/cmd_manip.py</a></font></td></tr></table>
+    <p><tt>cmd_manip.py<br>
+&nbsp;<br>
+a&nbsp;set&nbsp;of&nbsp;commands&nbsp;that&nbsp;NakedMud(tm)&nbsp;comes&nbsp;with&nbsp;that&nbsp;allows&nbsp;characters&nbsp;to<br>
+manipulate&nbsp;various&nbsp;things.&nbsp;These&nbsp;commands&nbsp;are&nbsp;mostly&nbsp;directed&nbsp;towards<br>
+manipulating&nbsp;objects&nbsp;(e.g.&nbsp;get,&nbsp;put,&nbsp;drop,&nbsp;etc...)&nbsp;but&nbsp;can&nbsp;also&nbsp;affect&nbsp;other<br>
+things&nbsp;like&nbsp;exits&nbsp;(e.g.&nbsp;open,&nbsp;close)</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="hooks.html">hooks</a><br>
+<a href="inform.html">inform</a><br>
+</td><td width="25%" valign=top><a href="movement.html">movement</a><br>
+<a href="mud.html">mud</a><br>
+</td><td width="25%" valign=top><a href="obj.html">obj</a><br>
+<a href="mudsys.html">mudsys</a><br>
+</td><td width="25%" valign=top><a href="utils.html">utils</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-chk_can_manip"><strong>chk_can_manip</strong></a>(ch, cmd)</dt></dl>
+ <dl><dt><a name="-cmd_close"><strong>cmd_close</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;close&nbsp;&lt;direction&nbsp;|&nbsp;door&nbsp;|&nbsp;container&gt;<br>
+&nbsp;<br>
+Attempts&nbsp;to&nbsp;close&nbsp;the&nbsp;specified&nbsp;door,&nbsp;direction,&nbsp;or&nbsp;container.</tt></dd></dl>
+ <dl><dt><a name="-cmd_drop"><strong>cmd_drop</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;drop&nbsp;&lt;item&gt;<br>
+&nbsp;<br>
+Attempts&nbsp;to&nbsp;move&nbsp;an&nbsp;object&nbsp;from&nbsp;your&nbsp;inventory&nbsp;to&nbsp;the&nbsp;ground.</tt></dd></dl>
+ <dl><dt><a name="-cmd_get"><strong>cmd_get</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;get&nbsp;[the]&nbsp;&lt;item&gt;&nbsp;[[from]&nbsp;&lt;other&nbsp;item&gt;]<br>
+&nbsp;<br>
+Attempts&nbsp;to&nbsp;move&nbsp;an&nbsp;object&nbsp;from&nbsp;the&nbsp;room&nbsp;to&nbsp;your&nbsp;inventory.&nbsp;If&nbsp;an<br>
+addition&nbsp;argument&nbsp;is&nbsp;supplied,&nbsp;the&nbsp;command&nbsp;assumes&nbsp;it&nbsp;is&nbsp;a&nbsp;container&nbsp;and<br>
+instead&nbsp;tries&nbsp;to&nbsp;move&nbsp;an&nbsp;object&nbsp;from&nbsp;the&nbsp;container&nbsp;to&nbsp;your&nbsp;inventory.</tt></dd></dl>
+ <dl><dt><a name="-cmd_give"><strong>cmd_give</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;give&nbsp;&lt;object&gt;&nbsp;[to]&nbsp;&lt;person&gt;<br>
+&nbsp;<br>
+Attempts&nbsp;to&nbsp;transfer&nbsp;an&nbsp;object&nbsp;from&nbsp;your&nbsp;inventory&nbsp;to&nbsp;the&nbsp;specified<br>
+person.&nbsp;You&nbsp;can&nbsp;give&nbsp;multiple&nbsp;objects&nbsp;at&nbsp;a&nbsp;time&nbsp;by&nbsp;using&nbsp;the&nbsp;all.<br>
+prefix.&nbsp;For&nbsp;example:<br>
+&nbsp;<br>
+&gt;&nbsp;give&nbsp;all.cookie&nbsp;george<br>
+&nbsp;<br>
+Would&nbsp;give&nbsp;all&nbsp;of&nbsp;the&nbsp;cookies&nbsp;in&nbsp;your&nbsp;inventory&nbsp;to&nbsp;George.&nbsp;If&nbsp;you&nbsp;only<br>
+want&nbsp;to&nbsp;give&nbsp;him&nbsp;the&nbsp;raisin&nbsp;cookie,&nbsp;which&nbsp;also&nbsp;happens&nbsp;to&nbsp;be&nbsp;the&nbsp;third<br>
+cookie&nbsp;in&nbsp;your&nbsp;inventory,&nbsp;you&nbsp;can&nbsp;use&nbsp;a&nbsp;numeric&nbsp;prefix&nbsp;instead&nbsp;of<br>
+the&nbsp;all&nbsp;prefix.&nbsp;For&nbsp;example:<br>
+&nbsp;<br>
+&gt;&nbsp;give&nbsp;3.cookie&nbsp;george</tt></dd></dl>
+ <dl><dt><a name="-cmd_lock"><strong>cmd_lock</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;lock&nbsp;&lt;direction&nbsp;|&nbsp;door&nbsp;|&nbsp;container&gt;<br>
+&nbsp;<br>
+Attempts&nbsp;to&nbsp;lock&nbsp;a&nbsp;specified&nbsp;door,&nbsp;direction,&nbsp;or&nbsp;container.</tt></dd></dl>
+ <dl><dt><a name="-cmd_open"><strong>cmd_open</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;open&nbsp;[the]&nbsp;&lt;direction&nbsp;|&nbsp;door&nbsp;|&nbsp;container&gt;<br>
+&nbsp;<br>
+Attempts&nbsp;to&nbsp;open&nbsp;the&nbsp;speficied&nbsp;door,&nbsp;direction,&nbsp;or&nbsp;container.</tt></dd></dl>
+ <dl><dt><a name="-cmd_put"><strong>cmd_put</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;put&nbsp;[the]&nbsp;&lt;item&gt;&nbsp;[in&nbsp;the]&nbsp;&lt;container&gt;<br>
+&nbsp;<br>
+Attempts&nbsp;to&nbsp;move&nbsp;an&nbsp;object&nbsp;from&nbsp;your&nbsp;inventory&nbsp;into&nbsp;a&nbsp;specified<br>
+container.&nbsp;The&nbsp;container&nbsp;must&nbsp;be&nbsp;in&nbsp;the&nbsp;room,&nbsp;in&nbsp;your&nbsp;inventory,&nbsp;or<br>
+worn.</tt></dd></dl>
+ <dl><dt><a name="-cmd_remove"><strong>cmd_remove</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;remove&nbsp;&lt;item&nbsp;|&nbsp;all&gt;<br>
+&nbsp;<br>
+Attempts&nbsp;to&nbsp;remove&nbsp;an&nbsp;item&nbsp;you&nbsp;have&nbsp;equipped.&nbsp;If&nbsp;you&nbsp;would&nbsp;like&nbsp;to<br>
+remove&nbsp;everything&nbsp;you&nbsp;are&nbsp;wearing,&nbsp;you&nbsp;may&nbsp;instead&nbsp;specify&nbsp;'all'<br>
+instead&nbsp;of&nbsp;a&nbsp;specific&nbsp;item.&nbsp;If&nbsp;you&nbsp;would&nbsp;like&nbsp;to&nbsp;remove&nbsp;all&nbsp;of&nbsp;a&nbsp;certain<br>
+type&nbsp;of&nbsp;object&nbsp;(for&nbsp;instance,&nbsp;rings)&nbsp;you&nbsp;can&nbsp;use&nbsp;an&nbsp;all.&nbsp;prefix.&nbsp;For<br>
+example:<br>
+&nbsp;<br>
+&gt;&nbsp;remove&nbsp;all.ring<br>
+&nbsp;<br>
+This&nbsp;command&nbsp;will&nbsp;remove&nbsp;everything&nbsp;you&nbsp;are&nbsp;wearing&nbsp;with&nbsp;the&nbsp;'ring'<br>
+keyword.&nbsp;If&nbsp;you&nbsp;would&nbsp;instead&nbsp;like&nbsp;to&nbsp;remove,&nbsp;say,&nbsp;the&nbsp;second&nbsp;thing&nbsp;you<br>
+are&nbsp;wearing&nbsp;with&nbsp;the&nbsp;'ring'&nbsp;keyword,&nbsp;you&nbsp;can&nbsp;supply&nbsp;a&nbsp;numeric&nbsp;prefix.<br>
+For&nbsp;example:<br>
+&nbsp;<br>
+&gt;&nbsp;remove&nbsp;2.ring</tt></dd></dl>
+ <dl><dt><a name="-cmd_unlock"><strong>cmd_unlock</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;unlock&nbsp;&lt;door&nbsp;|&nbsp;direction&nbsp;|&nbsp;container&gt;<br>
+&nbsp;<br>
+Attempts&nbsp;to&nbsp;unlock&nbsp;the&nbsp;specified&nbsp;door,&nbsp;direction,&nbsp;or&nbsp;container.</tt></dd></dl>
+ <dl><dt><a name="-cmd_wear"><strong>cmd_wear</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;wear&nbsp;&lt;item&gt;&nbsp;[where]<br>
+&nbsp;<br>
+Attempts&nbsp;to&nbsp;equip&nbsp;an&nbsp;item&nbsp;from&nbsp;your&nbsp;inventory.&nbsp;If&nbsp;you&nbsp;would&nbsp;like&nbsp;to<br>
+equip&nbsp;it&nbsp;to&nbsp;a&nbsp;non-default&nbsp;location,&nbsp;you&nbsp;can&nbsp;supply&nbsp;where&nbsp;on&nbsp;your&nbsp;body<br>
+you&nbsp;would&nbsp;like&nbsp;to&nbsp;wear&nbsp;it.&nbsp;For&nbsp;example,&nbsp;if&nbsp;you&nbsp;would&nbsp;like&nbsp;to&nbsp;equip&nbsp;a<br>
+torch,&nbsp;but&nbsp;in&nbsp;your&nbsp;offhand&nbsp;instead&nbsp;of&nbsp;your&nbsp;mainhand:<br>
+&nbsp;<br>
+&gt;&nbsp;wear&nbsp;torch&nbsp;offhand<br>
+&nbsp;<br>
+If&nbsp;an&nbsp;item&nbsp;covers&nbsp;multiple&nbsp;locations&nbsp;on&nbsp;your&nbsp;body,&nbsp;you&nbsp;can&nbsp;specify&nbsp;where<br>
+all&nbsp;you&nbsp;would&nbsp;like&nbsp;to&nbsp;equip&nbsp;the&nbsp;item&nbsp;as&nbsp;a&nbsp;comma-separated&nbsp;list:<br>
+&nbsp;<br>
+&gt;&nbsp;wear&nbsp;gloves&nbsp;left&nbsp;hand,&nbsp;right&nbsp;hand</tt></dd></dl>
+ <dl><dt><a name="-do_drop"><strong>do_drop</strong></a>(ch, obj)</dt><dd><tt>handles&nbsp;object&nbsp;dropping</tt></dd></dl>
+ <dl><dt><a name="-do_get"><strong>do_get</strong></a>(ch, obj, cont)</dt><dd><tt>transfers&nbsp;an&nbsp;item&nbsp;from&nbsp;the&nbsp;ground&nbsp;to&nbsp;the&nbsp;character</tt></dd></dl>
+ <dl><dt><a name="-do_give"><strong>do_give</strong></a>(ch, recv, obj)</dt><dd><tt>does&nbsp;the&nbsp;handling&nbsp;of&nbsp;the&nbsp;give&nbsp;command</tt></dd></dl>
+ <dl><dt><a name="-do_put"><strong>do_put</strong></a>(ch, obj, cont)</dt><dd><tt>handles&nbsp;the&nbsp;putting&nbsp;of&nbsp;objects</tt></dd></dl>
+ <dl><dt><a name="-do_remove"><strong>do_remove</strong></a>(ch, obj)</dt><dd><tt>handles&nbsp;equipment&nbsp;removing</tt></dd></dl>
+ <dl><dt><a name="-do_wear"><strong>do_wear</strong></a>(ch, obj, where)</dt><dd><tt>handles&nbsp;object&nbsp;wearing</tt></dd></dl>
+ <dl><dt><a name="-try_get_from"><strong>try_get_from</strong></a>(ch, cont, arg)</dt><dd><tt>tries&nbsp;to&nbsp;get&nbsp;one&nbsp;item&nbsp;from&nbsp;inside&nbsp;another</tt></dd></dl>
+ <dl><dt><a name="-try_manip_other_exit"><strong>try_manip_other_exit</strong></a>(room, ex, closed, locked)</dt><dd><tt>used&nbsp;by&nbsp;open,&nbsp;close,&nbsp;lock,&nbsp;and&nbsp;unlock.&nbsp;When&nbsp;an&nbsp;exit&nbsp;is&nbsp;manipulated&nbsp;on&nbsp;one<br>
+side,&nbsp;it&nbsp;is&nbsp;the&nbsp;case&nbsp;that&nbsp;we'll&nbsp;want&nbsp;to&nbsp;do&nbsp;an&nbsp;identical&nbsp;manipulation&nbsp;on<br>
+the&nbsp;other&nbsp;side.&nbsp;That's&nbsp;what&nbsp;we&nbsp;do&nbsp;here.&nbsp;Note:&nbsp;Can&nbsp;only&nbsp;do&nbsp;close&nbsp;OR&nbsp;lock<br>
+with&nbsp;one&nbsp;call&nbsp;to&nbsp;this&nbsp;function.&nbsp;Cannot&nbsp;handle&nbsp;both&nbsp;at&nbsp;the&nbsp;same&nbsp;time!</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>cmd</strong> = 'unlock'</td></tr></table>
+</body></html>

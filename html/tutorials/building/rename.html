@@ -1,0 +1,69 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Changing content keys
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Changing content keys</div>
+<div class="info">
+It is not uncommon for a builder to have to change the keys for various zone
+contents. Perhaps a spelling mistake is made, or on a larger scale, a builder
+has made mainstreet01 to mainstreet09, but has decided they would like to
+add an extra five rooms in the middle. Or maybe, a better key for content
+has simply come to mind. For these circumstances, it is possible to change the
+key of a zone content. Rooms, objects, mobiles, and triggers can have their
+keys changed with the rrename, orename, mrename, and trename commands,
+respectively. To change a key, you must first specify its current key and then
+the new key you would like to use. For instance:
+<pre class="mud">
+> <font class="cmd">rrename town_square old_town_square</font>
+town_square rproto renamed to old_town_square.
+town_square reset does not exist.
+</pre>
+Rooms, objects, mobiles, and triggers will all display the first line of this
+command. Additionally, rooms will automatically try to carry over their reset
+commands with them (if available). Now, the content that was previously
+referenced by town_square is referenced by old_town_square
+<pre class="mud">
+> <font class="cmd">goto old_town_square</font>
+[old_town_square@moonhaven] [City] Town Square
+Town square is actually more circular than anything.  The street is composed of
+fine cobblestones, in a spiral pattern.  In the center of the square is a large
+fountain.  The streets are surprisingly busy, even at night.  People are 
+milling about, with the occasional friendly duel gathering a crowd.
+  north      :: [merchant_street01@moonhaven] Merchant Street
+  east       :: [mainstreet04@moonhaven] Main Street
+  south      :: [merchant_street04@moonhaven] Merchant Street
+  west       :: [mainstreet01@moonhaven] Main Street
+A large fountain is here, bubbling in the center of the square.
+</pre>
+</div>
+
+<div class="head">Deleting content keys</div>
+<div class="info">
+Sometimes zone content is no longer needed. In such cases, it can be deleted.
+Each type of content has its own delete function. You guessed it: rdelete,
+mdelete, odelete, and tdelete. Notably, zones <i>cannot</i> be deleted from
+within the mud. A player with shell access must edit the mud's lib/world/
+directory and delete the zone folder manually.
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

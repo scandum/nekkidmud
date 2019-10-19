@@ -1,0 +1,68 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: movement</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>movement</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hollis/Desktop/nakedmud/lib/pymodules/movement.py">/Users/hollis/Desktop/nakedmud/lib/pymodules/movement.py</a></font></td></tr></table>
+    <p><tt>movement.py<br>
+&nbsp;<br>
+all&nbsp;of&nbsp;the&nbsp;functions&nbsp;concerned&nbsp;with&nbsp;movement&nbsp;and&nbsp;position&nbsp;change</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="hooks.html">hooks</a><br>
+</td><td width="25%" valign=top><a href="inform.html">inform</a><br>
+</td><td width="25%" valign=top><a href="mud.html">mud</a><br>
+</td><td width="25%" valign=top><a href="mudsys.html">mudsys</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-chk_can_move"><strong>chk_can_move</strong></a>(ch, cmd)</dt></dl>
+ <dl><dt><a name="-chk_land"><strong>chk_land</strong></a>(ch, cmd)</dt></dl>
+ <dl><dt><a name="-chk_sit"><strong>chk_sit</strong></a>(ch, cmd)</dt></dl>
+ <dl><dt><a name="-chk_sleep"><strong>chk_sleep</strong></a>(ch, cmd)</dt></dl>
+ <dl><dt><a name="-chk_stand"><strong>chk_stand</strong></a>(ch, cmd)</dt></dl>
+ <dl><dt><a name="-chk_wake"><strong>chk_wake</strong></a>(ch, cmd)</dt></dl>
+ <dl><dt><a name="-cmd_move"><strong>cmd_move</strong></a>(ch, cmd, arg)</dt><dd><tt>A&nbsp;basic&nbsp;movement&nbsp;command,&nbsp;relocating&nbsp;you&nbsp;to&nbsp;another&nbsp;room&nbsp;in&nbsp;the<br>
+specified&nbsp;direction.</tt></dd></dl>
+ <dl><dt><a name="-cmd_sit"><strong>cmd_sit</strong></a>(ch, cmd, arg)</dt><dd><tt>If&nbsp;standing,&nbsp;attempts&nbsp;to&nbsp;sit&nbsp;on&nbsp;the&nbsp;ground.</tt></dd></dl>
+ <dl><dt><a name="-cmd_sleep"><strong>cmd_sleep</strong></a>(ch, cmd, arg)</dt><dd><tt>If&nbsp;awake,&nbsp;attempts&nbsp;to&nbsp;lay&nbsp;down&nbsp;and&nbsp;sleep.</tt></dd></dl>
+ <dl><dt><a name="-cmd_stand"><strong>cmd_stand</strong></a>(ch, cmd, arg)</dt><dd><tt>If&nbsp;sitting,&nbsp;attempts&nbsp;to&nbsp;stand.&nbsp;If&nbsp;flying,&nbsp;attempts&nbsp;to&nbsp;land.</tt></dd></dl>
+ <dl><dt><a name="-cmd_wake"><strong>cmd_wake</strong></a>(ch, cmd, arg)</dt><dd><tt>If&nbsp;sleep,&nbsp;attempts&nbsp;to&nbsp;wake&nbsp;up&nbsp;and&nbsp;sit.</tt></dd></dl>
+ <dl><dt><a name="-dir_index"><strong>dir_index</strong></a>(dir)</dt><dd><tt>returns&nbsp;the&nbsp;index&nbsp;of&nbsp;the&nbsp;direction&nbsp;name</tt></dd></dl>
+ <dl><dt><a name="-dir_opposite"><strong>dir_opposite</strong></a>(dir)</dt><dd><tt>returns&nbsp;the&nbsp;opposite&nbsp;direction&nbsp;of&nbsp;the&nbsp;specified&nbsp;one,&nbsp;or&nbsp;None&nbsp;if&nbsp;none.</tt></dd></dl>
+ <dl><dt><a name="-try_change_pos"><strong>try_change_pos</strong></a>(ch, pos)</dt><dd><tt>this&nbsp;function&nbsp;attempts&nbsp;to&nbsp;change&nbsp;the&nbsp;position&nbsp;of&nbsp;the&nbsp;person</tt></dd></dl>
+ <dl><dt><a name="-try_move"><strong>try_move</strong></a>(ch, dir, mssg<font color="#909090">=False</font>)</dt><dd><tt>Handles&nbsp;all&nbsp;moving&nbsp;of&nbsp;characters&nbsp;from&nbsp;one&nbsp;room&nbsp;to&nbsp;another,&nbsp;through<br>
+commands.&nbsp;Attempts&nbsp;a&nbsp;move.&nbsp;If&nbsp;successful,&nbsp;returns&nbsp;the&nbsp;exit&nbsp;left<br>
+through.</tt></dd></dl>
+ <dl><dt><a name="-try_move_mssg"><strong>try_move_mssg</strong></a>(ch, dir)</dt><dd><tt>Handles&nbsp;all&nbsp;moving&nbsp;of&nbsp;characters&nbsp;from&nbsp;one&nbsp;room&nbsp;to&nbsp;another,&nbsp;through<br>
+commands.&nbsp;Attempts&nbsp;a&nbsp;move.&nbsp;If&nbsp;successful,&nbsp;returns&nbsp;the&nbsp;exit&nbsp;left&nbsp;through.<br>
+Informs&nbsp;people&nbsp;of&nbsp;our&nbsp;moving</tt></dd></dl>
+ <dl><dt><a name="-try_use_furniture"><strong>try_use_furniture</strong></a>(ch, obj, pos)</dt><dd><tt>attempts&nbsp;to&nbsp;resituate&nbsp;a&nbsp;person&nbsp;on&nbsp;the&nbsp;piece&nbsp;of&nbsp;furniture</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>cmd</strong> = 'se'<br>
+<strong>dir_abbr</strong> = ['n', 'e', 's', 'w', 'ne', 'nw', 'sw', 'se', 'u', 'd']<br>
+<strong>dir_name</strong> = ['north', 'east', 'south', 'west', 'northeast', 'northwest', 'southwest', 'southeast', 'up', 'down']<br>
+<strong>dir_opp</strong> = [2, 3, 0, 1, 6, 7, 4, 5, 9, 8]<br>
+<strong>pos_act</strong> = ['collapse', 'sleep', 'sit', 'stand', 'fly']<br>
+<strong>positions</strong> = ['unconscious', 'sleeping', 'sitting', 'standing', 'flying']</td></tr></table>
+</body></html>

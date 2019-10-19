@@ -1,0 +1,119 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Creating and editing zones
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Creating a new zone</div>
+<div class="info">
+The command for creating and editing existing zones is zedit. We will begin
+by demonstrating how to create a new zone.
+<pre class="mud">
+> <font class="cmd">zedit new tutorial</font>
+You create a new zone (key tutorial).
+</pre>
+</div>
+
+<div class="head">Editing a zone</div>
+<div class="info">
+Once a zone is created, it can be edited with the zedit command, simply by
+not specifying that it is "new". When a zone is edited, a online creation (OLC)
+interface appears for interacting with that zone.
+<pre class="mud">
+> <font class="cmd">zedit tutorial</font>
+[tutorial]
+1) Name
+Alister's zone
+2) Editors
+Alister
+3) Reset timer: -1 mins
+4) Resettable rooms: 0
+5) Description
+A new zone created by Alister
+
+
+Enter choice, ? [topic] for help, or Q to quit: 
+</pre>
+The amount of editable fields for a zone are limited. Its name is simply what
+it is called, for purposes of zlist. The description field is for record
+keeping, about the purpose of the zone. This information will not be displayed
+anywhere outside of the zedit command. Each zone can have any number of editors
+associated with it. Zone editors are people who are allowed to use the edit
+commands on contents for that zone. Any time multiple entries can be supplied
+to a field, those entries are separated by commas.
+<pre class="mud">
+Enter choice, ? [topic] for help, or Q to quit: <font class="cmd">2</font>
+Enter a new list of editors: <font class="cmd">Alister, Fungle</font>
+
+[tutorial]
+1) Name
+Alister's zone
+2) Editors
+<font class="highlight">Alister, Fungle</font>
+3) Reset timer: -1 mins
+4) Resettable rooms: 0
+5) Description
+A new zone created by Alister
+
+Enter choice, ? [topic] for help, or Q to quit: 
+</pre>
+</div>
+
+<div class="head">Populating a zone</div>
+<div class="info">
+Zones largely contain an inter-connected series of rooms that can be populated 
+by various mobiles and objects. When a zone is reset, all of its commands for
+populating rooms are run. A zone with a reset timer will automatically reset
+every n minutes. If n <= 0 is specified, a zone will never automatically reset.
+Instead, it must be reset with the zreset command. There are also other
+alternative ways of populating zones (e.g., with scripts that trigger when
+players enter rooms, or talk to NPCs). These methods will be discussed in the
+tutorial on scripting basics.
+<p></p>
+If a room has a reset command, it must be added to the resettable rooms list.
+The main way to do this is through the room editing interface directly. However,
+it can also be performed through the zedit interface. Simply select the
+resettable rooms option and add the room key to the list. Room keys can also
+be deleted from the this via this option.
+<pre class="mud">
+Enter choice, ? [topic] for help, or Q to quit: <font class="cmd">4</font>
+
+  N) new room
+  D) delete room
+
+Enter choice, ? [topic] for help, or Q to quit: <font class="cmd">n</font>
+Enter the room key: <font class="cmd">town_square</font>
+<font class="highlight">
+Rooms reset on zone pulse:
+  town_square</font>
+
+  N) new room
+  D) delete room
+
+Enter choice, ? [topic] for help, or Q to quit: 
+</pre>
+It is highly suggested that resettable rooms are specified through the room
+edit (redit) interface. However, specifying them through the zedit interface
+can have its uses -- especially when attempting to figure out why certain
+objects or mobiles are mysteriously loading or not loading.
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

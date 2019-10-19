@@ -1,0 +1,53 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Cloning Rooms
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">rcopy</div>
+<div class="info">
+It is sometimes desirable to have a series of near-homogenous rooms connected to
+each other. For instance, when building a long city street, or a uniform
+wilderness. NakedMud has a command for the quick generation of multiple rooms
+that all inherit from a single parent. Here is an example:
+<pre class="mud">
+> <font class="cmd">rcopy mainstreet_abstr mainstreet 8</font>
+You create 8 new instantiations of mainstreet_abstr@moonhaven.
+
+> <font class="cmd">rlist</font>
+ Key                     Parents                                       Abstract 
+--------------------------------------------------------------------------------
+ mainstreet_abstr        generic_room@templates                             yes
+ mainstreet01            mainstreet_abstr                                    no
+ mainstreet02            mainstreet_abstr                                    no
+ mainstreet03            mainstreet_abstr                                    no
+ mainstreet04            mainstreet_abstr                                    no
+ mainstreet05            mainstreet_abstr                                    no
+ mainstreet06            mainstreet_abstr                                    no
+ mainstreet07            mainstreet_abstr                                    no
+ mainstreet08            mainstreet_abstr                                    no
+</pre>
+rcopy will create a series of n non-abstract rooms that all inherit from a
+specified parent. It will not connect them in any way, so you can structure them
+as you desire with digging and room edit.
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

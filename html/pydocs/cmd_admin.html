@@ -1,0 +1,108 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: cmd_admin</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>cmd_admin</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hollis/Desktop/nakedmud/lib/pymodules/cmd_admin.py">/Users/hollis/Desktop/nakedmud/lib/pymodules/cmd_admin.py</a></font></td></tr></table>
+    <p><tt>cmd_admin.py<br>
+&nbsp;<br>
+commands&nbsp;available&nbsp;only&nbsp;to&nbsp;admins.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="display.html">display</a><br>
+<a href="hooks.html">hooks</a><br>
+<a href="inform.html">inform</a><br>
+</td><td width="25%" valign=top><a href="mud.html">mud</a><br>
+<a href="char.html">char</a><br>
+<a href="obj.html">obj</a><br>
+</td><td width="25%" valign=top><a href="room.html">room</a><br>
+<a href="mudsock.html">mudsock</a><br>
+<a href="mudsys.html">mudsys</a><br>
+</td><td width="25%" valign=top><a href="string.html">string</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-cmd_at"><strong>cmd_at</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;at&nbsp;&lt;person&nbsp;|&nbsp;place&gt;&nbsp;&lt;command&gt;<br>
+&nbsp;<br>
+Perform&nbsp;a&nbsp;command&nbsp;at&nbsp;another&nbsp;room&nbsp;or&nbsp;person&nbsp;while&nbsp;never&nbsp;leaving&nbsp;your<br>
+current&nbsp;room.</tt></dd></dl>
+ <dl><dt><a name="-cmd_connections"><strong>cmd_connections</strong></a>(ch, cmd, arg)</dt><dd><tt>lists&nbsp;all&nbsp;of&nbsp;the&nbsp;currently&nbsp;connected&nbsp;sockets,&nbsp;their&nbsp;status,&nbsp;and&nbsp;where<br>
+they&nbsp;are&nbsp;connected&nbsp;from.</tt></dd></dl>
+ <dl><dt><a name="-cmd_copyover"><strong>cmd_copyover</strong></a>(ch, cmd, arg)</dt><dd><tt>Restarts&nbsp;the&nbsp;mud,&nbsp;and&nbsp;keep&nbsp;all&nbsp;sockets&nbsp;connected.</tt></dd></dl>
+ <dl><dt><a name="-cmd_copyover_net"><strong>cmd_copyover_net</strong></a>(ch, cmd, arg)</dt><dd><tt>A&nbsp;trap&nbsp;to&nbsp;make&nbsp;sure&nbsp;we&nbsp;spell&nbsp;copyover&nbsp;out&nbsp;completely.</tt></dd></dl>
+ <dl><dt><a name="-cmd_disconnect"><strong>cmd_disconnect</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;disconnect&nbsp;&lt;uid&gt;<br>
+&nbsp;<br>
+Disconnects&nbsp;a&nbsp;socket&nbsp;with&nbsp;the&nbsp;given&nbsp;uid.&nbsp;Use&nbsp;'connections'&nbsp;to&nbsp;see<br>
+current&nbsp;connected&nbsp;sockets.</tt></dd></dl>
+ <dl><dt><a name="-cmd_eval"><strong>cmd_eval</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;eval&nbsp;&lt;python&nbsp;statement&gt;<br>
+&nbsp;<br>
+Evaluates&nbsp;a&nbsp;Python&nbsp;statement&nbsp;and&nbsp;sends&nbsp;its&nbsp;return&nbsp;value&nbsp;to&nbsp;the&nbsp;user.<br>
+For&nbsp;example:<br>
+&nbsp;<br>
+&gt;&nbsp;eval&nbsp;"Your&nbsp;name&nbsp;is&nbsp;"&nbsp;+&nbsp;ch.name<br>
+Evaluation:&nbsp;Your&nbsp;name&nbsp;is&nbsp;Alister<br>
+&nbsp;<br>
+&gt;&nbsp;eval&nbsp;dir()<br>
+Evaluation:&nbsp;['arg',&nbsp;'ch',&nbsp;'cmd']<br>
+&nbsp;<br>
+&gt;&nbsp;eval&nbsp;dir(ch)</tt></dd></dl>
+ <dl><dt><a name="-cmd_exec"><strong>cmd_exec</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;exec&nbsp;&lt;python&nbsp;statement&gt;<br>
+&nbsp;<br>
+Execute&nbsp;any&nbsp;one-line&nbsp;python&nbsp;statement.</tt></dd></dl>
+ <dl><dt><a name="-cmd_force"><strong>cmd_force</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;force&nbsp;&lt;person&gt;&nbsp;&lt;command&gt;<br>
+&nbsp;<br>
+Attempts&nbsp;to&nbsp;make&nbsp;the&nbsp;specified&nbsp;perform&nbsp;a&nbsp;command&nbsp;of&nbsp;your&nbsp;choosing.</tt></dd></dl>
+ <dl><dt><a name="-cmd_goto"><strong>cmd_goto</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;goto&nbsp;&lt;person&nbsp;|&nbsp;place&nbsp;|&nbsp;thing&gt;<br>
+&nbsp;<br>
+Transfer&nbsp;yourself&nbsp;to&nbsp;a&nbsp;specified&nbsp;room,&nbsp;object,&nbsp;or&nbsp;person&nbsp;in&nbsp;game.&nbsp;Rooms<br>
+are&nbsp;referenced&nbsp;by&nbsp;their&nbsp;zone&nbsp;key.</tt></dd></dl>
+ <dl><dt><a name="-cmd_instance"><strong>cmd_instance</strong></a>(ch, cmd, arg)</dt><dd><tt>Create&nbsp;an&nbsp;instanced&nbsp;version&nbsp;of&nbsp;the&nbsp;specified&nbsp;room</tt></dd></dl>
+ <dl><dt><a name="-cmd_lockdown"><strong>cmd_lockdown</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;lockdown&nbsp;[allowed&nbsp;groups&nbsp;|&nbsp;off]<br>
+&nbsp;<br>
+Locks&nbsp;the&nbsp;game&nbsp;for&nbsp;anyone&nbsp;not&nbsp;a&nbsp;member&nbsp;of&nbsp;one&nbsp;of&nbsp;the&nbsp;user&nbsp;groups<br>
+specified.&nbsp;No&nbsp;argument&nbsp;will&nbsp;list&nbsp;all&nbsp;the&nbsp;user&nbsp;groups&nbsp;locked&nbsp;out&nbsp;of&nbsp;the<br>
+mud.&nbsp;The&nbsp;off&nbsp;argument&nbsp;will&nbsp;remove&nbsp;all&nbsp;lockdowns.</tt></dd></dl>
+ <dl><dt><a name="-cmd_pulserate"><strong>cmd_pulserate</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;pulserate&nbsp;&lt;pulses&gt;<br>
+&nbsp;<br>
+Changes&nbsp;the&nbsp;number&nbsp;of&nbsp;pulses&nbsp;the&nbsp;mud&nbsp;experiences&nbsp;each&nbsp;second.&nbsp;The&nbsp;mud<br>
+makes&nbsp;one&nbsp;loop&nbsp;through&nbsp;the&nbsp;main&nbsp;game&nbsp;handler&nbsp;each&nbsp;pulse.</tt></dd></dl>
+ <dl><dt><a name="-cmd_repeat"><strong>cmd_repeat</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;repeat&nbsp;&lt;times&gt;&nbsp;&lt;command&gt;<br>
+&nbsp;<br>
+Attempts&nbsp;to&nbsp;perform&nbsp;a&nbsp;single&nbsp;command&nbsp;multiple&nbsp;times.&nbsp;For&nbsp;example,&nbsp;one<br>
+may&nbsp;want&nbsp;to&nbsp;load&nbsp;20&nbsp;copies&nbsp;of&nbsp;an&nbsp;item:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&gt;&nbsp;repeat&nbsp;20&nbsp;load&nbsp;obj&nbsp;beer@drinks</tt></dd></dl>
+ <dl><dt><a name="-cmd_shutdown"><strong>cmd_shutdown</strong></a>(ch, cmd, arg)</dt><dd><tt>Shuts&nbsp;the&nbsp;mud&nbsp;down.</tt></dd></dl>
+ <dl><dt><a name="-cmd_shutdown_net"><strong>cmd_shutdown_net</strong></a>(ch, cmd, arg)</dt><dd><tt>A&nbsp;trap&nbsp;to&nbsp;make&nbsp;sure&nbsp;we&nbsp;spell&nbsp;shutdown&nbsp;out&nbsp;completely.</tt></dd></dl>
+ <dl><dt><a name="-cmd_transfer"><strong>cmd_transfer</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;transfer&nbsp;&lt;person&gt;&nbsp;[[to]&nbsp;room]<br>
+&nbsp;<br>
+The&nbsp;opposite&nbsp;of&nbsp;goto.&nbsp;Instead&nbsp;of&nbsp;moving&nbsp;to&nbsp;a&nbsp;specified&nbsp;location,&nbsp;it<br>
+takes&nbsp;the&nbsp;target&nbsp;to&nbsp;the&nbsp;user.&nbsp;If&nbsp;an&nbsp;additional&nbsp;argument&nbsp;is&nbsp;supplied,<br>
+instead&nbsp;transfers&nbsp;the&nbsp;target&nbsp;to&nbsp;the&nbsp;specifie&nbsp;room.</tt></dd></dl>
+ <dl><dt><a name="-cmd_zinstance"><strong>cmd_zinstance</strong></a>(ch, cmd, arg)</dt><dd><tt>create&nbsp;an&nbsp;instanced&nbsp;copy&nbsp;of&nbsp;the&nbsp;specified&nbsp;zone.</tt></dd></dl>
+ <dl><dt><a name="-do_transfer"><strong>do_transfer</strong></a>(ch, tgt, dest)</dt><dd><tt>ch&nbsp;transfers&nbsp;tgt&nbsp;to&nbsp;dest</tt></dd></dl>
+ <dl><dt><a name="-do_zinstance"><strong>do_zinstance</strong></a>(zone)</dt><dd><tt>create&nbsp;a&nbsp;new&nbsp;instance&nbsp;of&nbsp;the&nbsp;specified&nbsp;zone.</tt></dd></dl>
+ <dl><dt><a name="-try_force"><strong>try_force</strong></a>(ch, vict, cmd)</dt><dd><tt>tries&nbsp;to&nbsp;force&nbsp;a&nbsp;person&nbsp;to&nbsp;do&nbsp;something</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>curr_instances</strong> = []</td></tr></table>
+</body></html>

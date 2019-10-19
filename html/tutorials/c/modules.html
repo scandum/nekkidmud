@@ -1,0 +1,192 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Writing A Module
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Introduction</div>
+<div class="info">
+There are three aspects of NakedMud's code that must be understood to 
+efficiently write a mud using the codebase: modules, auxiliary data, and storage
+sets. Modules and auxiliary data allow programmers to organize their work by
+concept (e.g., combat-related functions and variables, magic-related stuff,
+etc...) rather than by data structure (e.g., all character variables, all room
+variables, etc...). This allows for easier distribution and organization of
+game function.
+<p></p>
+The third aspect - storage sets - is an attempt to provide a general
+format for saving and loading data from files, and eliminate much of the legwork
+that comes with reading and writing to files. It is also (more importantly) an
+attempt to ensure the addition of new information to data structures in the MUD
+never results in formatting conflicts within files.
+<p></p>
+This tutorial will provide a walkthrough on how to write a module, create
+auxiliary data, and store that data on character files. The same ideas can
+similarly be applied to rooms and objects.
+</div>
+
+<div class="head">Modules</div>
+<div class="info">
+Almost all new extensions to NakedMud are expected to be added through modules.
+In its most basic form, a module is a directory that contains src files, each
+united in some high-level, conceptual manner. For instance, you might have a
+module that contains all of the mechanics for combat, or another
+for all of the magic mechanics, or maybe another that adds commands with names
+that give your MUD the look and feel of a famous codebase like Circle or ROM.
+The main point is that modules organize the source code of your mud by concept.
+<p></p>
+Modules are easy to set up. Adding a happens like you would normally add code,
+except you have to make a new directory for everything that will be included
+in your module, and let the mud know you are adding a new module. Here, we will
+walk through the creation of a module that allows players to send and receive
+mail. In later sections, it will be built on to demonstrate how storage sets
+and auxiliary data work.
+</div>
+
+<div class="head">Preparing to Program</div>
+<div class="info">
+Before actually programming the mail module, a directory for it needs to be
+created. A few additions to the makefile are needed, and a call to the module's
+initialization procedure will have to be made when the mud boots up.
+<p></p>
+Enter your src directory, and make a new folder for the mail module. You will
+now have to let your Makefile know that the module exists. Open up Makefile in
+your src directory, and look for the line where optional modules are added to
+the variable, MODULES. The line you are searching for will look something like:
+
+<pre class="code">
+# optional modules go on this line
+MODULES += time socials alias help2
+</pre>
+
+To this list, add the name of the new module you created. Now, when the
+Makefile compiles your MUD, it will know that you have installed a new module
+called mail, and it will go into the directory and compile all the files
+within it. Well, almost. What actually happens is the Makefile goes into the
+module directory and looks for <i>another</i> makefile that lists all the
+source files that need to be compiled for that module, along with all the
+libraries and compiler flags that are required for the new code to work.
+Make a new makefile in the module directory to let the main Makefile know which
+source files will be needed. In your module directory, create a file called
+<i>module.mk</i> and edit it. We will only be working with one source file in
+this directory, and it will be called <i>mail.c</i>. To let the main makefile
+know that this source file will be made, add the following lines of code to your
+<i>module.mk</i> file:
+
+<pre class="code">
+# include all of the source files contained in this module
+SRC += mail/mail.c
+</pre>
+
+In general, the path relative to the main src driectory for all source files
+in your module should be added to the SRC variable.
+<p></p>
+Now that your MUD knows that your module exists, you will have to take some
+steps to initialize all of the new features your module will add to the MUD.
+This is traditionally done by adding an init_xxx() function to your module, and
+calling it when the MUD first boots up. Create an init function and fill it with
+a nonsense message until we actually have code to initialize. In your new module
+directory, create and edit a file called <i>mail.c</i>. To it, add the following
+bit of code:
+
+<pre class="code">
+// include all the header files we will need from the MUD core
+#include "../mud.h"
+#include "../utils.h"         // for get_time()
+#include "../character.h"     // for handling characters sending mail
+#include "../save.h"          // for player_exists()
+#include "../object.h"        // for creating mail objects
+#include "../handler.h"       // for giving mail to characters
+
+// include headers from other modules that we require
+#include "../editor/editor.h" // for access to sockets' notepads
+
+// include the headers for this module
+#include "mail.h"
+
+// boot up the mail module
+void init_mail(void) {
+  log_string("Nothing in the mail module yet!");
+}
+</pre>
+
+You will notice that we include a header called <i>mail.h</i>, which has not yet
+been created. Let's create the header and add all of the functions that source 
+code outside of the mail module should have access to. In your new module 
+directory, create and edit a file called {\it mail.h}. To it, add the following
+bit of code:
+
+<pre class="code">
+#ifndef MAIL_H
+#define MAIL_H
+// this function should be called when the MUD first boots up.
+// calling it will initialize the mail module for use.
+void init_mail(void);
+#endif // MAIL_H
+</pre>
+
+Then, call the init function where all the other modules' init functions are 
+called. This is a two-step process. First notify the rest of the MUD of this
+module's existence by adding a define for it in <i>mud.h</i>. Edit <i>mud.h</i>
+in the main src directory. Near the very start of the file, you will see lists 
+of defined of the form MODULE_XXX. With the rest of your optional modules, add 
+the line:
+
+<pre class="code">
+#define MODULE_MAIL
+</pre>
+
+Then go into <i>gameloop.c</i> and call the init function. At the end of the
+header files, you will see headers for optional modules. dd anothe entry for
+your mail module:
+
+<pre class="code">
+#ifdef MODULE_MAIL
+#include "mail/mail.h"
+#endif
+</pre>
+
+Now, go down furhter to where all of the modules are initialized. This will be
+in the main() function, right before the gameworld is created. Add your init
+function to the lsit of other init functions:
+
+<pre class="code">
+#ifdef MODULE_MAIL
+  log_string("Initializing mail system.");
+  init_mail();
+#endif
+</pre>
+
+Notice how both the include for our mail.h header, and the call to our init 
+function for the mail module are wrapped around #ifdef and #endif statements. 
+This is to easily allow for the mail module to be turned off. All that needs to
+be done is go into mud.h and comment out the line #define MODULE_MAIL. For all
+intents and purposes within the code, the mail module no longer exists when 
+this line is commented out. We have now completed all of the prep work needed 
+before we can start writing the mail module.
+
+</pre>
+
+</div>
+
+
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

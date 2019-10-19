@@ -1,0 +1,113 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Creating Triggers
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Triggers</div>
+<div class="info">
+The main means of in-game scripting is to attach triggers to mobiles,
+objects, and rooms. Triggers are scripts that execute when a pre-specified game
+event occurs. For instance, someone speaking, entering or leaving a room, 
+dropping an object, and so forth. Like the things they attach to, triggers
+exist as game content within a zone. They have reference keys, just like
+all other game content. Effectively, they are behaviors that are part of the
+game world.
+<p></p>
+NakedMud comes with 14 built-in trigger types, which will each be covered in 
+the next section. This section will explain how to bring up and use the trigger 
+editor.
+</div>
+
+<div class="head">tedit</div>
+<div class="info">
+The command for editing a trigger is tedit. If a key is specified, that 
+trigger's information is brought up in the online editing tool. If the key does
+not exist, a new trigger is created for that key.
+
+<pre class="mud">
+> <font class="cmd">tedit helloworld</font>
+
+[helloworld@tutorial]
+1) Name        : An Unfinished Trigger
+2) Trigger type: &lt;NONE&gt;
+3) Script Code
+# trigger code goes here
+# make sure to comment it with pounds (#)
+
+Enter choice, ? [topic] for help, or Q to quit: 
+</pre>
+
+Every trigger must be given a type. This is the game event that causes
+the trigger to run. Each type of trigger can only be attached to certain
+game contents. When a trigger type is listed, what it can be attached to 
+will also display. Let's create a speech trigger as a first example:
+
+<pre class="mud">
+Enter choice, ? [topic] for help, or Q to quit: <font class="cmd">2</font>
+      Type                 Usable By
+      -----------------------------------
+   0) speech               mob, room                                        
+   1) greet                mob                                              
+   2) enter                mob, room                                        
+   3) exit                 mob, room                                        
+   4) move                 mob                                              
+   5) drop                 obj, room                                        
+   6) get                  obj, room                                        
+   7) give                 obj, mob                                         
+   8) receive              mob                                              
+   9) wear                 mob                                              
+  10) remove               obj, mob                                         
+  11) reset                room                                             
+  12) combat               mob                                              
+  14) open                 obj, room                                        
+
+Enter a trigger type: <font class="cmd">0</font>
+
+[helloworld@tutorial]
+1) Name        : An Unfinished Trigger
+2) Trigger type: <font class="highlight">speech</font>
+3) Script Code
+# trigger code goes here
+# make sure to comment it with pounds (#)
+
+Enter choice, ? [topic] for help, or Q to quit: 
+</pre>
+
+Now let's set it up to be a room trigger; every time a person says 
+hello world!, teleport them to a new room:
+<pre class="mud">
+[helloworld@tutorial]
+1) Name        : <font class="highlight">Teleport the person to a new zone</font> 
+2) Trigger type: speech
+3) Script Code <font class="highlight">
+if arg.lower() == "hello world!":
+  ch.room = "startroom@magic_forest"
+  ch.send("You say the magic words, and suddenly find yourself in a new place.")
+  ch.act("look")
+</font>
+Enter choice, ? [topic] for help, or Q to quit: 
+</pre>
+When this trigger is attached to a room, every time a person in it says the
+magic words they will be teleported to another room.
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

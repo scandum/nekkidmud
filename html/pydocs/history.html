@@ -1,0 +1,45 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: history</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>history</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hollis/Desktop/nakedmud/lib/pymodules/history.py">/Users/hollis/Desktop/nakedmud/lib/pymodules/history.py</a></font></td></tr></table>
+    <p><tt>history.py<br>
+&nbsp;<br>
+a&nbsp;little&nbsp;database&nbsp;module&nbsp;for&nbsp;storing&nbsp;communication&nbsp;histories.&nbsp;Can&nbsp;store&nbsp;by<br>
+arbitrary&nbsp;groupings&nbsp;e.g.,&nbsp;for&nbsp;guild,&nbsp;global,&nbsp;zone,&nbsp;or&nbsp;personal&nbsp;communications.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="mudsys.html">mudsys</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-add_history"><strong>add_history</strong></a>(ch, type, mssg)</dt></dl>
+ <dl><dt><a name="-cmd_history"><strong>cmd_history</strong></a>(ch, cmd, arg)</dt><dd><tt>Communication&nbsp;logs&nbsp;are&nbsp;stored&nbsp;as&nbsp;you&nbsp;receive&nbsp;communication.&nbsp;To&nbsp;review<br>
+communication&nbsp;you&nbsp;have&nbsp;used,&nbsp;you&nbsp;can&nbsp;use&nbsp;the&nbsp;history&nbsp;command.</tt></dd></dl>
+ <dl><dt><a name="-get_history"><strong>get_history</strong></a>(ch, type)</dt><dd><tt>return&nbsp;the&nbsp;communication&nbsp;history&nbsp;for&nbsp;a&nbsp;character.</tt></dd></dl>
+ <dl><dt><a name="-register_comm_history"><strong>register_comm_history</strong></a>(type, group_func)</dt><dd><tt>register&nbsp;a&nbsp;new&nbsp;type&nbsp;of&nbsp;history,&nbsp;and&nbsp;add&nbsp;a&nbsp;grouping&nbsp;function&nbsp;as&nbsp;well.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>MAX_HISTORY_LEN</strong> = 20<br>
+<strong>comm_table</strong> = {'chat': (&lt;function &lt;lambda&gt; at 0x7bfdb0&gt;, {}), 'tell': (&lt;function &lt;lambda&gt; at 0x7bfdf0&gt;, {})}</td></tr></table>
+</body></html>

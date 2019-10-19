@@ -1,0 +1,127 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: exit</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>exit</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>The&nbsp;exit&nbsp;module,&nbsp;for&nbsp;all&nbsp;MUD&nbsp;exit-related&nbsp;stuff.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="exit.html#Exit">Exit</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Exit">class <strong>Exit</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Python&nbsp;<a href="#Exit">Exit</a>&nbsp;<a href="__builtin__.html#object">object</a><br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Exit-__cmp__"><strong>__cmp__</strong></a>(...)</dt><dd><tt>x.<a href="#Exit-__cmp__">__cmp__</a>(y)&nbsp;&lt;==&gt;&nbsp;cmp(x,y)</tt></dd></dl>
+
+<dl><dt><a name="Exit-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#Exit-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<dl><dt><a name="Exit-close"><strong>close</strong></a>(...)</dt><dd><tt><a href="#Exit-close">close</a>()<br>
+&nbsp;<br>
+Close&nbsp;the&nbsp;exit's&nbsp;door&nbsp;if&nbsp;it&nbsp;exists.</tt></dd></dl>
+
+<dl><dt><a name="Exit-filldoor"><strong>filldoor</strong></a>(...)</dt><dd><tt><a href="#Exit-filldoor">filldoor</a>()<br>
+&nbsp;<br>
+Erase&nbsp;a&nbsp;door&nbsp;that&nbsp;was&nbsp;on&nbsp;the&nbsp;exit.</tt></dd></dl>
+
+<dl><dt><a name="Exit-lock"><strong>lock</strong></a>(...)</dt><dd><tt><a href="#Exit-lock">lock</a>()<br>
+&nbsp;<br>
+Locks&nbsp;the&nbsp;exit's&nbsp;door&nbsp;if&nbsp;it&nbsp;exists.&nbsp;Also&nbsp;closes.</tt></dd></dl>
+
+<dl><dt><a name="Exit-makedoor"><strong>makedoor</strong></a>(...)</dt><dd><tt><a href="#Exit-makedoor">makedoor</a>(name=None,&nbsp;keywords=None,&nbsp;opposite=None,&nbsp;closed=False,&nbsp;locked=False)<br>
+&nbsp;<br>
+Create&nbsp;a&nbsp;door&nbsp;for&nbsp;the&nbsp;exit.</tt></dd></dl>
+
+<dl><dt><a name="Exit-open"><strong>open</strong></a>(...)</dt><dd><tt><a href="#Exit-open">open</a>()<br>
+&nbsp;<br>
+Opens&nbsp;the&nbsp;exit's&nbsp;door&nbsp;if&nbsp;it&nbsp;exists.&nbsp;Also&nbsp;unlocks.</tt></dd></dl>
+
+<dl><dt><a name="Exit-unlock"><strong>unlock</strong></a>(...)</dt><dd><tt><a href="#Exit-unlock">unlock</a>()<br>
+&nbsp;<br>
+Unlocks&nbsp;the&nbsp;exit's&nbsp;door&nbsp;if&nbsp;it&nbsp;exists.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>desc</strong></dt>
+<dd><tt>The&nbsp;verbose&nbsp;description&nbsp;of&nbsp;the&nbsp;exit&nbsp;when,&nbsp;e.g.,&nbsp;it&nbsp;is&nbsp;looked&nbsp;at.</tt></dd>
+</dl>
+<dl><dt><strong>dest</strong></dt>
+<dd><tt>The&nbsp;room&nbsp;that&nbsp;this&nbsp;exit&nbsp;leads&nbsp;to.&nbsp;Can&nbsp;be&nbsp;set&nbsp;either&nbsp;by&nbsp;assigning&nbsp;a<br>
+world&nbsp;room&nbsp;key,&nbsp;or&nbsp;an&nbsp;actual&nbsp;room.</tt></dd>
+</dl>
+<dl><dt><strong>destproto</strong></dt>
+<dd><tt>The&nbsp;world&nbsp;room&nbsp;key&nbsp;of&nbsp;our&nbsp;destination.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>enter_mssg</strong></dt>
+<dd><tt>A&nbsp;message&nbsp;for&nbsp;when&nbsp;a&nbsp;char&nbsp;enters&nbsp;the&nbsp;room&nbsp;via&nbsp;this&nbsp;exit.</tt></dd>
+</dl>
+<dl><dt><strong>hidden</strong></dt>
+<dd><tt>Alias&nbsp;for&nbsp;exit.Exit.spot_diff</tt></dd>
+</dl>
+<dl><dt><strong>is_closable</strong></dt>
+<dd><tt>True&nbsp;or&nbsp;False&nbsp;if&nbsp;an&nbsp;exit&nbsp;can&nbsp;be&nbsp;closed.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>is_closed</strong></dt>
+<dd><tt>True&nbsp;or&nbsp;False&nbsp;if&nbsp;an&nbsp;exit&nbsp;is&nbsp;closed.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>is_locked</strong></dt>
+<dd><tt>True&nbsp;or&nbsp;False&nbsp;if&nbsp;an&nbsp;exit&nbsp;is&nbsp;locked.</tt></dd>
+</dl>
+<dl><dt><strong>key</strong></dt>
+<dd><tt>An&nbsp;object&nbsp;prototype&nbsp;name&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;unlock&nbsp;this&nbsp;exit.&nbsp;Can&nbsp;be<br>
+set&nbsp;either&nbsp;by&nbsp;assigning&nbsp;a&nbsp;prototype&nbsp;name,&nbsp;or&nbsp;an&nbsp;actual&nbsp;object.</tt></dd>
+</dl>
+<dl><dt><strong>keywords</strong></dt>
+<dd><tt>A&nbsp;comma-separated&nbsp;string&nbsp;of&nbsp;the&nbsp;door's&nbsp;keywords.</tt></dd>
+</dl>
+<dl><dt><strong>leave_mssg</strong></dt>
+<dd><tt>A&nbsp;message&nbsp;for&nbsp;when&nbsp;a&nbsp;character&nbsp;leaves&nbsp;a&nbsp;room&nbsp;via&nbsp;this&nbsp;exit.</tt></dd>
+</dl>
+<dl><dt><strong>name</strong></dt>
+<dd><tt>The&nbsp;name&nbsp;of&nbsp;the&nbsp;door&nbsp;for&nbsp;this&nbsp;exit,&nbsp;if&nbsp;any.</tt></dd>
+</dl>
+<dl><dt><strong>opposite</strong></dt>
+<dd><tt>if&nbsp;the&nbsp;exit&nbsp;is&nbsp;special,&nbsp;a&nbsp;dir&nbsp;name&nbsp;for&nbsp;the&nbsp;exit&nbsp;that&nbsp;leads&nbsp;back&nbsp;to<br>
+this&nbsp;exit's&nbsp;room.</tt></dd>
+</dl>
+<dl><dt><strong>pick_diff</strong></dt>
+<dd><tt>Integer&nbsp;value&nbsp;representing&nbsp;how&nbsp;hard&nbsp;the&nbsp;exit's&nbsp;lock&nbsp;is&nbsp;to&nbsp;pick.</tt></dd>
+</dl>
+<dl><dt><strong>room</strong></dt>
+<dd><tt>The&nbsp;room&nbsp;we&nbsp;this&nbsp;exit&nbsp;is&nbsp;attached&nbsp;to.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>spot_diff</strong></dt>
+<dd><tt>Integer&nbsp;value&nbsp;representing&nbsp;how&nbsp;hard&nbsp;to&nbsp;see&nbsp;the&nbsp;exit&nbsp;is.</tt></dd>
+</dl>
+<dl><dt><strong>uid</strong></dt>
+<dd><tt>The&nbsp;exit's&nbsp;universal&nbsp;identification&nbsp;nubmer.&nbsp;Immutable.</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x6f780&gt;<dd><tt>T.<a href="#Exit-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+</td></tr></table></td></tr></table>
+</body></html>

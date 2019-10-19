@@ -1,0 +1,267 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: obj</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>obj</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>Contains&nbsp;the&nbsp;Python&nbsp;wrapper&nbsp;for&nbsp;game&nbsp;objects.&nbsp;Also&nbsp;contains&nbsp;utilities<br>
+for&nbsp;listing,&nbsp;storing,&nbsp;and&nbsp;generating&nbsp;objects&nbsp;from&nbsp;prototypes.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="obj.html#Obj">Obj</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Obj">class <strong>Obj</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Obj">Obj</a>/<a href="#Obj">Obj</a>&nbsp;objects<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Obj-__cmp__"><strong>__cmp__</strong></a>(...)</dt><dd><tt>x.<a href="#Obj-__cmp__">__cmp__</a>(y)&nbsp;&lt;==&gt;&nbsp;cmp(x,y)</tt></dd></dl>
+
+<dl><dt><a name="Obj-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#Obj-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<dl><dt><a name="Obj-attach"><strong>attach</strong></a>(...)</dt><dd><tt><a href="#Obj-attach">attach</a>(trigger)<br>
+&nbsp;<br>
+Attach&nbsp;a&nbsp;trigger&nbsp;to&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;by&nbsp;key&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="Obj-aux"><strong>aux</strong></a>(...)</dt><dd><tt>Alias&nbsp;for&nbsp;obj.<a href="#Obj">Obj</a>.<a href="#Obj-getAuxiliary">getAuxiliary</a>(name)</tt></dd></dl>
+
+<dl><dt><a name="Obj-copy"><strong>copy</strong></a>(...)</dt><dd><tt><a href="#Obj-copy">copy</a>()<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>.</tt></dd></dl>
+
+<dl><dt><a name="Obj-deletevar"><strong>deletevar</strong></a>(...)</dt><dd><tt><a href="#Obj-deletevar">deletevar</a>(name)<br>
+&nbsp;<br>
+Deletes&nbsp;a&nbsp;special&nbsp;variable&nbsp;from&nbsp;an&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;if&nbsp;they&nbsp;have&nbsp;one&nbsp;by&nbsp;the<br>
+given&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="Obj-delvar"><strong>delvar</strong></a>(...)</dt><dd><tt>Alias&nbsp;for&nbsp;obj.<a href="#Obj">Obj</a>.<a href="#Obj-deletevar">deletevar</a>(name)</tt></dd></dl>
+
+<dl><dt><a name="Obj-detach"><strong>detach</strong></a>(...)</dt><dd><tt><a href="#Obj-detach">detach</a>(trigger)<br>
+&nbsp;<br>
+Detach&nbsp;a&nbsp;trigger&nbsp;from&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;by&nbsp;key&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="Obj-do_trigs"><strong>do_trigs</strong></a>(...)</dt><dd><tt><a href="#Obj-do_trigs">do_trigs</a>(type,&nbsp;ch=None,&nbsp;obj=None,&nbsp;room=None,&nbsp;exit=None,&nbsp;cmd=None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arg=None,&nbsp;opts=None)<br>
+&nbsp;<br>
+Run&nbsp;triggers&nbsp;of&nbsp;the&nbsp;specified&nbsp;type&nbsp;on&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>.&nbsp;By&nbsp;default,&nbsp;the<br>
+trigger&nbsp;owner&nbsp;is&nbsp;'me'.&nbsp;Other&nbsp;variables&nbsp;can&nbsp;be&nbsp;specified.&nbsp;The&nbsp;opts<br>
+variable&nbsp;can&nbsp;be&nbsp;a&nbsp;dictionary&nbsp;that&nbsp;maps&nbsp;optional&nbsp;variable&nbsp;names&nbsp;to&nbsp;their<br>
+values.</tt></dd></dl>
+
+<dl><dt><a name="Obj-edesc"><strong>edesc</strong></a>(...)</dt><dd><tt><a href="#Obj-edesc">edesc</a>(keywords,&nbsp;desc)<br>
+&nbsp;<br>
+Create&nbsp;an&nbsp;extra&nbsp;description&nbsp;for&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>,&nbsp;accessible&nbsp;via&nbsp;a&nbsp;comma-<br>
+separated&nbsp;list&nbsp;of&nbsp;keywords.</tt></dd></dl>
+
+<dl><dt><a name="Obj-fromall"><strong>fromall</strong></a>(...)</dt><dd><tt><a href="#Obj-fromall">fromall</a>()<br>
+&nbsp;<br>
+Remove&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;from&nbsp;whichever&nbsp;room,&nbsp;character,&nbsp;or&nbsp;container&nbsp;it&nbsp;is&nbsp;in.</tt></dd></dl>
+
+<dl><dt><a name="Obj-getAuxiliary"><strong>getAuxiliary</strong></a>(...)</dt><dd><tt><a href="#Obj-getAuxiliary">getAuxiliary</a>(name)<br>
+&nbsp;<br>
+Returns&nbsp;<a href="__builtin__.html#object">object</a>'s&nbsp;auxiliary&nbsp;data&nbsp;of&nbsp;the&nbsp;specified&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="Obj-get_type_data"><strong>get_type_data</strong></a>(...)</dt><dd><tt><a href="#Obj-get_type_data">get_type_data</a>(item_type)<br>
+&nbsp;<br>
+Returns&nbsp;Python&nbsp;item&nbsp;type&nbsp;data&nbsp;if&nbsp;it&nbsp;exists,&nbsp;or&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="Obj-get_types"><strong>get_types</strong></a>(...)</dt><dd><tt><a href="#Obj-get_types">get_types</a>()<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;comma-separated&nbsp;list&nbsp;of&nbsp;item&nbsp;types&nbsp;this&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;has.</tt></dd></dl>
+
+<dl><dt><a name="Obj-getvar"><strong>getvar</strong></a>(...)</dt><dd><tt><a href="#Obj-getvar">getvar</a>(name)<br>
+&nbsp;<br>
+Return&nbsp;value&nbsp;of&nbsp;a&nbsp;special&nbsp;variable.&nbsp;Return&nbsp;0&nbsp;if&nbsp;no&nbsp;value&nbsp;has&nbsp;been&nbsp;set.</tt></dd></dl>
+
+<dl><dt><a name="Obj-hasvar"><strong>hasvar</strong></a>(...)</dt><dd><tt><a href="#Obj-hasvar">hasvar</a>(name)<br>
+&nbsp;<br>
+Return&nbsp;True&nbsp;if&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;has&nbsp;the&nbsp;given&nbsp;special&nbsp;variable.&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Obj-isinstance"><strong>isinstance</strong></a>(...)</dt><dd><tt><a href="#Obj-isinstance">isinstance</a>(prototype)<br>
+&nbsp;<br>
+returns&nbsp;whether&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;inherits&nbsp;from&nbsp;a&nbsp;specified&nbsp;obj&nbsp;prototype.</tt></dd></dl>
+
+<dl><dt><a name="Obj-istype"><strong>istype</strong></a>(...)</dt><dd><tt><a href="#Obj-istype">istype</a>(item_type)<br>
+&nbsp;<br>
+Returns&nbsp;True&nbsp;or&nbsp;False&nbsp;if&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;is&nbsp;of&nbsp;the&nbsp;specified&nbsp;item&nbsp;type.</tt></dd></dl>
+
+<dl><dt><a name="Obj-settype"><strong>settype</strong></a>(...)</dt><dd><tt><a href="#Obj-settype">settype</a>(item_type)<br>
+&nbsp;<br>
+Make&nbsp;an&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;be&nbsp;the&nbsp;specified&nbsp;item&nbsp;type.</tt></dd></dl>
+
+<dl><dt><a name="Obj-setvar"><strong>setvar</strong></a>(...)</dt><dd><tt><a href="#Obj-setvar">setvar</a>(name,&nbsp;val)<br>
+&nbsp;<br>
+Set&nbsp;value&nbsp;of&nbsp;a&nbsp;special&nbsp;variable&nbsp;for&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>.&nbsp;Values&nbsp;must&nbsp;be&nbsp;strings<br>
+or&nbsp;numbers.&nbsp;This&nbsp;function&nbsp;is&nbsp;intended&nbsp;to&nbsp;allow&nbsp;scripts&nbsp;and&nbsp;triggers&nbsp;toopen-endedly&nbsp;add&nbsp;variables&nbsp;to&nbsp;objects.</tt></dd></dl>
+
+<dl><dt><a name="Obj-store"><strong>store</strong></a>(...)</dt><dd><tt><a href="#Obj-store">store</a>()<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;storage&nbsp;set&nbsp;representing&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>age</strong></dt>
+<dd><tt>Value&nbsp;is&nbsp;the&nbsp;difference&nbsp;between&nbsp;the&nbsp;object's&nbsp;creation&nbsp;time&nbsp;and&nbsp;the<br>
+current&nbsp;system&nbsp;time.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>birth</strong></dt>
+<dd><tt>Value&nbsp;is&nbsp;the&nbsp;object's&nbsp;creation&nbsp;time&nbsp;(system&nbsp;time).&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>bits</strong></dt>
+<dd><tt>A&nbsp;comma-separated&nbsp;list&nbsp;of&nbsp;bits&nbsp;currently&nbsp;toggled&nbsp;for&nbsp;this&nbsp;object.</tt></dd>
+</dl>
+<dl><dt><strong>carrier</strong></dt>
+<dd><tt>The&nbsp;character&nbsp;whose&nbsp;inventory&nbsp;this&nbsp;object&nbsp;is&nbsp;currently&nbsp;in,&nbsp;or&nbsp;None.</tt></dd>
+</dl>
+<dl><dt><strong>chars</strong></dt>
+<dd><tt>A&nbsp;list&nbsp;of&nbsp;characters&nbsp;currently&nbsp;sitting/riding&nbsp;this&nbsp;object.&nbsp;Immutable.<br>
+See&nbsp;char.Char.furniture&nbsp;for&nbsp;changing&nbsp;a&nbsp;character's&nbsp;furniture.</tt></dd>
+</dl>
+<dl><dt><strong>container</strong></dt>
+<dd><tt>The&nbsp;container&nbsp;this&nbsp;object&nbsp;is&nbsp;currently&nbsp;in,&nbsp;or&nbsp;None.</tt></dd>
+</dl>
+<dl><dt><strong>container_capacity</strong></dt>
+<dd><tt>The&nbsp;maximum&nbsp;amount&nbsp;of&nbsp;weight&nbsp;c&nbsp;container&nbsp;can&nbsp;hold.</tt></dd>
+</dl>
+<dl><dt><strong>container_is_closable</strong></dt>
+<dd><tt>True&nbsp;or&nbsp;False&nbsp;if&nbsp;the&nbsp;container&nbsp;can&nbsp;be&nbsp;closed.</tt></dd>
+</dl>
+<dl><dt><strong>container_is_closed</strong></dt>
+<dd><tt>True&nbsp;or&nbsp;False&nbsp;if&nbsp;the&nbsp;container&nbsp;is&nbsp;closed.</tt></dd>
+</dl>
+<dl><dt><strong>container_is_locked</strong></dt>
+<dd><tt>True&nbsp;or&nbsp;False&nbsp;if&nbsp;the&nbsp;container&nbsp;is&nbsp;locked.</tt></dd>
+</dl>
+<dl><dt><strong>container_key</strong></dt>
+<dd><tt>An&nbsp;object&nbsp;prototype&nbsp;that&nbsp;acts&nbsp;as&nbsp;a&nbsp;key&nbsp;for&nbsp;this&nbsp;container.</tt></dd>
+</dl>
+<dl><dt><strong>container_pick_diff</strong></dt>
+<dd><tt>An&nbsp;integer&nbsp;representing&nbsp;how&nbsp;difficult&nbsp;a&nbsp;container's&nbsp;lock&nbsp;is&nbsp;to&nbsp;pick.</tt></dd>
+</dl>
+<dl><dt><strong>contents</strong></dt>
+<dd><tt>A&nbsp;list&nbsp;of&nbsp;other&nbsp;objects&nbsp;contained&nbsp;within&nbsp;this&nbsp;one.&nbsp;Immutable.<br>
+See&nbsp;obj.Obj.container&nbsp;for&nbsp;changing&nbsp;an&nbsp;object's&nbsp;container.</tt></dd>
+</dl>
+<dl><dt><strong>desc</strong></dt>
+<dd><tt>An&nbsp;object's&nbsp;verbose&nbsp;description&nbsp;e.g.,&nbsp;for&nbsp;when&nbsp;it&nbsp;is&nbsp;looked&nbsp;at.</tt></dd>
+</dl>
+<dl><dt><strong>furniture_capacity</strong></dt>
+<dd><tt>The&nbsp;number&nbsp;of&nbsp;characters&nbsp;a&nbsp;furniture&nbsp;object&nbsp;can&nbsp;accomodate.</tt></dd>
+</dl>
+<dl><dt><strong>furniture_type</strong></dt>
+<dd><tt>The&nbsp;type&nbsp;of&nbsp;furniture&nbsp;this&nbsp;is:&nbsp;'at'&nbsp;or&nbsp;'on'&nbsp;like&nbsp;e.g.,&nbsp;tables&nbsp;vs.&nbsp;couches.</tt></dd>
+</dl>
+<dl><dt><strong>hidden</strong></dt>
+<dd><tt>Integer&nbsp;value&nbsp;representing&nbsp;how&nbsp;hard&nbsp;this&nbsp;object&nbsp;is&nbsp;to&nbsp;see.</tt></dd>
+</dl>
+<dl><dt><strong>keywords</strong></dt>
+<dd><tt>A&nbsp;comma-separated&nbsp;list&nbsp;of&nbsp;keywords&nbsp;for&nbsp;referencing&nbsp;the&nbsp;object.</tt></dd>
+</dl>
+<dl><dt><strong>mdesc</strong></dt>
+<dd><tt>the&nbsp;equivalent&nbsp;of&nbsp;mname,&nbsp;for&nbsp;room&nbsp;descriptions.</tt></dd>
+</dl>
+<dl><dt><strong>mname</strong></dt>
+<dd><tt>The&nbsp;object's&nbsp;name&nbsp;for&nbsp;describing&nbsp;packs,&nbsp;e.g.,<br>
+a&nbsp;stack&nbsp;of&nbsp;12&nbsp;linen&nbsp;towels.&nbsp;The&nbsp;number&nbsp;should&nbsp;be&nbsp;replaced&nbsp;by&nbsp;%d,&nbsp;or<br>
+not&nbsp;included.</tt></dd>
+</dl>
+<dl><dt><strong>name</strong></dt>
+<dd><tt>The&nbsp;object's&nbsp;name&nbsp;e.g.,&nbsp;a&nbsp;longsword</tt></dd>
+</dl>
+<dl><dt><strong>objs</strong></dt>
+<dd><tt>Alias&nbsp;for&nbsp;obj.Obj.contents</tt></dd>
+</dl>
+<dl><dt><strong>portal_dest</strong></dt>
+<dd><tt>A&nbsp;string&nbsp;key&nbsp;specifying&nbsp;the&nbsp;destination&nbsp;of&nbsp;the&nbsp;portal.&nbsp;Can&nbsp;be&nbsp;set&nbsp;by<br>
+a&nbsp;string&nbsp;or&nbsp;the&nbsp;actual&nbsp;room.</tt></dd>
+</dl>
+<dl><dt><strong>portal_enter_mssg</strong></dt>
+<dd><tt>The&nbsp;message&nbsp;shown&nbsp;to&nbsp;the&nbsp;desination&nbsp;room&nbsp;when&nbsp;a&nbsp;character&nbsp;enters&nbsp;portal.</tt></dd>
+</dl>
+<dl><dt><strong>portal_leave_mssg</strong></dt>
+<dd><tt>The&nbsp;message&nbsp;shown&nbsp;to&nbsp;a&nbsp;room&nbsp;after&nbsp;a&nbsp;character&nbsp;leaves&nbsp;it&nbsp;via&nbsp;a&nbsp;portal.</tt></dd>
+</dl>
+<dl><dt><strong>prototypes</strong></dt>
+<dd><tt>A&nbsp;comma-separated&nbsp;list&nbsp;of&nbsp;prototypes&nbsp;this&nbsp;object&nbsp;inherits&nbsp;from.&nbsp;Immutable</tt></dd>
+</dl>
+<dl><dt><strong>rdesc</strong></dt>
+<dd><tt>The&nbsp;object's&nbsp;description&nbsp;when&nbsp;seen&nbsp;in&nbsp;a&nbsp;room,&nbsp;e.g.,<br>
+a&nbsp;longsword&nbsp;is&nbsp;here,&nbsp;gleaming&nbsp;in&nbsp;the&nbsp;sun.</tt></dd>
+</dl>
+<dl><dt><strong>room</strong></dt>
+<dd><tt>The&nbsp;room&nbsp;this&nbsp;object&nbsp;is&nbsp;current&nbsp;in,&nbsp;or&nbsp;None.</tt></dd>
+</dl>
+<dl><dt><strong>uid</strong></dt>
+<dd><tt>The&nbsp;object's&nbsp;unique&nbsp;identification&nbsp;number.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>wearer</strong></dt>
+<dd><tt>The&nbsp;character&nbsp;who&nbsp;is&nbsp;currently&nbsp;wearing&nbsp;this&nbsp;object,&nbsp;or&nbsp;None.</tt></dd>
+</dl>
+<dl><dt><strong>weight</strong></dt>
+<dd><tt>The&nbsp;object's&nbsp;weight&nbsp;(plus&nbsp;contents).&nbsp;When&nbsp;setting&nbsp;a&nbsp;new&nbsp;value,&nbsp;<br>
+sets&nbsp;raw&nbsp;weight&nbsp;(minus&nbsp;contents).</tt></dd>
+</dl>
+<dl><dt><strong>weight_raw</strong></dt>
+<dd><tt>The&nbsp;object's&nbsp;weight&nbsp;(minus&nbsp;contents)</tt></dd>
+</dl>
+<dl><dt><strong>worn_locs</strong></dt>
+<dd><tt>The&nbsp;position&nbsp;names&nbsp;this&nbsp;worn&nbsp;type&nbsp;must&nbsp;be&nbsp;equipped&nbsp;to.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>worn_type</strong></dt>
+<dd><tt>The&nbsp;type&nbsp;of&nbsp;worn&nbsp;item&nbsp;this&nbsp;is.</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x6f500&gt;<dd><tt>T.<a href="#Obj-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-count_objs"><strong>count_objs</strong></a>(...)</dt><dd><tt><a href="#-count_objs">count_objs</a>(keyword,&nbsp;loc&nbsp;=&nbsp;None)<br>
+&nbsp;<br>
+count&nbsp;how&nbsp;many&nbsp;occurences&nbsp;of&nbsp;an&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;the&nbsp;specified&nbsp;keyword,&nbsp;uid,<br>
+or&nbsp;prototype&nbsp;exist&nbsp;at&nbsp;a&nbsp;location.&nbsp;If&nbsp;loc&nbsp;is&nbsp;None,&nbsp;search&nbsp;the&nbsp;entire&nbsp;mud.<br>
+Loc&nbsp;can&nbsp;be&nbsp;a&nbsp;room,&nbsp;character,&nbsp;or&nbsp;container&nbsp;<a href="__builtin__.html#object">object</a>.</tt></dd></dl>
+ <dl><dt><a name="-find_obj"><strong>find_obj</strong></a>(...)</dt><dd><tt>function&nbsp;has&nbsp;been&nbsp;deprecated.&nbsp;Entrypoint&nbsp;for&nbsp;generic_find().<br>
+Use&nbsp;mud.parse_args&nbsp;instead.</tt></dd></dl>
+ <dl><dt><a name="-find_obj_key"><strong>find_obj_key</strong></a>(...)</dt><dd><tt>function&nbsp;has&nbsp;been&nbsp;deprecated.&nbsp;Entrypoint&nbsp;for&nbsp;generic_find().<br>
+Use&nbsp;mud.parse_args&nbsp;instead.</tt></dd></dl>
+ <dl><dt><a name="-load_obj"><strong>load_obj</strong></a>(...)</dt><dd><tt><a href="#-load_obj">load_obj</a>(prototype,&nbsp;where=None,&nbsp;equip_to='')<br>
+&nbsp;<br>
+Generate&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;from&nbsp;the&nbsp;specified&nbsp;prototype.&nbsp;Add&nbsp;it&nbsp;to&nbsp;where.<br>
+Where&nbsp;can&nbsp;be&nbsp;a&nbsp;room,&nbsp;character,&nbsp;or&nbsp;container.&nbsp;If&nbsp;where&nbsp;is&nbsp;a&nbsp;character,<br>
+add&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;to&nbsp;the&nbsp;character's&nbsp;inventory&nbsp;unless&nbsp;a&nbsp;comma-separated<br>
+list&nbsp;of&nbsp;bodypart&nbsp;name&nbsp;of&nbsp;positions&nbsp;is&nbsp;specified.&nbsp;Return&nbsp;the&nbsp;created&nbsp;<a href="__builtin__.html#object">object</a>.</tt></dd></dl>
+ <dl><dt><a name="-obj_list"><strong>obj_list</strong></a>(...)</dt><dd><tt><a href="#-obj_list">obj_list</a>()<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;list&nbsp;containing&nbsp;every&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;in&nbsp;the&nbsp;game.</tt></dd></dl>
+ <dl><dt><a name="-read"><strong>read</strong></a>(...)</dt><dd><tt><a href="#-read">read</a>(storage_set)<br>
+&nbsp;<br>
+Read&nbsp;and&nbsp;return&nbsp;an&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;from&nbsp;a&nbsp;storage&nbsp;set.</tt></dd></dl>
+</td></tr></table>
+</body></html>

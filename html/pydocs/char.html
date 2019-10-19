@@ -1,0 +1,368 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: char</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>char</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>Contains&nbsp;the&nbsp;Python&nbsp;wrapper&nbsp;for&nbsp;characters,&nbsp;and&nbsp;utilities&nbsp;for&nbsp;searching,<br>
+storing,&nbsp;and&nbsp;generating&nbsp;NPCs&nbsp;from&nbsp;mob&nbsp;prototypes.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="char.html#Char">Char</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Char">class <strong>Char</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Char">Char</a>/Mob&nbsp;objects<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Char-__cmp__"><strong>__cmp__</strong></a>(...)</dt><dd><tt>x.<a href="#Char-__cmp__">__cmp__</a>(y)&nbsp;&lt;==&gt;&nbsp;cmp(x,y)</tt></dd></dl>
+
+<dl><dt><a name="Char-__hash__"><strong>__hash__</strong></a>(...)</dt><dd><tt>x.<a href="#Char-__hash__">__hash__</a>()&nbsp;&lt;==&gt;&nbsp;hash(x)</tt></dd></dl>
+
+<dl><dt><a name="Char-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#Char-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<dl><dt><a name="Char-act"><strong>act</strong></a>(...)</dt><dd><tt><a href="#Char-act">act</a>(command)<br>
+&nbsp;<br>
+Simulate&nbsp;a&nbsp;character&nbsp;typing&nbsp;in&nbsp;a&nbsp;command.</tt></dd></dl>
+
+<dl><dt><a name="Char-append_look"><strong>append_look</strong></a>(...)</dt><dd><tt><a href="#Char-append_look">append_look</a>(text)<br>
+&nbsp;<br>
+Adds&nbsp;text&nbsp;to&nbsp;the&nbsp;character's&nbsp;current&nbsp;look&nbsp;buffer.</tt></dd></dl>
+
+<dl><dt><a name="Char-attach"><strong>attach</strong></a>(...)</dt><dd><tt><a href="#Char-attach">attach</a>(trigger)<br>
+&nbsp;<br>
+Attach&nbsp;a&nbsp;trigger&nbsp;to&nbsp;the&nbsp;character&nbsp;by&nbsp;key&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="Char-aux"><strong>aux</strong></a>(...)</dt><dd><tt>Alias&nbsp;for&nbsp;char.<a href="#Char">Char</a>.<a href="#Char-getAuxiliary">getAuxiliary</a>(name)</tt></dd></dl>
+
+<dl><dt><a name="Char-cansee"><strong>cansee</strong></a>(...)</dt><dd><tt><a href="#Char-cansee">cansee</a>(thing)<br>
+&nbsp;<br>
+Returns&nbsp;whether&nbsp;a&nbsp;character&nbsp;can&nbsp;see&nbsp;the&nbsp;specified&nbsp;<a href="__builtin__.html#object">object</a>,&nbsp;exit,&nbsp;or&nbsp;other<br>
+character.</tt></dd></dl>
+
+<dl><dt><a name="Char-clear_look"><strong>clear_look</strong></a>(...)</dt><dd><tt><a href="#Char-clear_look">clear_look</a>()<br>
+&nbsp;<br>
+Clear&nbsp;the&nbsp;character's&nbsp;current&nbsp;look&nbsp;buffer.</tt></dd></dl>
+
+<dl><dt><a name="Char-copy"><strong>copy</strong></a>(...)</dt><dd><tt><a href="#Char-copy">copy</a>()<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;character.</tt></dd></dl>
+
+<dl><dt><a name="Char-deletevar"><strong>deletevar</strong></a>(...)</dt><dd><tt><a href="#Char-deletevar">deletevar</a>(name)<br>
+&nbsp;<br>
+Deletes&nbsp;a&nbsp;special&nbsp;variable&nbsp;from&nbsp;a&nbsp;character&nbsp;if&nbsp;they&nbsp;have&nbsp;one&nbsp;by&nbsp;the<br>
+given&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="Char-delvar"><strong>delvar</strong></a>(...)</dt><dd><tt>Alias&nbsp;for&nbsp;char.<a href="#Char">Char</a>.<a href="#Char-deletevar">deletevar</a>(name)</tt></dd></dl>
+
+<dl><dt><a name="Char-detach"><strong>detach</strong></a>(...)</dt><dd><tt><a href="#Char-detach">detach</a>(trigger)<br>
+&nbsp;<br>
+Detach&nbsp;a&nbsp;trigger&nbsp;from&nbsp;the&nbsp;character&nbsp;by&nbsp;key&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="Char-do_trigs"><strong>do_trigs</strong></a>(...)</dt><dd><tt><a href="#Char-do_trigs">do_trigs</a>(type,&nbsp;ch=None,&nbsp;obj=None,&nbsp;room=None,&nbsp;exit=None,&nbsp;cmd=None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arg=None,&nbsp;opts=None)<br>
+&nbsp;<br>
+Run&nbsp;triggers&nbsp;of&nbsp;the&nbsp;specified&nbsp;type&nbsp;on&nbsp;the&nbsp;character.&nbsp;By&nbsp;default,&nbsp;the<br>
+trigger&nbsp;owner&nbsp;is&nbsp;'me'.&nbsp;Other&nbsp;variables&nbsp;can&nbsp;be&nbsp;specified.&nbsp;The&nbsp;opts<br>
+variable&nbsp;can&nbsp;be&nbsp;a&nbsp;dictionary&nbsp;that&nbsp;maps&nbsp;optional&nbsp;variable&nbsp;names&nbsp;to&nbsp;their<br>
+values.</tt></dd></dl>
+
+<dl><dt><a name="Char-equip"><strong>equip</strong></a>(...)</dt><dd><tt><a href="#Char-equip">equip</a>(obj,&nbsp;positions=None,&nbsp;forced=False)<br>
+&nbsp;<br>
+Attempts&nbsp;to&nbsp;equip&nbsp;an&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;to&nbsp;the&nbsp;character's&nbsp;body.&nbsp;Positions&nbsp;can&nbsp;be&nbsp;a<br>
+comma-separated&nbsp;list&nbsp;of&nbsp;position&nbsp;names&nbsp;or&nbsp;position&nbsp;types.&nbsp;If&nbsp;positions<br>
+is&nbsp;None&nbsp;and&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;is&nbsp;of&nbsp;type&nbsp;'worn',&nbsp;attempt&nbsp;to&nbsp;equip&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;to<br>
+its&nbsp;default&nbsp;positions.&nbsp;Setting&nbsp;forced&nbsp;to&nbsp;True&nbsp;allows&nbsp;non-worn&nbsp;objects<br>
+to&nbsp;be&nbsp;equipped,&nbsp;or&nbsp;worn&nbsp;objects&nbsp;to&nbsp;be&nbsp;equipped&nbsp;to&nbsp;their&nbsp;non-default<br>
+positions.&nbsp;Returns&nbsp;success&nbsp;of&nbsp;attempt.</tt></dd></dl>
+
+<dl><dt><a name="Char-getAuxiliary"><strong>getAuxiliary</strong></a>(...)</dt><dd><tt><a href="#Char-getAuxiliary">getAuxiliary</a>(name)<br>
+&nbsp;<br>
+Returns&nbsp;character's&nbsp;auxiliary&nbsp;data&nbsp;of&nbsp;the&nbsp;specified&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="Char-get_alias"><strong>get_alias</strong></a>(...)</dt><dd><tt><a href="#Char-get_alias">get_alias</a>(name)<br>
+&nbsp;<br>
+Return&nbsp;character's&nbsp;alias&nbsp;by&nbsp;the&nbsp;specified&nbsp;name,&nbsp;or&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="Char-get_bodypct"><strong>get_bodypct</strong></a>(...)</dt><dd><tt><a href="#Char-get_bodypct">get_bodypct</a>(posnames)<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;percent&nbsp;mass&nbsp;of&nbsp;the&nbsp;character's&nbsp;body&nbsp;taken&nbsp;up&nbsp;by&nbsp;the<br>
+specified&nbsp;parts.&nbsp;Bodyparts&nbsp;must&nbsp;be&nbsp;a&nbsp;comma-separated&nbsp;list.</tt></dd></dl>
+
+<dl><dt><a name="Char-get_equip"><strong>get_equip</strong></a>(...)</dt><dd><tt><a href="#Char-get_equip">get_equip</a>(bodypart)<br>
+&nbsp;<br>
+Returns&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;currently&nbsp;equipped&nbsp;to&nbsp;the&nbsp;character's&nbsp;bodypart,&nbsp;or&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="Char-get_slot_types"><strong>get_slot_types</strong></a>(...)</dt><dd><tt><a href="#Char-get_slot_types">get_slot_types</a>(obj)<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;bodypart&nbsp;types&nbsp;currently&nbsp;occupied&nbsp;by&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>.<br>
+Returns&nbsp;an&nbsp;empty&nbsp;list&nbsp;of&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;is&nbsp;not&nbsp;equipped&nbsp;to&nbsp;this&nbsp;character.</tt></dd></dl>
+
+<dl><dt><a name="Char-get_slots"><strong>get_slots</strong></a>(...)</dt><dd><tt><a href="#Char-get_slots">get_slots</a>(obj)<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;comma-separated&nbsp;list&nbsp;of&nbsp;bodypart&nbsp;names&nbsp;currently&nbsp;occupied&nbsp;by<br>
+the&nbsp;<a href="__builtin__.html#object">object</a>.</tt></dd></dl>
+
+<dl><dt><a name="Char-getvar"><strong>getvar</strong></a>(...)</dt><dd><tt><a href="#Char-getvar">getvar</a>(name)<br>
+&nbsp;<br>
+Return&nbsp;value&nbsp;of&nbsp;a&nbsp;special&nbsp;variable.&nbsp;Return&nbsp;0&nbsp;if&nbsp;no&nbsp;value&nbsp;has&nbsp;been&nbsp;set.</tt></dd></dl>
+
+<dl><dt><a name="Char-hasPrefs"><strong>hasPrefs</strong></a>(...)</dt><dd><tt><a href="#Char-hasPrefs">hasPrefs</a>(char_prefs)<br>
+&nbsp;<br>
+Return&nbsp;whether&nbsp;character&nbsp;has&nbsp;any&nbsp;of&nbsp;the&nbsp;specified&nbsp;character&nbsp;preferences.<br>
+Multiples&nbsp;can&nbsp;be&nbsp;specified&nbsp;as&nbsp;a&nbsp;comma-separated&nbsp;string.</tt></dd></dl>
+
+<dl><dt><a name="Char-hasvar"><strong>hasvar</strong></a>(...)</dt><dd><tt><a href="#Char-hasvar">hasvar</a>(name)<br>
+&nbsp;<br>
+Return&nbsp;True&nbsp;if&nbsp;a&nbsp;character&nbsp;has&nbsp;the&nbsp;given&nbsp;special&nbsp;variable.&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Char-interrupt"><strong>interrupt</strong></a>(...)</dt><dd><tt><a href="#Char-interrupt">interrupt</a>()<br>
+&nbsp;<br>
+Cancel&nbsp;any&nbsp;action&nbsp;the&nbsp;character&nbsp;is&nbsp;currently&nbsp;taking.</tt></dd></dl>
+
+<dl><dt><a name="Char-isActing"><strong>isActing</strong></a>(...)</dt><dd><tt><a href="#Char-isActing">isActing</a>()<br>
+&nbsp;<br>
+Returns&nbsp;True&nbsp;if&nbsp;the&nbsp;character&nbsp;is&nbsp;currently&nbsp;taking&nbsp;an&nbsp;action,&nbsp;and&nbsp;False<br>
+otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Char-isInGroup"><strong>isInGroup</strong></a>(...)</dt><dd><tt><a href="#Char-isInGroup">isInGroup</a>(usergroup)<br>
+&nbsp;<br>
+Returns&nbsp;whether&nbsp;a&nbsp;character&nbsp;belongs&nbsp;to&nbsp;a&nbsp;specified&nbsp;user&nbsp;group.</tt></dd></dl>
+
+<dl><dt><a name="Char-isinstance"><strong>isinstance</strong></a>(...)</dt><dd><tt><a href="#Char-isinstance">isinstance</a>(prototype)<br>
+&nbsp;<br>
+returns&nbsp;whether&nbsp;the&nbsp;character&nbsp;inherits&nbsp;from&nbsp;a&nbsp;specified&nbsp;mob&nbsp;prototype.</tt></dd></dl>
+
+<dl><dt><a name="Char-page"><strong>page</strong></a>(...)</dt><dd><tt><a href="#Char-page">page</a>(text)<br>
+&nbsp;<br>
+Send&nbsp;text&nbsp;to&nbsp;the&nbsp;character&nbsp;in&nbsp;paginated&nbsp;form&nbsp;e.g.,&nbsp;for&nbsp;helpfiles&nbsp;and<br>
+.other&nbsp;large&nbsp;blocks&nbsp;of&nbsp;text.</tt></dd></dl>
+
+<dl><dt><a name="Char-see_as"><strong>see_as</strong></a>(...)</dt><dd><tt><a href="#Char-see_as">see_as</a>(thing)<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;name&nbsp;by&nbsp;which&nbsp;a&nbsp;character&nbsp;sees&nbsp;a&nbsp;specified&nbsp;<a href="__builtin__.html#object">object</a>,&nbsp;exit,&nbsp;or<br>
+other&nbsp;character.</tt></dd></dl>
+
+<dl><dt><a name="Char-send"><strong>send</strong></a>(...)</dt><dd><tt><a href="#Char-send">send</a>(mssg,&nbsp;dict&nbsp;=&nbsp;None,&nbsp;newline&nbsp;=&nbsp;True)<br>
+&nbsp;<br>
+Sends&nbsp;message&nbsp;to&nbsp;the&nbsp;character.&nbsp;Messages&nbsp;can&nbsp;have&nbsp;scripts&nbsp;embedded&nbsp;in<br>
+them,&nbsp;using&nbsp;[&nbsp;and&nbsp;].&nbsp;If&nbsp;so,&nbsp;a&nbsp;variable&nbsp;dictionary&nbsp;must&nbsp;be&nbsp;provided.&nbsp;By<br>
+default,&nbsp;'me'&nbsp;references&nbsp;the&nbsp;character&nbsp;being&nbsp;sent&nbsp;the&nbsp;message.</tt></dd></dl>
+
+<dl><dt><a name="Char-send_raw"><strong>send_raw</strong></a>(...)</dt><dd><tt><a href="#Char-send_raw">send_raw</a>(mssg)<br>
+&nbsp;<br>
+Sends&nbsp;message&nbsp;to&nbsp;the&nbsp;character&nbsp;with&nbsp;no&nbsp;newline&nbsp;appended.</tt></dd></dl>
+
+<dl><dt><a name="Char-sendaround"><strong>sendaround</strong></a>(...)</dt><dd><tt><a href="#Char-sendaround">sendaround</a>(mssg,&nbsp;dict&nbsp;=&nbsp;None,&nbsp;cansee_only&nbsp;=&nbsp;False,&nbsp;newline=True)<br>
+&nbsp;<br>
+Sends&nbsp;a&nbsp;message&nbsp;to&nbsp;everyone&nbsp;in&nbsp;the&nbsp;character's&nbsp;room.&nbsp;Messages&nbsp;can&nbsp;have<br>
+scripts&nbsp;embedded&nbsp;in&nbsp;them&nbsp;using&nbsp;[&nbsp;and&nbsp;].&nbsp;If&nbsp;so,&nbsp;a&nbsp;variable&nbsp;dictionary<br>
+must&nbsp;be&nbsp;provided.&nbsp;By&nbsp;default,&nbsp;'me'&nbsp;references&nbsp;the&nbsp;person&nbsp;sendaround&nbsp;is<br>
+called&nbsp;on,&nbsp;and&nbsp;'ch'&nbsp;references&nbsp;each&nbsp;character&nbsp;being&nbsp;sent&nbsp;a&nbsp;message.</tt></dd></dl>
+
+<dl><dt><a name="Char-set_alias"><strong>set_alias</strong></a>(...)</dt><dd><tt><a href="#Char-set_alias">set_alias</a>(name,&nbsp;value)<br>
+&nbsp;<br>
+Set&nbsp;a&nbsp;character's&nbsp;alias.&nbsp;Value&nbsp;must&nbsp;be&nbsp;a&nbsp;string.</tt></dd></dl>
+
+<dl><dt><a name="Char-set_routine"><strong>set_routine</strong></a>(ch, routine, repeat<font color="#909090">=False</font>, checks<font color="#909090">=None</font>)</dt><dd><tt>Sets&nbsp;a&nbsp;routine&nbsp;to&nbsp;a&nbsp;character.&nbsp;Routine&nbsp;steps&nbsp;can&nbsp;constain&nbsp;commands<br>
+(character&nbsp;strings),&nbsp;functions&nbsp;(one&nbsp;argument,&nbsp;ch),&nbsp;or&nbsp;tuples<br>
+(delay,&nbsp;string&nbsp;|&nbsp;function).&nbsp;If&nbsp;a&nbsp;tuple&nbsp;is&nbsp;not&nbsp;supplied,&nbsp;the&nbsp;default<br>
+step&nbsp;time&nbsp;is&nbsp;used</tt></dd></dl>
+
+<dl><dt><a name="Char-setvar"><strong>setvar</strong></a>(...)</dt><dd><tt><a href="#Char-setvar">setvar</a>(name,&nbsp;val)<br>
+&nbsp;<br>
+Set&nbsp;value&nbsp;of&nbsp;a&nbsp;special&nbsp;variable&nbsp;for&nbsp;the&nbsp;character.&nbsp;Values&nbsp;must&nbsp;be<br>
+strings&nbsp;or&nbsp;numbers.&nbsp;This&nbsp;function&nbsp;is&nbsp;intended&nbsp;to&nbsp;allow&nbsp;scripts&nbsp;and<br>
+triggers&nbsp;to&nbsp;open-endedly&nbsp;add&nbsp;variables&nbsp;to&nbsp;characters.</tt></dd></dl>
+
+<dl><dt><a name="Char-startAction"><strong>startAction</strong></a>(...)</dt><dd><tt><a href="#Char-startAction">startAction</a>(delay,&nbsp;on_complete,&nbsp;on_interrupt=None,&nbsp;data=None,&nbsp;arg='')<br>
+&nbsp;<br>
+Begins&nbsp;a&nbsp;new&nbsp;delayed&nbsp;action&nbsp;for&nbsp;the&nbsp;character.&nbsp;Delay&nbsp;is&nbsp;in&nbsp;seconds.<br>
+on_complete&nbsp;is&nbsp;a&nbsp;function&nbsp;taking&nbsp;three&nbsp;arguments:&nbsp;the&nbsp;character,&nbsp;the<br>
+data,&nbsp;and&nbsp;the&nbsp;argument.&nbsp;Argument&nbsp;must&nbsp;be&nbsp;a&nbsp;string,&nbsp;data&nbsp;can&nbsp;be&nbsp;anything.<br>
+on_interrupt&nbsp;takes&nbsp;the&nbsp;same&nbsp;arguments&nbsp;as&nbsp;on_complete,&nbsp;but&nbsp;is&nbsp;instead<br>
+called&nbsp;if&nbsp;the&nbsp;character's&nbsp;action&nbsp;is&nbsp;interrupted.</tt></dd></dl>
+
+<dl><dt><a name="Char-store"><strong>store</strong></a>(...)</dt><dd><tt><a href="#Char-store">store</a>()<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;storage&nbsp;set&nbsp;representing&nbsp;the&nbsp;character.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>age</strong></dt>
+<dd><tt>Value&nbsp;is&nbsp;the&nbsp;difference&nbsp;between&nbsp;the&nbsp;character's&nbsp;creation&nbsp;time&nbsp;and&nbsp;the<br>
+current&nbsp;system&nbsp;time.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>aliases</strong></dt>
+<dd><tt>A&nbsp;list&nbsp;of&nbsp;all&nbsp;aliases&nbsp;the&nbsp;character&nbsp;currently&nbsp;has&nbsp;defined.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>birth</strong></dt>
+<dd><tt>Value&nbsp;is&nbsp;the&nbsp;character's&nbsp;creation&nbsp;time&nbsp;(system&nbsp;time).&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>bodyparts</strong></dt>
+<dd><tt>An&nbsp;immutable&nbsp;list&nbsp;naming&nbsp;all&nbsp;of&nbsp;the&nbsp;character's&nbsp;bodyparts.</tt></dd>
+</dl>
+<dl><dt><strong>desc</strong></dt>
+<dd><tt>A&nbsp;character's&nbsp;verbose&nbsp;description&nbsp;for&nbsp;e.g.,&nbsp;when&nbsp;they&nbsp;are&nbsp;looked&nbsp;at.</tt></dd>
+</dl>
+<dl><dt><strong>eq</strong></dt>
+<dd><tt>An&nbsp;immutable&nbsp;list&nbsp;of&nbsp;the&nbsp;character's&nbsp;worn&nbsp;equipment.<br>
+See&nbsp;equip()&nbsp;and&nbsp;unequip()&nbsp;for&nbsp;altering&nbsp;a&nbsp;characters&nbsp;worn&nbsp;items.</tt></dd>
+</dl>
+<dl><dt><strong>gender</strong></dt>
+<dd><tt>Alias&nbsp;for&nbsp;char.Char.sex</tt></dd>
+</dl>
+<dl><dt><strong>heshe</strong></dt>
+<dd><tt>Value&nbsp;is&nbsp;'he',&nbsp;'she',&nbsp;or&nbsp;'it'.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>hidden</strong></dt>
+<dd><tt>Integer&nbsp;value&nbsp;representing&nbsp;how&nbsp;hidden&nbsp;the&nbsp;character&nbsp;is.&nbsp;Default&nbsp;is&nbsp;0.</tt></dd>
+</dl>
+<dl><dt><strong>himher</strong></dt>
+<dd><tt>Value&nbsp;is&nbsp;'him',&nbsp;'her',&nbsp;or&nbsp;'it'.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>hisher</strong></dt>
+<dd><tt>Value&nbsp;is&nbsp;'his',&nbsp;'her',&nbsp;or&nbsp;'its'.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>inv</strong></dt>
+<dd><tt>An&nbsp;immutable&nbsp;list&nbsp;of&nbsp;objects&nbsp;in&nbsp;the&nbsp;character's&nbsp;inventory.<br>
+See&nbsp;obj.Obj.carrier&nbsp;for&nbsp;altering&nbsp;an&nbsp;item's&nbsp;carrier.</tt></dd>
+</dl>
+<dl><dt><strong>is_npc</strong></dt>
+<dd><tt>Value&nbsp;is&nbsp;True&nbsp;if&nbsp;character&nbsp;is&nbsp;an&nbsp;NPC,&nbsp;and&nbsp;False&nbsp;otherwise.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>is_pc</strong></dt>
+<dd><tt>Value&nbsp;is&nbsp;negation&nbsp;of&nbsp;char.Char.is_npc</tt></dd>
+</dl>
+<dl><dt><strong>keywords</strong></dt>
+<dd><tt>A&nbsp;comma-separated&nbsp;list&nbsp;of&nbsp;the&nbsp;keywords&nbsp;for&nbsp;referencing&nbsp;the&nbsp;character.</tt></dd>
+</dl>
+<dl><dt><strong>last_room</strong></dt>
+<dd><tt>The&nbsp;last&nbsp;room&nbsp;a&nbsp;character&nbsp;was&nbsp;in.&nbsp;Immutable.&nbsp;Value&nbsp;is&nbsp;None&nbsp;if&nbsp;character<br>
+was&nbsp;not&nbsp;previously&nbsp;in&nbsp;a&nbsp;room.</tt></dd>
+</dl>
+<dl><dt><strong>look_buf</strong></dt>
+<dd><tt>When&nbsp;characters&nbsp;look&nbsp;at&nbsp;something,&nbsp;the&nbsp;thing's&nbsp;description&nbsp;is&nbsp;copied&nbsp;to<br>
+the&nbsp;character's&nbsp;look&nbsp;buffer&nbsp;for&nbsp;processing&nbsp;before&nbsp;being&nbsp;sent.</tt></dd>
+</dl>
+<dl><dt><strong>mdesc</strong></dt>
+<dd><tt>The&nbsp;equivalent&nbsp;of&nbsp;mname,&nbsp;for&nbsp;room&nbsp;descriptions.</tt></dd>
+</dl>
+<dl><dt><strong>mname</strong></dt>
+<dd><tt>The&nbsp;character's&nbsp;name&nbsp;for&nbsp;describing&nbsp;packs,&nbsp;e.g.,<br>
+a&nbsp;horde&nbsp;of&nbsp;9001&nbsp;mosquitos.&nbsp;The&nbsp;number&nbsp;should&nbsp;be&nbsp;replaced&nbsp;by&nbsp;%d,&nbsp;or&nbsp;not<br>
+included.</tt></dd>
+</dl>
+<dl><dt><strong>mob_class</strong></dt>
+<dd><tt>The&nbsp;main&nbsp;prototype&nbsp;the&nbsp;mobile&nbsp;inherits&nbsp;from.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>name</strong></dt>
+<dd><tt>The&nbsp;characer's&nbsp;name,&nbsp;e.g.,&nbsp;Grunald&nbsp;the&nbsp;Baker.</tt></dd>
+</dl>
+<dl><dt><strong>notepad</strong></dt>
+<dd><tt>Returns&nbsp;the&nbsp;character's&nbsp;notepad,&nbsp;if&nbsp;any</tt></dd>
+</dl>
+<dl><dt><strong>objs</strong></dt>
+<dd><tt>An&nbsp;alias&nbsp;for&nbsp;inv&nbsp;to&nbsp;be&nbsp;consistent&nbsp;with&nbsp;how&nbsp;room&nbsp;and&nbsp;object&nbsp;contents&nbsp;are<br>
+accessed.</tt></dd>
+</dl>
+<dl><dt><strong>on</strong></dt>
+<dd><tt>The&nbsp;furniture&nbsp;the&nbsp;character&nbsp;is&nbsp;sitting&nbsp;on/at.&nbsp;Value&nbsp;is&nbsp;None&nbsp;if&nbsp;character<br>
+is&nbsp;not&nbsp;currently&nbsp;on&nbsp;furniture.&nbsp;Set&nbsp;value&nbsp;to&nbsp;None&nbsp;to&nbsp;remove&nbsp;a&nbsp;character<br>
+from&nbsp;their&nbsp;furniture.</tt></dd>
+</dl>
+<dl><dt><strong>pos</strong></dt>
+<dd><tt>Alias&nbsp;for&nbsp;char.Char.position.</tt></dd>
+</dl>
+<dl><dt><strong>position</strong></dt>
+<dd><tt>The&nbsp;character's&nbsp;current&nbsp;position&nbsp;(e.g.,&nbsp;standing,&nbsp;sleeping,&nbsp;sitting).</tt></dd>
+</dl>
+<dl><dt><strong>prototypes</strong></dt>
+<dd><tt>A&nbsp;comma-separated&nbsp;list&nbsp;of&nbsp;prototypes&nbsp;the&nbsp;mobile&nbsp;inherits&nbsp;from.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>race</strong></dt>
+<dd><tt>The&nbsp;character's&nbsp;race.</tt></dd>
+</dl>
+<dl><dt><strong>rdesc</strong></dt>
+<dd><tt>The&nbsp;character's&nbsp;description&nbsp;when&nbsp;seen&nbsp;in&nbsp;a&nbsp;room,&nbsp;e.g.,&nbsp;<br>
+Bob&nbsp;is&nbsp;here,&nbsp;baking&nbsp;a&nbsp;cake.</tt></dd>
+</dl>
+<dl><dt><strong>room</strong></dt>
+<dd><tt>The&nbsp;current&nbsp;room&nbsp;a&nbsp;character&nbsp;is&nbsp;in.&nbsp;Can&nbsp;be&nbsp;set&nbsp;by&nbsp;room&nbsp;or&nbsp;room&nbsp;key.</tt></dd>
+</dl>
+<dl><dt><strong>sex</strong></dt>
+<dd><tt>The&nbsp;character's&nbsp;sex.&nbsp;Can&nbsp;be&nbsp;male,&nbsp;female,&nbsp;or&nbsp;neutral.</tt></dd>
+</dl>
+<dl><dt><strong>sock</strong></dt>
+<dd><tt>Alias&nbsp;for&nbsp;char.Char.socket</tt></dd>
+</dl>
+<dl><dt><strong>socket</strong></dt>
+<dd><tt>The&nbsp;current&nbsp;socket&nbsp;this&nbsp;character&nbsp;is&nbsp;attached&nbsp;to.&nbsp;Value&nbsp;is&nbsp;None&nbsp;if&nbsp;<br>
+socket&nbsp;does&nbsp;not&nbsp;exist.&nbsp;Immutable.&nbsp;Use&nbsp;mudsys.attach_char_socket&nbsp;to&nbsp;<br>
+attach&nbsp;a&nbsp;character&nbsp;and&nbsp;socket&nbsp;to&nbsp;each&nbsp;other.</tt></dd>
+</dl>
+<dl><dt><strong>uid</strong></dt>
+<dd><tt>The&nbsp;character's&nbsp;unique&nbsp;identification&nbsp;number.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>user_groups</strong></dt>
+<dd><tt>A&nbsp;comma-separated&nbsp;list&nbsp;of&nbsp;user&nbsp;groups&nbsp;the&nbsp;character&nbsp;belongs&nbsp;to.<br>
+Use&nbsp;char.Char.isInGroup(group)&nbsp;to&nbsp;check&nbsp;for&nbsp;a&nbsp;specific&nbsp;group.&nbsp;Immutable.</tt></dd>
+</dl>
+<dl><dt><strong>weight</strong></dt>
+<dd><tt>Floating&nbsp;point&nbsp;value&nbsp;representing&nbsp;how&nbsp;heavy&nbsp;the&nbsp;character&nbsp;is.</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x6f380&gt;<dd><tt>T.<a href="#Char-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-char_list"><strong>char_list</strong></a>(...)</dt><dd><tt><a href="#-char_list">char_list</a>()<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;list&nbsp;of&nbsp;every&nbsp;character&nbsp;in&nbsp;game.</tt></dd></dl>
+ <dl><dt><a name="-count_mobs"><strong>count_mobs</strong></a>(...)</dt><dd><tt><a href="#-count_mobs">count_mobs</a>(keyword,&nbsp;loc&nbsp;=&nbsp;None)<br>
+&nbsp;<br>
+count&nbsp;how&nbsp;many&nbsp;occurences&nbsp;of&nbsp;a&nbsp;mobile&nbsp;with&nbsp;the&nbsp;specified&nbsp;keyword,&nbsp;uid,<br>
+or&nbsp;prototype&nbsp;exist&nbsp;at&nbsp;a&nbsp;location.&nbsp;If&nbsp;loc&nbsp;is&nbsp;None,&nbsp;search&nbsp;the&nbsp;entire&nbsp;mud.<br>
+Loc&nbsp;can&nbsp;be&nbsp;a&nbsp;room,&nbsp;room&nbsp;prototype,&nbsp;or&nbsp;furniture&nbsp;<a href="__builtin__.html#object">object</a>.</tt></dd></dl>
+ <dl><dt><a name="-find_char_key"><strong>find_char_key</strong></a>(...)</dt><dd><tt>Function&nbsp;has&nbsp;been&nbsp;deprecated.&nbsp;Entrypoint&nbsp;for&nbsp;generic_find()<br>
+Use&nbsp;mud.parse_args&nbsp;instead.</tt></dd></dl>
+ <dl><dt><a name="-is_abstract"><strong>is_abstract</strong></a>(...)</dt><dd><tt><a href="#-is_abstract">is_abstract</a>(proto)<br>
+&nbsp;<br>
+Returns&nbsp;whether&nbsp;a&nbsp;specified&nbsp;mob&nbsp;prototype&nbsp;is&nbsp;abstract.&nbsp;Also&nbsp;return&nbsp;True<br>
+if&nbsp;the&nbsp;prototype&nbsp;does&nbsp;not&nbsp;exist.</tt></dd></dl>
+ <dl><dt><a name="-load_mob"><strong>load_mob</strong></a>(...)</dt><dd><tt><a href="#-load_mob">load_mob</a>(proto,&nbsp;room,&nbsp;pos&nbsp;=&nbsp;'standing')<br>
+&nbsp;<br>
+Generate&nbsp;a&nbsp;new&nbsp;mobile&nbsp;from&nbsp;the&nbsp;specified&nbsp;prototype.&nbsp;Add&nbsp;it&nbsp;to&nbsp;the<br>
+given&nbsp;room.&nbsp;Return&nbsp;the&nbsp;created&nbsp;mobile.</tt></dd></dl>
+ <dl><dt><a name="-read"><strong>read</strong></a>(...)</dt><dd><tt><a href="#-read">read</a>(storage_set)<br>
+&nbsp;<br>
+Read&nbsp;and&nbsp;return&nbsp;a&nbsp;character&nbsp;from&nbsp;a&nbsp;storage&nbsp;set.</tt></dd></dl>
+</td></tr></table>
+</body></html>

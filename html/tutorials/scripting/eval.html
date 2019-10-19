@@ -1,0 +1,41 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Eval
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Dir</div>
+<div class="info">
+NakedMud has a simple, but very valuable command called eval. It allows you to
+run a simple line of python code and view what it evaluates to.
+<pre class="code">
+def cmd_dir(ch, cmd, arg):
+    if arg == "":
+        ch.send("What python statement do you want to evaluate?")
+    else:
+        ret = eval(arg)
+        ch.send("Evaluation: " + str(ret))
+</pre>
+
+
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

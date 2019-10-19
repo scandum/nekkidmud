@@ -1,0 +1,214 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Storage Sets
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Storage Sets</div>
+<div class="info">
+Storage sets are a big part of NakedMud. They serve a few important purposes: 
+They simplify the process of saving data from files by eliminating your need to
+come up with formatting schemes for your flatfiles. They also eliminate your 
+need to write file parsers to extract data from files; the process of retrieving
+information from a file is reduced to querying for the value of some key. As we
+will learn later, they also play an integral role in the process of saving and 
+loading auxiliary data.
+<p></p>
+In this section, we will learn the ropes of storage sets. We'll see how to 
+store and read lists and strings. The other data types storage sets can deal 
+with (ints, bools, doubles, longs) are handled in the exact same way as strings,
+except with different function names. After this tutorial, you should be able 
+to extrapolate how these other data types interact with storage sets. In the 
+next section on auxiliary data, we will examine how storage sets work in 
+conjunction with auxiliary data.
+</div>
+
+<div class="head">The Mail Module</div>
+<div class="info">
+In the previous section, we designed a 'proof of concept' for a mail system.
+This section will build on top of it. If you did not complete the previous
+tutorial on the mail module, you can download the source code here.
+</div>
+
+<div class="head">Storage Set Basics</div>
+<div class="info">
+The first thing that is needed are the headers for interacting with storage
+sets. Along with all of the other includes, add:
+
+<pre class="code">
+#include "../handler.h"       // for giving mail to characters
+#include "../storage.h"       // for saving/loading mail
+</pre>
+
+Next, define a file where mail will be stored when the mud is down. The MUD's
+lib directory seems like an ideal candidate directory. Define the location for
+storing mail by where the table for storing mail is located:
+
+<pre class="code">
+// this is the file we will save all unreceived mail in, when the mud is down
+#define MAIL_FILE "../lib/misc/mail"
+
+// maps charName to a list of mail they have received
+HASHTABLE *mail_table = NULL;
+</pre>
+
+Two things needed are functions for converting both ways between MAIL_DATA
+and STORAGE_SETS. By convention, these functions are called xxxStore and 
+xxxRead, where xxx is what is being converted to and from a STORAGE_SET. Get
+those functions set up, just below the <i>newMail</i> and <i>deleteMail</i>
+functions:
+
+<pre class="code">
+// parse a piece of mail from a storage set
+MAIL_DATA *mailRead(STORAGE_SET *set) {
+  // allocate some memory for the mail
+  MAIL_DATA *mail = malloc(sizeof(MAIL_DATA));
+  mail->mssg      = newBuffer(1);
+
+  // read in all of our values
+  mail->sender = strdup(read_string(set, "sender"));
+  mail->time   = strdup(read_string(set, "time"));
+  bufferCat(mail->mssg, read_string(set, "mssg"));
+  return mail;
+}
+
+// represent a piece of mail as a storage set
+STORAGE_SET *mailStore(MAIL_DATA *mail) {
+  // create a new storage set
+  STORAGE_SET *set = new_storage_set();
+  store_string(set, "sender", mail->sender);
+  store_string(set, "time",   mail->time);
+  store_string(set, "mssg",   bufferString(mail->mssg));
+  return set;
+}
+</pre>
+
+Now that there is actually the ability to store and read mail, create two 
+functions for actually doing the storing and reading:
+
+<pre class="code">
+// saves all of our unreceived mail to disk
+void save_mail(void) {
+  // make a storage set to hold all our mail
+  STORAGE_SET *set = new_storage_set();
+
+  // make a list of name:mail pairs, and store it in the set
+  STORAGE_SET_LIST *list = new_storage_list();
+
+  // iterate across all of the people who have not received mail, and
+  // store their names in the storage list, along with their mail
+  HASH_ITERATOR *mail_i = newHashIterator(mail_table);
+  const char      *name = NULL;
+  LIST            *mail = NULL;
+  ITERATE_HASH(name, mail, mail_i) {
+    // create a new storage set that holds each name:mail pair,
+    // and add it to our list of all name:mail pairs
+    STORAGE_SET *one_pair = new_storage_set();
+    store_string    (one_pair, "name", name);
+    store_list      (one_pair, "mail", gen_store_list(mail, mailStore));
+    storage_list_put(list, one_pair);
+  } deleteHashIterator(mail_i);
+
+  // make sure we add the list of name:mail pairs we want to save
+  store_list(set, "list", list);
+
+  // now, store our set in the mail file, and clean up our mess
+  storage_write(set, MAIL_FILE);
+  storage_close(set);
+}
+
+// loads all of our unreceived mail from disk
+void load_mail(void) {
+  // parse our storage set
+  STORAGE_SET *set = storage_read(MAIL_FILE);
+
+  // make sure the file existed and wasn't empty
+  if(set == NULL) return;
+
+  // get the list of all name:mail pairs, and parse each one
+  STORAGE_SET_LIST *list = read_list(set, "list");
+  STORAGE_SET  *one_pair = NULL;
+  while( (one_pair = storage_list_next(list)) != NULL) {
+    const char *name = read_string(one_pair, "name");
+    LIST       *mail = gen_read_list(read_list(one_pair, "mail"), mailRead);
+    hashPut(mail_table, name, mail);
+  }
+
+  // Everything is parsed! Now it's time to clean up our mess
+  storage_close(set);
+}
+</pre>
+
+This code may be a bit ugly to the untrained eye. However, there are some very 
+useful nuggets of knowledge buried within it. If you are having troubles 
+understanding what is going on, it is highly suggested that you take a few 
+minutes to trace through these two functions and figure out what is going on. 
+Once we are completely done this section, it may also help to write a couple 
+mails to yourself and examine what the mail file looks like. The file's 
+structure might help elucidate many of the things that are going on in these 
+two functions.
+
+Now that our save and load functions are written, we have to make sure they are
+called appropriately. We will want to load up unread mail when the mail module 
+initialized, and we will want to make sure we update the contents of the mail 
+file whenever mail is sent or received. At the end of cmd_mail, make sure mail
+is saved:
+
+<pre class="code">
+    // let the character know we've sent the mail
+    send_to_char(ch, "You send a message to %s.\r\n", arg);
+    
+    // save all unread mail
+    save_mail();    
+</pre>
+
+At the end of cmd_receive, make sure mail is saved:
+
+<pre class="code">
+    // let the character know how much mail he received
+    send_to_char(ch, "You receive %d letter%s.\r\n", 
+                 listSize(mail_list), (listSize(mail_list) == 1 ? "" : "s"));
+    
+    // update the unread mail in our mail file
+    save_mail();
+</pre>
+
+Finally, ensure we load up all unread mail when we initialize the module:
+
+<pre class="code">
+// boot up the mail module
+void init_mail(void) {
+  // initialize our mail table
+  mail_table = newHashtable();
+
+  // parse any unread mail
+  load_mail();
+</pre>
+
+Unreceived mail will now be persistent across reboots and crashes. You may 
+have noticed that saving of mail is rather inefficient; every time someone
+receives a mail or sends a mail, we have to re-save all unreceived mails.
+Ideally, we would like to change it so we have to re-save as little information
+as possible. That is the problem we will tackle in the section on auxiliary
+data.
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

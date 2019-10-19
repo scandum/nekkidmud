@@ -1,0 +1,72 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: account_handler</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>account_handler</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hollis/Desktop/nakedmud/lib/pymodules/account_handler.py">/Users/hollis/Desktop/nakedmud/lib/pymodules/account_handler.py</a></font></td></tr></table>
+    <p><tt>account_handler.py<br>
+&nbsp;<br>
+The&nbsp;login&nbsp;and&nbsp;creation&nbsp;of&nbsp;accounts,&nbsp;and&nbsp;handles&nbsp;all&nbsp;account&nbsp;procedures,&nbsp;loading<br>
+and&nbsp;deleting,&nbsp;of&nbsp;characters.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="account.html">account</a><br>
+<a href="char.html">char</a><br>
+<a href="event.html">event</a><br>
+</td><td width="25%" valign=top><a href="hooks.html">hooks</a><br>
+<a href="mud.html">mud</a><br>
+<a href="mudsys.html">mudsys</a><br>
+</td><td width="25%" valign=top><a href="socket.html">socket</a><br>
+<a href="telnetlib.html">telnetlib</a><br>
+<a href="utils.html">utils</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-__unload__"><strong>__unload__</strong></a>()</dt><dd><tt>removes&nbsp;the&nbsp;hooks&nbsp;for&nbsp;account&nbsp;handling</tt></dd></dl>
+ <dl><dt><a name="-account_handler_hook"><strong>account_handler_hook</strong></a>(info)</dt><dd><tt>When&nbsp;a&nbsp;socket&nbsp;connects,&nbsp;put&nbsp;them&nbsp;into&nbsp;the&nbsp;account&nbsp;handler&nbsp;menu.</tt></dd></dl>
+ <dl><dt><a name="-acct_load_char"><strong>acct_load_char</strong></a>(sock, name)</dt><dd><tt>loads&nbsp;a&nbsp;character&nbsp;attached&nbsp;to&nbsp;the&nbsp;account.&nbsp;Argument&nbsp;supplied&nbsp;must&nbsp;be&nbsp;a<br>
+name&nbsp;of&nbsp;the&nbsp;corresponding&nbsp;character</tt></dd></dl>
+ <dl><dt><a name="-acct_main_menu"><strong>acct_main_menu</strong></a>(sock)</dt><dd><tt>displays&nbsp;the&nbsp;main&nbsp;menu&nbsp;for&nbsp;the&nbsp;account&nbsp;and&nbsp;asks&nbsp;for&nbsp;a&nbsp;command</tt></dd></dl>
+ <dl><dt><a name="-acct_menu_handler"><strong>acct_menu_handler</strong></a>(sock, arg)</dt><dd><tt>parses&nbsp;account&nbsp;commands&nbsp;(new&nbsp;character,&nbsp;enter&nbsp;game,&nbsp;quit,&nbsp;etc)</tt></dd></dl>
+ <dl><dt><a name="-acct_new_password_handler"><strong>acct_new_password_handler</strong></a>(sock, arg)</dt><dd><tt>asks&nbsp;a&nbsp;new&nbsp;account&nbsp;for&nbsp;a&nbsp;password</tt></dd></dl>
+ <dl><dt><a name="-acct_new_password_prompt"><strong>acct_new_password_prompt</strong></a>(sock)</dt></dl>
+ <dl><dt><a name="-acct_password_handler"><strong>acct_password_handler</strong></a>(sock, arg)</dt><dd><tt>asks&nbsp;an&nbsp;account&nbsp;to&nbsp;verify&nbsp;its&nbsp;password</tt></dd></dl>
+ <dl><dt><a name="-acct_password_prompt"><strong>acct_password_prompt</strong></a>(sock)</dt></dl>
+ <dl><dt><a name="-acct_wait_dns_handler"><strong>acct_wait_dns_handler</strong></a>(sock, arg)</dt></dl>
+ <dl><dt><a name="-acct_wait_dns_prompt"><strong>acct_wait_dns_prompt</strong></a>(sock)</dt></dl>
+ <dl><dt><a name="-check_acct_name"><strong>check_acct_name</strong></a>(name)</dt><dd><tt>Makes&nbsp;sure&nbsp;an&nbsp;account&nbsp;name&nbsp;is&nbsp;valid</tt></dd></dl>
+ <dl><dt><a name="-copyover_complete_hook"><strong>copyover_complete_hook</strong></a>(info)</dt></dl>
+ <dl><dt><a name="-display_acct_chars"><strong>display_acct_chars</strong></a>(sock)</dt><dd><tt>shows&nbsp;the&nbsp;socket&nbsp;a&nbsp;prettied&nbsp;list&nbsp;of&nbsp;characters&nbsp;tied&nbsp;to&nbsp;the&nbsp;account&nbsp;it<br>
+has&nbsp;attached.&nbsp;Prints&nbsp;three&nbsp;names&nbsp;per&nbsp;line.</tt></dd></dl>
+ <dl><dt><a name="-dns_check_event"><strong>dns_check_event</strong></a>(owner, void, info)</dt><dd><tt>After&nbsp;a&nbsp;socket&nbsp;connects,&nbsp;monitor&nbsp;their&nbsp;hostname&nbsp;until&nbsp;dns&nbsp;lookup&nbsp;is<br>
+complete.&nbsp;Then,&nbsp;put&nbsp;the&nbsp;socket&nbsp;into&nbsp;the&nbsp;account&nbsp;handler.</tt></dd></dl>
+ <dl><dt><a name="-find_reconnect"><strong>find_reconnect</strong></a>(name)</dt><dd><tt>searches&nbsp;through&nbsp;the&nbsp;character&nbsp;list&nbsp;for&nbsp;a&nbsp;PC&nbsp;whose&nbsp;name&nbsp;matches&nbsp;the<br>
+supplied&nbsp;name</tt></dd></dl>
+ <dl><dt><a name="-login_method_handler"><strong>login_method_handler</strong></a>(sock, arg)</dt></dl>
+ <dl><dt><a name="-login_method_prompt"><strong>login_method_prompt</strong></a>(sock)</dt></dl>
+ <dl><dt><a name="-try_create_account"><strong>try_create_account</strong></a>(sock, name, psswd)</dt></dl>
+ <dl><dt><a name="-try_load_account"><strong>try_load_account</strong></a>(sock, name, psswd)</dt><dd><tt>Attempt&nbsp;to&nbsp;load&nbsp;an&nbsp;account&nbsp;with&nbsp;the&nbsp;given&nbsp;name&nbsp;and&nbsp;password.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>squelch</strong> = '<font color="#c040c0">\xff\xfb\x01</font>'<br>
+<strong>unsquelch</strong> = '<font color="#c040c0">\xff\xfc\x01</font>'</td></tr></table>
+</body></html>

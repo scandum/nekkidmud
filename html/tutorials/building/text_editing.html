@@ -1,0 +1,109 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Text editing
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Text editing</div>
+<div class="info">
+NakedMud has a built-in text editor that can be used for editing long pieces
+of text -- such as room or object descriptions. Any time a large text field is
+edited, the built-in text editor will pop up. As a point, every player has 
+access to a notepad, where they can write. This is intended to support the
+future implemention of, for instance, a mail and postoffice system. Text editing
+can be demonstrated with the notepad. Your notepad can be opened with the 
+<i>write</i> command.
+<pre class="mud">
+> <font class="cmd">write</font>
+==========================================================================
+Begin editing. /q on a new line to quit, /a to abort. /h for help         
+==========================================================================
+]
+</pre>
+NakedMud's text editor is a line editor. That is to say, you can only edit line
+by line, and not character by character, like would be possible with a modern
+word processor. It is simple, but it is sufficient for most mud building. Once
+within a text editor, you can simply start writing. Here is an example:
+<pre class="mud">
+==========================================================================
+Begin editing. /q on a new line to quit, /a to abort. /h for help         
+==========================================================================
+] <font class="cmd">The nice cobblestones of Mainstreet are not as well kept, here.</font>
+] <font class="cmd">A bit further to the west and south, they fade </font>
+] <font class="cmd">completely to dirt roads.  This is definitely not a well upkept area of town.</font>  
+] <font class="cmd">The city gates can be seen further to the west, along with the city walls.  </font>
+]
+</pre>
+Notice the uneven spacing of the text. The text editor has a formatting command
+to nicely align awkwardly spaced text. You can use /f to format a body of text,
+and /l to list the result.
+<pre class="mud">
+] <font class="cmd">/f</font>
+Buffer formatted.
+] <font class="cmd">/l</font>
+The nice cobblestones of Mainstreet are not as well kept, here.  A bit further 
+to the west and south, they fade completely to dirt roads.  This is definitely 
+not a well upkept area of town.  The city gates can be seen further to the 
+west, along with the city walls.
+]
+</pre>
+The text editor supports a range of functions, including string 
+replacement, line editing, deleting, and inserting,  and buffer clearing. To
+obtain a list of all functions the editor has, the /h command can be used.
+<pre class="mud">
+] <font class="cmd">/h</font>
+/i   #  txt  Insert new text at the specified line number
+/d   #       Delete line with the specified number
+/e   #  txt  Sets the text at the specified line to the new text
+/f           Formats your text into a paragraph
+/a           Quit editor and don't save
+/ra  'a' 'b' repalce all occurences of 'a' with 'b'
+/q           Quit editor and save changes
+/l           List the current buffer contents
+/c           Clear the contents of the buffer
+/r   'a' 'b' replace first occurence of 'a' with 'b'
+/h           Display editor commands
+]
+</pre>
+Suppose you are dissatisfied with a description you have entered. For instance,
+you do not want the cobblestones to be nice but, instead worn. You can search
+for and replace one or all occurence of a word with the /r and /ra commands,
+respectively. Each command takes two arguments that must each be contained
+within a ' and a '. The first argument is a word to replace, and the second
+argument is a word to replace it with. So, let's say we want to replace all
+occurences of the word, nice:
+<pre class="mud">
+] <font class="cmd">/ra 'nice' 'worn'</font>
+1 occurence of 'nice' replaced with 'worn'.
+] <font class="cmd">/l</font>
+The <font class="highlight">worn</font> cobblestones of Mainstreet are not as well kept, here.  A bit further 
+to the west and south, they fade completely to dirt roads.  This is definitely 
+not a well upkept area of town.  The city gates can be seen further to the 
+west, along with the city walls.  Buildings line the street to the north up to 
+the city wall, except for a narrow alley you spot right at the edge of the 
+]
+</pre>
+
+
+
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

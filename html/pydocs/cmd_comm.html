@@ -1,0 +1,170 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: cmd_comm</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>cmd_comm</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hollis/Desktop/nakedmud/lib/pymodules/cmd_comm.py">/Users/hollis/Desktop/nakedmud/lib/pymodules/cmd_comm.py</a></font></td></tr></table>
+    <p><tt>cmd_comm.c<br>
+&nbsp;<br>
+Various&nbsp;commands&nbsp;used&nbsp;in&nbsp;NakedMud(tm)&nbsp;for&nbsp;communicating&nbsp;with&nbsp;other<br>
+characters,&nbsp;and&nbsp;NPCs.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="history.html">history</a><br>
+<a href="hooks.html">hooks</a><br>
+</td><td width="25%" valign=top><a href="inform.html">inform</a><br>
+<a href="mud.html">mud</a><br>
+</td><td width="25%" valign=top><a href="mudsock.html">mudsock</a><br>
+<a href="mudsys.html">mudsys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-add_cmd"><strong>add_cmd</strong></a>(...)</dt><dd><tt><a href="#-add_cmd">add_cmd</a>(name,&nbsp;shorthand,&nbsp;cmd_func,&nbsp;user_group,&nbsp;interrupts_action)<br>
+&nbsp;<br>
+Add&nbsp;a&nbsp;new&nbsp;command&nbsp;to&nbsp;the&nbsp;master&nbsp;command&nbsp;table.&nbsp;If&nbsp;a&nbsp;preferred&nbsp;shorthand<br>
+exists,&nbsp;e.g.,&nbsp;'n'&nbsp;for&nbsp;'north',&nbsp;it&nbsp;can&nbsp;be&nbsp;specified.&nbsp;Otherwise,&nbsp;shorthand<br>
+should&nbsp;be&nbsp;None.&nbsp;Command&nbsp;functions&nbsp;take&nbsp;three&nbsp;arguments:&nbsp;a&nbsp;character<br>
+issuing&nbsp;the&nbsp;command,&nbsp;the&nbsp;command&nbsp;name,&nbsp;and&nbsp;a&nbsp;string&nbsp;argument&nbsp;supplied<br>
+to&nbsp;the&nbsp;command.&nbsp;Commands&nbsp;must&nbsp;be&nbsp;tied&nbsp;to&nbsp;a&nbsp;specific&nbsp;user&nbsp;group,&nbsp;and&nbsp;they<br>
+can&nbsp;optionally&nbsp;interupt&nbsp;character&nbsp;actions.</tt></dd></dl>
+ <dl><dt><a name="-add_cmd_check"><strong>add_cmd_check</strong></a>(...)</dt><dd><tt><a href="#-add_cmd_check">add_cmd_check</a>(name,&nbsp;check_func)<br>
+&nbsp;<br>
+Add&nbsp;a&nbsp;new&nbsp;command&nbsp;check&nbsp;to&nbsp;a&nbsp;registered&nbsp;command.&nbsp;Check&nbsp;functions&nbsp;take<br>
+two&nbsp;arguments:&nbsp;the&nbsp;character&nbsp;issuing&nbsp;the&nbsp;command,&nbsp;and&nbsp;the&nbsp;command&nbsp;name.<br>
+If&nbsp;a&nbsp;check&nbsp;fails,&nbsp;it&nbsp;should&nbsp;return&nbsp;False&nbsp;and&nbsp;send&nbsp;the&nbsp;character&nbsp;a<br>
+message&nbsp;why.</tt></dd></dl>
+ <dl><dt><a name="-chk_room_communication"><strong>chk_room_communication</strong></a>(ch, cmd)</dt></dl>
+ <dl><dt><a name="-cmd_ask"><strong>cmd_ask</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;ask&nbsp;&lt;person&gt;&nbsp;[about]&nbsp;&lt;question&gt;<br>
+&nbsp;<br>
+This&nbsp;command&nbsp;is&nbsp;used&nbsp;to&nbsp;pose&nbsp;a&nbsp;question&nbsp;to&nbsp;another&nbsp;character.&nbsp;Mostly,<br>
+this&nbsp;is&nbsp;intended&nbsp;to&nbsp;be&nbsp;used&nbsp;to&nbsp;carry&nbsp;on&nbsp;dialogs&nbsp;with&nbsp;NPCs.&nbsp;Ask&nbsp;has&nbsp;a<br>
+local&nbsp;range&nbsp;(i.e.&nbsp;you&nbsp;can&nbsp;only&nbsp;ask&nbsp;questions&nbsp;to&nbsp;people&nbsp;in&nbsp;the&nbsp;same&nbsp;room<br>
+as&nbsp;you.</tt></dd></dl>
+ <dl><dt><a name="-cmd_chat"><strong>cmd_chat</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;chat&nbsp;&lt;message&gt;<br>
+&nbsp;<br>
+This&nbsp;command&nbsp;will&nbsp;send&nbsp;a&nbsp;message&nbsp;to&nbsp;all&nbsp;players&nbsp;currently&nbsp;logged&nbsp;on.</tt></dd></dl>
+ <dl><dt><a name="-cmd_emote"><strong>cmd_emote</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;emote&nbsp;&lt;text&gt;<br>
+&nbsp;<br>
+Send&nbsp;a&nbsp;special&nbsp;text&nbsp;message&nbsp;to&nbsp;the&nbsp;room&nbsp;you&nbsp;are&nbsp;in.&nbsp;The&nbsp;message&nbsp;is<br>
+preceded&nbsp;by&nbsp;your&nbsp;name,&nbsp;unless&nbsp;you&nbsp;put&nbsp;a&nbsp;$n&nbsp;somewhere&nbsp;in&nbsp;the&nbsp;text,&nbsp;in<br>
+which&nbsp;case&nbsp;the&nbsp;$n&nbsp;is&nbsp;replaced&nbsp;by&nbsp;your&nbsp;name.&nbsp;For&nbsp;example:<br>
+&nbsp;<br>
+&gt;&nbsp;emote&nbsp;A&nbsp;gunshot&nbsp;sounds,&nbsp;and&nbsp;$n&nbsp;is&nbsp;laying&nbsp;on&nbsp;the&nbsp;ground,&nbsp;dead.<br>
+&nbsp;<br>
+Would&nbsp;show&nbsp;a&nbsp;message&nbsp;to&nbsp;everyone&nbsp;in&nbsp;the&nbsp;room&nbsp;saying&nbsp;that&nbsp;you&nbsp;are&nbsp;dead<br>
+to&nbsp;a&nbsp;gunshot.</tt></dd></dl>
+ <dl><dt><a name="-cmd_gemote"><strong>cmd_gemote</strong></a>(ch, cmd, arg)</dt><dd><tt>Gemote&nbsp;is&nbsp;similar&nbsp;to&nbsp;emote,&nbsp;except&nbsp;that&nbsp;it&nbsp;sends&nbsp;a&nbsp;mud-wide&nbsp;message<br>
+instead&nbsp;of&nbsp;a&nbsp;room-specific&nbsp;message.</tt></dd></dl>
+ <dl><dt><a name="-cmd_greet"><strong>cmd_greet</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;greet&nbsp;&lt;person&gt;<br>
+&nbsp;<br>
+NPCs&nbsp;with&nbsp;dialogs&nbsp;will&nbsp;often&nbsp;have&nbsp;something&nbsp;to&nbsp;say&nbsp;when&nbsp;you&nbsp;greet&nbsp;or<br>
+approach&nbsp;then.&nbsp;Greeting&nbsp;an&nbsp;NPC&nbsp;is&nbsp;a&nbsp;way&nbsp;to&nbsp;get&nbsp;them&nbsp;talking.</tt></dd></dl>
+ <dl><dt><a name="-cmd_page"><strong>cmd_page</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;page&nbsp;&lt;person&gt;&nbsp;&lt;message&gt;<br>
+&nbsp;<br>
+Paging&nbsp;a&nbsp;person&nbsp;will&nbsp;send&nbsp;them&nbsp;a&nbsp;message,&nbsp;as&nbsp;well&nbsp;as&nbsp;making&nbsp;a&nbsp;beeping<br>
+sound&nbsp;on&nbsp;their&nbsp;computer&nbsp;to&nbsp;get&nbsp;their&nbsp;attention.&nbsp;Page&nbsp;can&nbsp;be&nbsp;used&nbsp;on<br>
+anyone&nbsp;in&nbsp;the&nbsp;mud,&nbsp;regardless&nbsp;if&nbsp;you&nbsp;are&nbsp;in&nbsp;the&nbsp;same&nbsp;room&nbsp;as&nbsp;them&nbsp;or&nbsp;not.</tt></dd></dl>
+ <dl><dt><a name="-cmd_say"><strong>cmd_say</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;say&nbsp;&lt;message&gt;<br>
+&nbsp;<br>
+This&nbsp;command&nbsp;will&nbsp;send&nbsp;a&nbsp;message&nbsp;to&nbsp;everyone&nbsp;in&nbsp;the&nbsp;same&nbsp;room&nbsp;as&nbsp;you.&nbsp;Say,<br>
+like&nbsp;ask,&nbsp;can&nbsp;trigger&nbsp;NPC&nbsp;dialogs.</tt></dd></dl>
+ <dl><dt><a name="-cmd_tell"><strong>cmd_tell</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;tell&nbsp;&lt;person&gt;&nbsp;&lt;message&gt;<br>
+&nbsp;<br>
+This&nbsp;command&nbsp;sends&nbsp;a&nbsp;message&nbsp;to&nbsp;another&nbsp;character.&nbsp;Primarily&nbsp;intended<br>
+for&nbsp;player-to-player&nbsp;communication.&nbsp;Players&nbsp;can&nbsp;tell&nbsp;other&nbsp;players<br>
+things&nbsp;even&nbsp;if&nbsp;they&nbsp;are&nbsp;not&nbsp;in&nbsp;the&nbsp;same&nbsp;room.<br>
+&nbsp;<br>
+see&nbsp;also:&nbsp;reply</tt></dd></dl>
+ <dl><dt><a name="-cmd_wiz"><strong>cmd_wiz</strong></a>(ch, cmd, arg)</dt></dl>
+ <dl><dt><a name="-erase_global"><strong>erase_global</strong></a>(...)</dt><dd><tt><a href="#-erase_global">erase_global</a>(name)<br>
+&nbsp;<br>
+Delete&nbsp;a&nbsp;value&nbsp;from&nbsp;the&nbsp;global&nbsp;variable&nbsp;table.</tt></dd></dl>
+ <dl><dt><a name="-expand_text"><strong>expand_text</strong></a>(...)</dt><dd><tt><a href="#-expand_text">expand_text</a>(text,&nbsp;dict={},&nbsp;newline=False)<br>
+&nbsp;<br>
+Take&nbsp;text&nbsp;with&nbsp;embedded&nbsp;Python&nbsp;statements.&nbsp;Statements&nbsp;can&nbsp;be&nbsp;embedded<br>
+between&nbsp;[&nbsp;and&nbsp;].&nbsp;Expand&nbsp;them&nbsp;out&nbsp;and&nbsp;return&nbsp;the&nbsp;new&nbsp;text.&nbsp;Variables&nbsp;can<br>
+be&nbsp;added&nbsp;to&nbsp;the&nbsp;scripting&nbsp;environment&nbsp;by&nbsp;specifying&nbsp;their&nbsp;names&nbsp;and<br>
+values&nbsp;in&nbsp;an&nbsp;optional&nbsp;dictionary.&nbsp;Statements&nbsp;are&nbsp;expanded&nbsp;in&nbsp;the&nbsp;default<br>
+scripting&nbsp;environment.</tt></dd></dl>
+ <dl><dt><a name="-extract"><strong>extract</strong></a>(...)</dt><dd><tt><a href="#-extract">extract</a>(thing)<br>
+&nbsp;<br>
+Extracts&nbsp;an&nbsp;object,&nbsp;character,&nbsp;or&nbsp;room&nbsp;from&nbsp;the&nbsp;game.</tt></dd></dl>
+ <dl><dt><a name="-format_string"><strong>format_string</strong></a>(...)</dt><dd><tt><a href="#-format_string">format_string</a>(text,&nbsp;indent=True,&nbsp;width=80)<br>
+&nbsp;<br>
+Format&nbsp;a&nbsp;block&nbsp;of&nbsp;text&nbsp;to&nbsp;be&nbsp;of&nbsp;the&nbsp;specified&nbsp;width,&nbsp;possibly&nbsp;indenting<br>
+paragraphs.</tt></dd></dl>
+ <dl><dt><a name="-generic_find"><strong>generic_find</strong></a>(...)</dt><dd><tt>Deprecated.&nbsp;Use&nbsp;mud.parse_args&nbsp;instead.</tt></dd></dl>
+ <dl><dt><a name="-get_global"><strong>get_global</strong></a>(...)</dt><dd><tt><a href="#-get_global">get_global</a>(name)<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;non-persistent&nbsp;global&nbsp;variable,&nbsp;or&nbsp;None.</tt></dd></dl>
+ <dl><dt><a name="-get_greeting"><strong>get_greeting</strong></a>(...)</dt><dd><tt><a href="#-get_greeting">get_greeting</a>()<br>
+&nbsp;<br>
+returns&nbsp;the&nbsp;mud's&nbsp;connection&nbsp;greeting.</tt></dd></dl>
+ <dl><dt><a name="-get_hour"><strong>get_hour</strong></a>(...)</dt><dd><tt><a href="#-get_hour">get_hour</a>()<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;current&nbsp;in-game&nbsp;hour&nbsp;of&nbsp;day.</tt></dd></dl>
+ <dl><dt><a name="-get_motd"><strong>get_motd</strong></a>(...)</dt><dd><tt><a href="#-get_motd">get_motd</a>()<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;mud's&nbsp;message&nbsp;of&nbsp;the&nbsp;day.</tt></dd></dl>
+ <dl><dt><a name="-get_time"><strong>get_time</strong></a>(...)</dt><dd><tt><a href="#-get_time">get_time</a>()<br>
+&nbsp;<br>
+Return&nbsp;time&nbsp;of&nbsp;day&nbsp;(morning,&nbsp;afternoon,&nbsp;evening,&nbsp;night).</tt></dd></dl>
+ <dl><dt><a name="-is_afternoon"><strong>is_afternoon</strong></a>(...)</dt><dd><tt>True&nbsp;or&nbsp;False&nbsp;if&nbsp;it&nbsp;is&nbsp;afternoon.</tt></dd></dl>
+ <dl><dt><a name="-is_evening"><strong>is_evening</strong></a>(...)</dt><dd><tt>True&nbsp;or&nbsp;False&nbsp;if&nbsp;it&nbsp;is&nbsp;evening.</tt></dd></dl>
+ <dl><dt><a name="-is_morning"><strong>is_morning</strong></a>(...)</dt><dd><tt>True&nbsp;or&nbsp;False&nbsp;if&nbsp;it&nbsp;is&nbsp;morning.</tt></dd></dl>
+ <dl><dt><a name="-is_night"><strong>is_night</strong></a>(...)</dt><dd><tt>True&nbsp;or&nbsp;False&nbsp;if&nbsp;it&nbsp;is&nbsp;night.</tt></dd></dl>
+ <dl><dt><a name="-is_race"><strong>is_race</strong></a>(...)</dt><dd><tt><a href="#-is_race">is_race</a>(name)<br>
+&nbsp;<br>
+Returns&nbsp;True&nbsp;or&nbsp;False&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;valid&nbsp;race&nbsp;name.</tt></dd></dl>
+ <dl><dt><a name="-ite"><strong>ite</strong></a>(...)</dt><dd><tt><a href="#-ite">ite</a>(logic_statement,&nbsp;if_statement,&nbsp;else_statement=None)<br>
+&nbsp;<br>
+A&nbsp;functional&nbsp;form&nbsp;of&nbsp;if/then/else.</tt></dd></dl>
+ <dl><dt><a name="-keys_equal"><strong>keys_equal</strong></a>(...)</dt><dd><tt><a href="#-keys_equal">keys_equal</a>(key1,&nbsp;key2)<br>
+&nbsp;<br>
+Returns&nbsp;whether&nbsp;two&nbsp;world&nbsp;database&nbsp;keys&nbsp;are&nbsp;equal,&nbsp;relative&nbsp;to&nbsp;the<br>
+locale&nbsp;(if&nbsp;any)&nbsp;that&nbsp;the&nbsp;current&nbsp;script&nbsp;is&nbsp;running&nbsp;in.</tt></dd></dl>
+ <dl><dt><a name="-list_races"><strong>list_races</strong></a>(...)</dt><dd><tt><a href="#-list_races">list_races</a>(player_only=False)<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;list&nbsp;of&nbsp;available&nbsp;races.&nbsp;If&nbsp;player_only&nbsp;is&nbsp;True,&nbsp;list&nbsp;only&nbsp;the<br>
+races&nbsp;that&nbsp;players&nbsp;have&nbsp;access&nbsp;to.</tt></dd></dl>
+ <dl><dt><a name="-log_string"><strong>log_string</strong></a>(...)</dt><dd><tt><a href="#-log_string">log_string</a>(mssg)<br>
+Send&nbsp;a&nbsp;message&nbsp;to&nbsp;the&nbsp;mud's&nbsp;log.</tt></dd></dl>
+ <dl><dt><a name="-message"><strong>message</strong></a>(...)</dt><dd><tt><a href="#-message">message</a>(ch,&nbsp;vict,&nbsp;obj,&nbsp;vobj,&nbsp;show_invis,&nbsp;range,&nbsp;mssg)<br>
+&nbsp;<br>
+Send&nbsp;a&nbsp;message&nbsp;via&nbsp;the&nbsp;mud&nbsp;messaging&nbsp;system&nbsp;using&nbsp;$&nbsp;expansions.&nbsp;Range<br>
+can&nbsp;be&nbsp;'to_room',&nbsp;'to_char',&nbsp;'to_vict',&nbsp;or&nbsp;'to_world'.</tt></dd></dl>
+ <dl><dt><a name="-parse_args"><strong>parse_args</strong></a>(...)</dt><dd><tt><a href="#-parse_args">parse_args</a>(ch,&nbsp;show_usage_errors,&nbsp;cmd,&nbsp;args,&nbsp;format)<br>
+&nbsp;<br>
+equivalent&nbsp;to&nbsp;parse_args&nbsp;written&nbsp;in&nbsp;C.&nbsp;See&nbsp;parse.h&nbsp;for&nbsp;information.</tt></dd></dl>
+ <dl><dt><a name="-send"><strong>send</strong></a>(...)</dt><dd><tt><a href="#-send">send</a>(list,&nbsp;mssg,&nbsp;dict&nbsp;=&nbsp;None,&nbsp;newline&nbsp;=&nbsp;True)<br>
+&nbsp;<br>
+Sends&nbsp;a&nbsp;message&nbsp;to&nbsp;a&nbsp;list&nbsp;of&nbsp;characters.&nbsp;Messages&nbsp;can&nbsp;have&nbsp;scripts<br>
+embedded&nbsp;in&nbsp;them,&nbsp;using&nbsp;[&nbsp;and&nbsp;].&nbsp;If&nbsp;so,&nbsp;a&nbsp;variable&nbsp;dictionary&nbsp;must&nbsp;be<br>
+provided.&nbsp;By&nbsp;default,&nbsp;'ch'&nbsp;references&nbsp;each&nbsp;character&nbsp;being&nbsp;sent&nbsp;the<br>
+message,&nbsp;for&nbsp;embedded&nbsp;scripts.</tt></dd></dl>
+ <dl><dt><a name="-set_global"><strong>set_global</strong></a>(...)</dt><dd><tt><a href="#-set_global">set_global</a>(name,&nbsp;val)<br>
+&nbsp;<br>
+Sets&nbsp;a&nbsp;non-persistent&nbsp;global&nbsp;variable.&nbsp;Val&nbsp;can&nbsp;be&nbsp;any&nbsp;type.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>cmd</strong> = ':'</td></tr></table>
+</body></html>

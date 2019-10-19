@@ -1,0 +1,52 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: cmd_misc</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>cmd_misc</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hollis/Desktop/nakedmud/lib/pymodules/cmd_misc.py">/Users/hollis/Desktop/nakedmud/lib/pymodules/cmd_misc.py</a></font></td></tr></table>
+    <p><tt>cmd_misc.c<br>
+&nbsp;<br>
+a&nbsp;collection&nbsp;of&nbsp;miscellaneous&nbsp;commands&nbsp;that&nbsp;come&nbsp;with&nbsp;NakedMud(tm)</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="event.html">event</a><br>
+</td><td width="25%" valign=top><a href="hooks.html">hooks</a><br>
+</td><td width="25%" valign=top><a href="mud.html">mud</a><br>
+</td><td width="25%" valign=top><a href="mudsys.html">mudsys</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><strong>chk_can_save</strong> <em>lambda</em> ch, cmd</dt></dl>
+ <dl><dt><a name="-cmd_clear"><strong>cmd_clear</strong></a>(ch, cmd, arg)</dt><dd><tt>This&nbsp;command&nbsp;will&nbsp;clear&nbsp;your&nbsp;display&nbsp;screen.</tt></dd></dl>
+ <dl><dt><a name="-cmd_delay"><strong>cmd_delay</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;delay&nbsp;&lt;seconds&gt;&nbsp;&lt;command&gt;<br>
+&nbsp;<br>
+Allows&nbsp;the&nbsp;user&nbsp;to&nbsp;prepare&nbsp;a&nbsp;command&nbsp;to&nbsp;be&nbsp;executed&nbsp;in&nbsp;the&nbsp;future.&nbsp;For<br>
+example:<br>
+&nbsp;<br>
+&gt;&nbsp;delay&nbsp;2&nbsp;say&nbsp;hello,&nbsp;world!<br>
+&nbsp;<br>
+Will&nbsp;make&nbsp;you&nbsp;say&nbsp;'hello,&nbsp;world!'&nbsp;two&nbsp;seconds&nbsp;after&nbsp;entering&nbsp;the<br>
+delayed&nbsp;command.</tt></dd></dl>
+ <dl><dt><a name="-cmd_motd"><strong>cmd_motd</strong></a>(ch, cmd, arg)</dt><dd><tt>This&nbsp;command&nbsp;will&nbsp;display&nbsp;to&nbsp;you&nbsp;the&nbsp;mud's&nbsp;message&nbsp;of&nbsp;the&nbsp;day.</tt></dd></dl>
+ <dl><dt><a name="-cmd_quit"><strong>cmd_quit</strong></a>(ch, cmd, arg)</dt><dd><tt>Attempts&nbsp;to&nbsp;save&nbsp;and&nbsp;log&nbsp;out&nbsp;of&nbsp;the&nbsp;game.</tt></dd></dl>
+ <dl><dt><a name="-cmd_save"><strong>cmd_save</strong></a>(ch, cmd, arg)</dt><dd><tt>Attempt&nbsp;to&nbsp;save&nbsp;your&nbsp;character&nbsp;and&nbsp;all&nbsp;recent&nbsp;changes&nbsp;made&nbsp;to&nbsp;it,&nbsp;to<br>
+disk.&nbsp;This&nbsp;automatically&nbsp;happens&nbsp;when&nbsp;logging&nbsp;out.</tt></dd></dl>
+ <dl><dt><a name="-cmd_stop"><strong>cmd_stop</strong></a>(ch, cmd, arg)</dt><dd><tt>If&nbsp;you&nbsp;are&nbsp;currently&nbsp;performing&nbsp;an&nbsp;action&nbsp;(for&nbsp;example,&nbsp;a&nbsp;delayed<br>
+command),&nbsp;make&nbsp;an&nbsp;attempt&nbsp;to&nbsp;stop&nbsp;performing&nbsp;that&nbsp;action.</tt></dd></dl>
+ <dl><dt><a name="-event_delayed_cmd"><strong>event_delayed_cmd</strong></a>(ch, filler, cmd)</dt><dd><tt>used&nbsp;to&nbsp;perform&nbsp;delayed&nbsp;commands</tt></dd></dl>
+</td></tr></table>
+</body></html>

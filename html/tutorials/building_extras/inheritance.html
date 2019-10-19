@@ -1,0 +1,236 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Inheritance
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Abstract Contents</div>
+<div class="info">
+You may have noticed that certain zone contents are flagged as abstract. The
+very first editor option for rooms, objects, and mobiles is whether or not they
+are abstract. If a game content is abstract it means it is a real game
+content, but it cannot actually exist in the game on its own. Abstract contents
+are used for inheritance, which is the topic of this section. They supply
+important information about 'child' contents that inherit from them, but they 
+themselves can never actually exist.
+</div>
+
+<div class="head">Inheritance</div>
+<div class="info">
+Distinct rooms, objects, and mobiles often share common features. When this
+commonality must be defined separately for each case, it becomes a hassle. Even
+worse is when it is decided that this commonality needs to be changed. NakedMud
+supports inheritance for rooms, objects, and mobiles -- unique versions of
+zone contents can inherit from a parent version, automatically copying over
+all features of the parent to the child.
+<p></p>
+One application of inheritance is to store all generic information about city
+streets in a parent room, and then have individual rooms within the city 
+inherit from the parent. Here is an example of a parent location called
+mainstreet, from which specific locations along the street will inherit.
+<pre class="mud">
+[mainstreet@moonhaven]
+1) Abstract: yes
+2) Inherits from prototypes:
+
+3) Name
+Main Street
+4) Description
+The street is nicely kept cobblestone.  Buildings of various sizes dot the 
+north and south sides of the street.  [if is_night()] The doors and windows on 
+most are shut, suggesting the town has gone to bed for the night.[/if] [if 
+is_evening() or is_night()] Flames flicker at the tops of tall polls lining 
+either side of the streeet.  They give the street basic illumination.[/if] 
+L) Land type [City]
+B) Set Bits: 
+Z) Room can be reset: no
+R) Room reset menu
+X) Extra descriptions menu
+T) Trigger menu
+E) Edit exit
+F) Fill exit
+   north      : nowhere                   east       : nowhere             
+   south      : nowhere                   west       : nowhere             
+   up         : nowhere                   down       : nowhere             
+   northeast  : nowhere                   southeast  : nowhere             
+   southwest  : nowhere                   northwest  : nowhere             
+
+C) Extra code
+
+Enter choice, ? [topic] for help, or Q to quit: 
+</pre>
+Once the parent is created, new rooms can be edited and set to inherit from this
+room. Each one that does will, by default, gain all of the information of the
+parent. The information can also be extended. For instance, names can be 
+over-written and descriptions can be added to. Here is an example that inherits
+from mainstreet, changes its name, and adds to its description.
+<pre class="mud">
+[mainstreet01@moonhaven]
+1) Abstract: no
+2) Inherits from prototypes:
+<font class="highlight">mainstreet</font>
+3) Name
+<font class="highlight">Mainstreet, Before the Tavern</font>
+4) Description
+<font class="highlight">A large tavern can be seen on the north side of the street.  [if is_evening() 
+or is_night()] Silhouettes of moving people are projected against the smoky 
+windows of the tavern from inside lights.[/if] The sound of music emits from 
+within.</font>
+L) Land type [leave unchanged]
+B) Set Bits: 
+Z) Room can be reset: no
+R) Room reset menu
+X) Extra descriptions menu
+T) Trigger menu
+E) Edit exit
+F) Fill exit
+   north      : tavern                    east       : nowhere
+   south      : nowhere                   west       : nowhere
+   up         : nowhere                   down       : nowhere             
+   northeast  : nowhere                   southeast  : nowhere             
+   southwest  : nowhere                   northwest  : nowhere             
+
+C) Extra code
+
+Enter choice, ? [topic] for help, or Q to quit: 
+</pre>
+Note that in this example, the name is changed but the description is only
+<i>added to</i>. When using inheritance, editing a child's decription will
+add to the parent's, not erase what was previously there. Other descriptive
+fields that are edited will be overwritten. If you would prefer not to overwrite
+a field, simply leave it blank in the editor.
+</div>
+<div class="head">Heirarchical Inheritance</div>
+<div class="info">
+When a parent is inherited from, all contents the parent inherits from are also
+implicitly inherited. In this sense, inheritance is heirarchical. One way this
+can applied is to make all lines of inheritance trace back to a single unique
+content -- a generic content, so to say. If you ever want to globally apply new
+functionality to a room, you can then simply add it to the generic room and all
+other rooms will automatically have it.
+<p></p>
+If your mud implements a death system, one use of this would be to supply a
+generic trigger that handles a person's death, while still leaving open the
+possibility that certain rooms might change how death is handled by replacing
+that trigger. To give a
+classic example, some DIKU muds implement deathtraps. Normally, if a player
+were to die, their corpse might be transfered to a graveyard for easy access.
+However, if a player were to die in a deathtrap, their corpse remains in the
+trap. And what if you want variations of death traps? Often these sort of
+extentions are supplied within the game's code, using bits or flags to mark
+important information. NakedMud allows you to have different rooms, mobiles, 
+and objects that exhibit different behaviors through inheritance instead. The
+game code need never be touched.
+<p></p>
+Here is an example from my mud; all chains of inheritance for rooms are rooted
+at a single room: generic_room@templates. This room specifies a generic trigger
+to run when someone dies, and assigns a location to transfer their corpse to.
+<pre class="mud">
+[generic_room@templates]
+1) Abstract: yes
+2) Inherits from prototypes:
+
+3) Name
+
+4) Description
+L) Land type [leave unchanged]
+B) Set Bits: 
+Z) Room can be reset: no
+R) Room reset menu
+X) Extra descriptions menu
+T) Trigger menu
+E) Edit exit
+F) Fill exit
+   north      : nowhere                   east       : nowhere             
+   south      : nowhere                   west       : nowhere             
+   up         : nowhere                   down       : nowhere             
+   northeast  : nowhere                   southeast  : nowhere             
+   southwest  : nowhere                   northwest  : nowhere             
+
+C) Extra code
+<font class="highlight">me.attach("generic_death@templates")
+me.setvar("graveyard", "graveyard@templates")</font>
+</pre>
+All rooms that inherit from generic_room@templates have the trigger, 
+generic_death@templates attached to them. Whenever a player dies in a room 
+inheriting from this one, their corpse is created and transfered to 
+the standard graveyard. However, these are properties of the <i>room</i> not 
+the game. So another room that inherits from this one can easily change the 
+death behavior -- say, moving the corpse somewhere else -- by setting the 
+graveyard variable to something new. For instance, an inherited room that had 
+this line of extra code would leave the corpse where it is:
+<pre class="mud">
+C) Extra code
+<font class="highlight">me.setvar("graveyard", me.proto)</font>
+</pre>
+
+Or perhaps you want a room where death is handled in a completely different
+manner. Maybe you want dying to be the neccessary event to progress in a quest
+-- for instance, in a trial of courage. Then you could detach the generic
+death trigger and attach your own special one that doesn't let players die, but
+instead transfers them in-tact to the next area of the quest.
+<pre class="mud">
+C) Extra code
+<font class="highlight">me.detach("generic_death@templates")
+me.attach("trial_of_courage_death@myzone")</font>
+</pre>
+</div>
+
+<div class="head">Multiple Inheritance</div>
+<div class="info">
+Game contents can inherit from more than one parent. Rooms, objects, and mobiles
+can be chimeras -- blends of multiple things, but not tracable back to a single
+unique lineage. Defining multiple inheritance, like single inheritance, is done
+through the OLC editors. However instead of supplying a single parent, any 
+number of parents are entered, comma separated.
+<pre class="mud">
+[black_beetle@moonhaven]
+1) Abstract: no
+2) Inherits from prototypes:
+<font class="highlight">generic_mob@templates, beetle@templates, hostile@templates</font>
+</pre>
+For instance, suppose you want to design a zone of beetles. All of those 
+beetles are beetles, and thus share a unique set of properties which you might 
+define in beetle@templates. However, some beetles might also be hostile, and 
+have an additional hostile behavior associated with them. You could set this up
+as a heirarchy, so there were two classes, one called hostile_beetle which some
+of the beetles inherited from another another called friendly_beetle which the
+others inherited from, both of which inherit from beetle. This would be a 
+valid approach.
+<p></p>
+But if you have other creatures that could also be hostile -- trolls, 
+necromancers, mothers -- and it would be cumbersome to make a hostile heirarchy 
+for every individual type of creature. With multiple inheritance, you can just
+cut to the chase and have a separate template, hostile, that any creature can
+inherit from to gain scripted, hostile behavior.
+<p></p>
+The one caveat with multiple inheritance is that you have to be aware of
+the fact that one parent may override information set by another parent (names,
+attaching and detaching scripts, changing races and genders, etc). Parent 
+information is applied serially, first in the list to last in the list. So the
+last parent processed is the one whose information you can gaurantee will be
+represented in the child. However, with careful design this should be a
+non-issue.
+</div>
+
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>
+				   

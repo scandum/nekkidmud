@@ -1,0 +1,108 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Scripting Variables
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Scripting Variables</div>
+<div class="info">
+There are two main types of scripts in NakedMud. Prototypes generate content 
+before it is added to the game. Triggers add behavior to rooms, objects, and
+mobiles when certain events happen. Other types of scripts can also exist. All
+scripts share a basic set of variables that reference relevant content to the
+script.
+</div>
+
+<div class="head" style="text-transform: none;">me</div>
+<div class="info">
+Almost all scripts are run on some piece of game content. Prototypes are run
+over blank objects, rooms, and mobiles to assign them values. Triggers are
+attached to these things, and run on them when certain in-game events occur. The
+thing a script is being run on is always referened by the 'me' variable.
+<p></p>
+Suppose you want to write a trigger that returns an object to its carrier's
+inventory whenever the object is dropped:
+<pre class="code">
+me.carrier = ch
+message(ch, me, None, None, True, "to_char",
+        "As soon as you let go of $o, it flies right back into your hands!")
+message(ch, me, None, None, True, "to_room",
+        "As soon as $n lets go of $o, it flies right back into $s hands!")
+</pre>
+</div>
+
+<div class="head" style="text-transform: none;">ch, obj, room, ex</div>
+<div class="info">
+Scripts will often involve more game contents than just the thing the script
+is being run on. Speech triggers involve the person hearing something, but they
+also involve a person saying something. The trigger is run on the person doing
+the hearing, which is referenced by me, so the person doing the speaking is
+referenced by ch:
+<pre class="code">
+if arg.lower() == "hello":
+  me.act("delay 1 say hello to you too, " + ch.name + "!")
+</pre>
+
+Drop triggers can be attached to objects or rooms. What the trigger is attached
+to determines the value of me. A character always does the dropping, but cannot
+have a drop trigger attached to them. They are always referenced by ch. Consider
+this drop trigger that is intended to be attached to a room:
+<pre class="code">
+obj.carrier = ch
+message(ch, me, None, None, True, "to_char",
+        "As soon as you let go of $o, it flies right back into your hands!")
+message(ch, me, None, None, True, "to_room",
+        "As soon as $n lets go of $o, it flies right back into $s hands!")
+</pre>
+Note that this script is exactly the same as the earlier one, except that me
+has been replaced with obj. If a drop trigger with this script were attached to
+a room, it would return all dropped objects in that room to their owners' hands.
+<p></p>
+It is rarely (n)ever the case that a room is involved in a script where it is
+not the focus of that script. By and large, rooms are referred to as 'me'. 
+However, it is feasible that such a situation could arise where two rooms are
+involved in the same script. For instance, a teleport script might move all
+things in one room to another one. In such a situation, the first room (the
+source) would be referred to as me. The second room (the destination) would
+be referred to as room.
+<p></p>
+Conversely, exits are almost never referred to as me. Remember, triggers can
+only be attached to rooms, objects, and mobiles. Also remember that prototypes
+only exist for those things too. If exits are involved in scripts they are only
+peripherally involved, and referenced by ex. Triggers that execute when a
+player enters or leaves a room will typically include an exit variable.
+</div>
+
+<div class="head" style="text-transform: none;">arg</div>
+<div class="info">
+Some scripts will also involve a string argument. This is referred to as arg.
+For instance, speech triggers will include the speech text. A room that 
+transfered someone to another room when a magic word is said might have a
+trigger that looked like this:
+<pre class="code">
+if arg.lower() == "abra cadabra":
+  ch.room = "newroom@nzone"
+  ch.send("After you say the magic words, you find yourself somewhere else!")
+  ch.act("look")
+</pre>
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

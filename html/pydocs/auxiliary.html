@@ -1,0 +1,44 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: auxiliary</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>auxiliary</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>The&nbsp;module&nbsp;for&nbsp;installing&nbsp;auxiliary&nbsp;data</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-install"><strong>install</strong></a>(...)</dt><dd><tt><a href="#-install">install</a>(name,&nbsp;AuxClass,&nbsp;installs_on)<br>
+&nbsp;<br>
+Register&nbsp;new&nbsp;auxiliary&nbsp;data&nbsp;to&nbsp;the&nbsp;given&nbsp;name.&nbsp;Auxiliary&nbsp;data&nbsp;can&nbsp;be<br>
+installed&nbsp;on:&nbsp;character,&nbsp;object,&nbsp;room,&nbsp;account,&nbsp;socket.&nbsp;Auxiliary&nbsp;data<br>
+must&nbsp;be&nbsp;a&nbsp;class&nbsp;object&nbsp;of&nbsp;the&nbsp;following&nbsp;form:<br>
+&nbsp;<br>
+&nbsp;&nbsp;class&nbsp;ClassName:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;__init__(self,&nbsp;storage_set&nbsp;=&nbsp;None)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;copy(self)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;copyTo(self,&nbsp;to)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;store(self)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;<br>
+The&nbsp;Store&nbsp;method&nbsp;returns&nbsp;a&nbsp;storage&nbsp;set&nbsp;representation&nbsp;of&nbsp;the&nbsp;data.&nbsp;If<br>
+the&nbsp;auxiliary&nbsp;data&nbsp;is&nbsp;not&nbsp;persistent,&nbsp;an&nbsp;empty&nbsp;storage&nbsp;set&nbsp;can&nbsp;be<br>
+returned.&nbsp;The&nbsp;class's&nbsp;init&nbsp;function&nbsp;must&nbsp;be&nbsp;able&nbsp;to&nbsp;handle&nbsp;reading&nbsp;in<br>
+data&nbsp;from&nbsp;a&nbsp;storage&nbsp;set,&nbsp;or&nbsp;creating&nbsp;a&nbsp;fresh&nbsp;instance&nbsp;if&nbsp;set&nbsp;=&nbsp;None.</tt></dd></dl>
+</td></tr></table>
+</body></html>

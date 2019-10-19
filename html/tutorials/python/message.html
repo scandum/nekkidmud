@@ -1,0 +1,93 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Messages and Newstyle Messages
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Message</div>
+<div class="info">
+mud.message is a wrapper for the C message function of the same name. It takes
+roughly the same variables, and uses macro expansions for quick inclusion on 
+character, target, and object information. It takes the form:
+
+<pre class="code">
+message(ch, vict, obj, vobj, show_invis, range, mssg)
+</pre>
+
+A reference manual for message() can be found in the reference section.
+</div>
+
+<div class="head">Newstyle Messages</div>
+<div class="info">
+As of version 3.8, NakedMud implements newstyle messages that extend 
+char.Char.send . As of version 3.9, NakedMud also implements newstyle messages
+to multiple people with char.Char.sendaround and mud.send . These work by
+allowing users to embed Python statements within sent messages, in the same way
+that they can be embedded in game contents' descriptions.
+</div>
+
+<div class="head" style="text-transform: none;">ch.send(mssg, dict=None, newline=True)</div>
+<div class="info">
+Characters have a method, send, that outputs a string of text to their socket. 
+If a dictionary is provided, text between [ and ] are expanded out as Python 
+statements. When statements are expanded, the variable 'me' references the
+character being sent the message.
+
+<pre class="mud">
+> exec ch.send("Hello, [me.name]!")
+Hello, [me.name]!
+
+> exec ch.send("Hello, [me.name]!", dict={})
+Hello, Alister!
+
+> exec ch.send("Hello, [me.name]. You are in [me.room.name]. foo=[foo].", 
+               dict={ "foo" : "bar" })
+Hello, Alister. You are in Some Room Name Here. foo=bar.
+
+> exec ch.send("You are wearing [if head==None]nothing[else][head.name][/if] on your head.", 
+               dict = { "head" : ch.get_equip("head") })
+You are wearing a red fez on your head.
+</pre>
+</div>
+
+<div class="head" style="text-transform: none;">ch.sendaround(mssg, dict=None, cansee_only=False, newline=True)</div>
+<div class="info">
+The sendaround method works similar to send, except it sends the message to
+everyone in the character's room, besides the person sendaround is called for.
+When Python statements are expanded, the variable 'me' references the person
+sendaround is called for. The variable 'ch' references characters messages are
+being sent to.
+
+<pre class="mud">
+> exec ch.sendaround("Hello, [ch.name]. [me.name] is sending you a message!", dict={})
+(Seen by OtherPerson1) Hello, OtherPerson1. Alister is sending you a message!
+(Seen by OtherPerson2) Hello, OtherPerson2. Alister is sending you a message!
+</pre>
+</div>
+
+<div class="head" style="text-transform: none;">mud.send(list, mssg, dict=None, newline=True)</div>
+<div class="info">
+This function works much the same as ch.send, except it sends a message to
+each person in a list of characters. The variable 'ch' references the character
+being sent a message.
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

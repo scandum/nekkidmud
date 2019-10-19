@@ -1,0 +1,138 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Creating Content
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Creating Content</div>
+<div class="info">
+Rooms, objects, and mobiles all have editing functions (redit, oedit, medit).
+If a key is specified, that content's information is brought up in the online
+editing tool. If the key does not exist, new content is created for the key.
+All content share some generic fields: inheritants, names, keywords, and
+descriptions. Most fields should be straightforward, and so will not be
+explained in detail. Inheritance 
+and abstractness are covered in the "extras" tutorial. A few of the finer
+points of content creation will be covered here: extra descriptions, item
+types, and attaching triggers.
+</div>
+
+<div class="head">Attaching triggers</div>
+<div class="info">
+Rooms, mobiles, and objects can have scripts attach to them that are run when
+certain events occur -- entering rooms, wearing removing, or picking up an 
+item, resetting a zone, hearing something said, and so on. Each content editing
+interface should have a T option. When the option is entered, a new interface 
+for attaching and detaching triggers will become visible.
+<pre class="mud">
+  N) Add new trigger
+  D) Delete trigger
+
+Enter choice, ? [topic] for help, or Q to quit: <font class="cmd">n</font>
+Enter key for trigger to attach: <font class="cmd">dissolve_on_drop@utilities</font>
+
+<font class="highlight">Current triggers:
+  dissolve_on_drop@utilities</font>
+
+  N) Add new trigger
+  D) Delete trigger
+
+Enter choice, ? [topic] for help, or Q to quit: 
+</pre>
+This simple trigger  deletes all objects that are dropped into a room. Its script is:
+<pre class="code">
+me.send(obj.name + " dissolves after it is dropped.")
+extract(obj)
+</pre>
+Triggers are extremely flexible, and allow for scripted behavior in a wide
+variety of circumstances. Their creation is covered in the tutorials on 
+scripting. For now, suffice to say they can be attached to mobiles, objects,
+and rooms through their respective OLC interfaces.
+</div>
+
+<div class="head">Extra descriptions</div>
+<div class="info">
+Rooms and objects can have extra descriptions attached to them. Extra
+descriptions are additional blocks of text about the content that can be
+accessed when particular aspects of the object or room are looked at. The Extra
+description editor is accessed via the X option in OLC. 
+<p></p>
+When an extra description is created or edited, two fields can be changed. Its
+keywords, and its description. The description is what is seen when viewed, and
+the keywords are what can be looked at to present the description.
+<pre class="mud">
+Entries: 0
+
+E) edit entry
+N) new entry
+D) delete entry
+
+Enter choice, ? [topic] for help, or Q to quit: <font class="cmd">n</font>
+
+1) Keywords
+
+2) Description
+
+
+Enter choice, ? [topic] for help, or Q to quit: <font class="cmd">1</font>
+Enter a new list of keywords: wall, brick
+
+1) Keywords
+<font class="highlight">wall, brick</font>
+2) Description
+
+
+Enter choice, ? [topic] for help, or Q to quit: <font class="cmd">2</font>
+==========================================================================
+Begin editing. /q on a new line to quit, /a to abort. /h for help         
+==========================================================================
+] <font class="cmd">As you look up at the wall, you see a loose brick about five feet up.</font>
+] <font class="cmd">Taking a closer inspection, you can see it is jutting out a bit from the</font>
+] <font class="cmd">wall. Unlike the other bricks, there doesn't seem to be any mortar holding</font>
+] <font class="cmd">this one in place. It looks like you could just slide it in if you</font>
+] <font class="cmd">pushed on it.</font>
+]
+</pre>
+</div>
+
+<div class="head">Item types</div>
+<div class="info">
+When an item is first created, it is just a descriptive lump. Objects have no
+inherent functionality, only appearance. However, objects can be given 
+(multiple) types. When an item gains a type, it gains functionality. Portals, 
+weapons, wands, clothing. In the object OLC, the type menu can be brought up 
+with the 'I' option. When this happens, a list of item types will appear:
+<pre class="mud">
+Editable item types:
+  container          furniture          portal            worn          
+
+    E) edit type
+    D) delete type
+
+Enter choice, ? [topic] for help, or Q to quit: 
+</pre>
+Each item type will have its own options to edit when selected. Note that each
+item can have multiple types. Your throne can be a piece of furniture, but it
+might also have a hidden compartment and act as a container for small objects.
+</div>
+
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

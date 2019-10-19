@@ -1,0 +1,176 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Builtin Hooks
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Builtin Hooks</div>
+<div class="info">
+
+NakedMud comes built in with hook points for various events that need to be
+extended. Here is a list of them (recent as of version 3.8), their arguments,
+and a short description of when they are run:
+
+<div class="table">
+  <table width=100% border=1>
+    <thead>
+    <tr>
+      <th width=175> type </th>
+      <th width=75>  args </th>
+      <th> description </th>
+    <tr>
+    </thead>
+    <tbody>
+      <tr class="odd"><td>receive_connection</td><td>sk</td>
+        <td>called when a new socket connects to the mud</td></tr>
+      <tr><td>copyover_complete</td><td>sk</td>
+        <td>called when a connection is recovered from a copyover</td></tr>
+      <tr class="odd"><td>init_player</td><td>ch</td>
+        <td>called when a PC character is created for the first time</td></tr>
+      <tr><td>reconnect</td><td>ch</td>
+        <td>called after a socket reconncets to a character already in game</td></tr>
+      <tr class="odd"><td>char_to_game</td>  <td>ch</td>
+        <td>called when a PC or NPC enters the game world</td></tr>
+      <tr><td>char_from_game</td><td>ch</td>
+        <td>called when a character is extracted from game world</td></tr>
+      <tr class="odd"><td>room_to_game</td><td>rm</td>
+        <td>called when a room enters the game world</td></tr>
+      <tr><td>room_from_game</td><td>rm</td>
+        <td>called when an exit is extracted from the game world</td></tr>
+      <tr class="odd"><td>obj_to_game</td><td>obj</td>
+        <td>called when an object enters the game world</td></tr>
+      <tr><td>obj_from_game</td><td>obj</td>
+        <td>called when an object is extracted from the game world</td></tr>
+
+
+      <tr class="odd"><td>char_to_room</td><td>ch, rm</td>
+        <td>called when a character is added to a room</td></tr>
+      <tr><td>char_from_room</td><td>ch, rm</td>
+        <td>called when an character is removed from a room</td></tr>
+      <tr class="odd"><td>exit</td><td>ch, rm, ex</td>
+        <td>called when a character leaves a room via a movement command. This occurs before the character is actually removed from the room</td></tr>
+      <tr><td>enter</td><td>ch, rm</td>
+        <td>called when a character enters a room via a movement command or portal. This occurs after the character has actually been added to the room</td></tr>
+      <tr class="odd"><td>pre_enter</td><td>ch, rm</td>
+        <td>called when a character enters a room via a movement command or portal. This occurs after the character has actually been added to the room, but before they have been forced to 'look' at it.</td></tr>
+
+
+      <tr><td>obj_to_char</td><td>obj, ch</td>
+        <td>called when an object is added to a character's inventory</td></tr>
+      <tr class="odd"><td>obj_from_char</td><td>obj, ch</td>
+        <td>called when an object is removed from a character's inventory</td></tr>
+      <tr><td>obj_to_obj</td><td>obj, obj</td>
+        <td>called when an object is added to a container. Second argument is the container</td></tr>
+      <tr class="odd"><td>obj_from_obj</td><td>obj, obj</td>
+        <td>called when an object is removed from a container. Second argument is the container</td></tr>
+      <tr><td>obj_to_room</td><td>obj, rm</td>
+        <td>called when an object is added to a room</td></tr>
+      <tr class="odd"><td>obj_from_room</td><td>obj, rm</td>
+        <td>called when an object is removed from a room</td></tr>
+      <tr><td>give</td><td>ch, ch, obj</td>
+        <td>called after an object has been transfered from one character to the other via the 'give' command. The first argument is the giver, and the second is the receiver.</td></tr>
+      <tr class="odd"><td>get</td><td>ch, obj</td>
+        <td>called after an object has been transfered to a character's inventory via the 'get' command</td></tr>
+      <tr><td>drop</td><td>ch, obj</td>
+        <td>called after an object has been transfered to a room via the 'drop' command</td></tr>
+      <tr class="odd"><td>equip</td><td>ch, obj</td>
+        <td>called when an object is put on a character's body</td></tr>
+      <tr><td>wear</td><td>ch, obj</td>
+        <td>called after equipment has sucessfully been equipped via the 'wear' command</td></tr>
+      <tr class="odd"><td>unequip</td><td>ch, obj</td>
+        <td>called when an object is removed from a character's body</td></tr>
+      <tr><td>pre_unequip</td><td>ch, obj</td>
+        <td>called just before an object is to be removed from a character's body, but the object is still on the character</td></tr>
+      <tr class="odd"><td>remove</td><td>ch, obj</td>
+        <td>called after equipment has sucessfully been unequipped via the 'remove' command</td></tr>
+
+      <tr><td>open_obj</td><td>ch, obj</td>
+        <td>called after a character opens an object through the 'open' command</td></tr>
+      <tr class="odd"><td>close_obj</td><td>ch, obj</td>
+        <td>called after a character closes an object through the 'close' command</td></tr>
+      <tr><td>open_door</td><td>ch, ex</td>
+        <td>called after a character opens an exit through the 'open' command</td></tr>
+      <tr class="odd"><td>close_door</td><td>ch, ex</td>
+        <td>called after a character closes an exit through the 'close' command</td></tr>
+      <tr><td>tell</td><td>ch, ch, str</td>
+        <td>called after a character sends a message to another via the 'tell' command. The second argument is the receiver, and the third is the message.</td></tr>
+      <tr class="odd"><td>ask</td><td>ch, ch, str</td>
+        <td>same as tell, for the ask command</td></tr>
+      <tr><td>say</td><td>ch, str</td>
+        <td>called after a character uses the 'say' command</td></tr>
+      <tr class="odd"><td>greet</td><td>ch, ch</td>
+        <td>called after a character uses the 'greet' command on another character. The second argument is the person being greeted.</td></tr>
+      <tr><td>post_greet</td><td>ch, ch</td>
+        <td>called immediately after greet hooks</td></tr>
+      <tr class="odd"><td>preprocess_obj_desc</td><td>obj, ch</td>
+        <td>called when a character's look buffer is ready to be processed (e.g., by embedded scripts) after looking at an object. At this point, the look buffer is simply the object's raw description</td></tr>
+      <tr><td>append_obj_desc</td><td>obj, ch</td>
+        <td>called after preprocess_obj_desc. At this stage, outside hooks can append extra information to the character's look buffer</td></tr>
+      <tr class="odd"><td>look_at_obj</td><td>obj, ch</td>
+        <td>called after a character's look buffer has been sent to their socket and cleared</td></tr>
+      <tr><td>preprocess_room_desc</td><td>rm, ch</td>
+        <td>same as preprocess_obj_desc, for rooms</td></tr>
+      <tr class="odd"><td>append_room_desc</td><td>rm, ch</td>
+        <td>same as append_obj_desc, for rooms</td></tr>
+      <tr><td>look_at_room</td><td>rm, ch</td>
+        <td>same as look_at_obj, for rooms</td></tr>
+      <tr class="odd"><td>preprocess_exit_desc</td><td>ex, ch</td>
+        <td>same as preprocess_obj_desc, for exits</td></tr>
+      <tr><td>append_exit_desc</td><td>ex, ch</td>
+        <td>same as append_obj_desc, for exits</td></tr>
+      <tr class="odd"><td>look_at_exit</td><td>ex, ch</td>
+        <td>same as look_at_obj, for exits</td></tr>
+      <tr><td>preprocess_char_desc</td><td>ch, ch</td>
+        <td>same as preprocess_obj_desc, for characters</td></tr>
+      <tr class="odd"><td>append_char_desc</td><td>ch, ch</td>
+        <td>same as append_char_desc, for characters</td></tr>
+      <tr><td>look_at_char</td><td>ch, ch</td>
+        <td>same as look_at_obj, for characters</td></tr>
+      <tr class="odd"><td>preprocess_char_desc</td><td>ch, ch</td>
+        <td>same as preprocess_obj_desc, for characters</td></tr>
+      <tr><td>append_char_desc</td><td>ch, ch</td>
+        <td>same as append_char_desc, for characters</td></tr>
+      <tr class="odd"><td>look_at_char</td><td>ch, ch</td>
+        <td>same as look_at_obj, for characters</td></tr>
+      <tr><td>process_outbound_text</td><td>sk</td>
+        <td>called when a socket's outbound text buffer is ready to be preprocessed (e.g., for color codes). At this point, the socket's text buffer is simply the raw text it has been sent. Does not include prompt text</td></tr>
+      <tr class="odd"><td>process_outbound_prompt</td><td>sk</td>
+        <td>same as preprocess_outbound_text, but for prompt text only</td></tr>
+      <tr><td>append_char_desc</td><td>ch, ch</td>
+        <td>same as append_char_desc, for characters</td></tr>
+      <tr class="odd"><td>look_at_char</td><td>ch, ch</td>
+        <td>same as look_at_obj, for characters</td></tr>
+      <tr><td>command</td><td>ch, str, str</td>
+        <td>called after a command has been sucessfully executed. Second argument is the command, and the third is the argument supplied to the command</td></tr>
+      <tr class="odd"><td>reset_zone</td><td>str</td>
+        <td>called when a zone is reset. Argument is the zone name</td></tr>
+      <tr><td>reset_room</td><td>rm</td>
+        <td>called when a room is reset</td></tr>
+      <tr class="odd"><td>receive_iac</td><td>sk, str</td>
+        <td>called when a telnet IAC command is received by a socket</td></tr>
+      <tr><td>shutdown</td><td>none</td>
+        <td>called before the mud is exited, via the 'shutdown' command</td></tr>
+    <tbody>
+  </table>
+</div>
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="../nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

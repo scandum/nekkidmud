@@ -1,0 +1,461 @@
+VERSION 3.8 (Apr 05/09)
+  * new module, 'doc', for reading Python documentation in game, and generating
+    html versions of module documentation
+  * new module, 'display', containing utilities for displaying tabular data
+    and meters
+  * admin disconnect command, takes a socket ID. Use connections to view sockets
+  * trigger types can now be added from outside the scripts module
+  * fixed a bug in pathfinding, causing incorrect directions to be given
+  * mudsys.add_xxx_method now accepts properties, as well as methods
+  * Python StorageList() can now take a Python list of StorageSets as argument
+  * Improved IAC handling
+  * Changed the way object equipping and unequipping is handled to accomodate
+    for hooks
+  * Added copy() and store() methods to Python characters and objects
+  * Added read() methods to the obj and character modules
+  * Added ability to check if character can edit a zone, from Python
+  * Fixed infinite loop caused when malformed storage sets are read from disk
+  * ch.send rewritten. Now takes optional newline=True|False, and can have 
+    embedded dynamic descriptions
+
+VERSION 3.7.9 (Mar 02/09)
+  * The location of zone directories changed from lib/world/ to lib/world/zones/. You will need to manually move your zone files to the new location.
+  * Added new user group, wizard, to encompass general wiz-ly commands that 
+    should Have shared access by admins and builders.
+  * restructured the group priviledges for some admin and build commands. Be
+    sure to give all of your admins/builders the 'wizard' user group
+  * User groups can now be edited through 'pcedit'
+  * Fixed problem with display 'sticking' before a prompt
+  * Added support for guest characters
+  * Account menu and login sequence drastically changed!
+  * Added support for instanced rooms and zones
+  * Added support for persistent (state saved across reboot & crash) to rooms 
+    and their contents (chars, objs). A stand-alone module will be released for
+    tracking persist rooms and contents
+  * Added new module for logging communication histories (tell, chat)
+  * Exposed aliases to Python
+  * All uids now poll from a common pool
+  * Rooms can now have room-specific checks added to commands without having to
+    override the entire command
+  * reading/writing via storage sets is now buffered instead of being done 
+    directly
+  * char_vars module renamed dyn_vars, and added to rooms and objects as well
+  * exposed the text editor to Python
+  * fixed nasty bug with objects sometimes being added to game twice, and 
+    corrupting the object list when they are extracted
+  * added support for (string) pearson hashing, with 8, 16, and 32 bit hashes
+  * exposed helpfiles to Python
+  * Fixed the nasty green color leak issues 
+  * Received IAC events now broadcast via the receive_iac hook (sock, sequence)
+  * disabled MCCP on this basis: 
+    http://www.mudconnect.com/discuss/discuss.cgi?mode=MSG&area=coders&message=24304#24304
+    MCCP will be re-added as a stand-alone module, working via the iac hook
+  * characters, rooms, and objects now track their 'birth' -- the time at which
+    their 'new' function was called.
+  * Fixed olc so the OLC extenders will properly work with Python
+  * Fixed various issues with trying to use OLC commands on entities with 
+    nonexistent zones
+  * generic_find and parse can now search for things by UID, as well as keywords
+  * The ch.cansee function can be extended through Python
+  * Character, room, and object bitvectors can now be extended and accessed via
+    Python
+  * Fixed issue with /e in the script editor adding \r to the end of lines 
+    (which makes Python choke)
+  * Added new trigger types for looking, closing, and entering the game
+
+VERSION 3.7 (Dec 06/08)
+ * Python can now access World (e.g., for adding protos, dialogs, quests, 
+   etc...). See scripts/pymudsys.c for relevant functions
+ * medit, redit, and oedit now have 'extenders'. Extra menu options can be
+   registered, so the OLC interfaces can be extended without editing the module
+   directly
+ * Python now has access to do_olc, and OLC extenders
+ * Python can now add new item types
+ * Changed how obj/room/mob prototypes are turned into OLC-editable things
+ * multi-word arguments to the commmand parser can now be specified 
+   with " and " or ' and '
+ * Replaced all instances of vsprintf with vsnprintf
+
+VERSION 3.6 (May 31/08)
+ * Deleted the old help module and wrote a new one, help2.
+ * When the mud reads in Python commands, attempts to set their documentation 
+   string as the helpfile for the command, if no helpfile for that command
+   already exists.
+ * Outbound text and prompt are now flushed separately and have their own unique
+   process and finalize hooks incase they need to be handled separately.
+ * Added a 'flush' hook to the beginning of flush_output
+ * Goto and transfer are now builder commands, not admin commands
+ * removed the instantiate command; use rcopy
+ * Fixed bug with cmdcopyto
+ * Fixed message bug with emote and gemote when no emote text is entered
+ * Fixed a problem with OLC menus sometimes printing twice
+ * start_update was broken last patch and would not requeue events; fixed
+
+VERSION 3.5 (Oct 15/07)
+ * Revamped add_cmd. It no longer takes position or pc/npc constraints
+ * New function, add_cmd_check, that adds a function that runs pre-command. If 
+   it fails, the command doesn't run. Useful for modules to modify command 
+   conditions after the fact. Like, for instance, combat modules preventing 
+   movement while combat is taking place.
+ * Output and prompts are now sent after the current event cycle resolves, 
+   instead of before.
+ * Events added with a delay of 0 now queue to the back of the event list, 
+   instead of being pushed on to the front of it. This is for events that 
+   trigger other events that need to be resolved in the same event cycle. 
+   Normal events (with a delay > 0) will be resolved on the next event cycle, 
+   as usual.
+ * Characters now save after the init_player hooks are run
+ * Fixed a problem with special exits not displaying the proper exit messages
+ * Enter hooks are now properly run when someone enters a portal
+ * pyobj.load_obj now properly sends worn items to the inventory if no body 
+   location arguments are supplied
+
+VERSION 3.4 (Sep 22/07)
+ * Made sure NM compiles with Python 2.5
+ * Python module for finding the shortest path between two rooms now exists
+ * Python module for doing repeatable/nonrepeatable routines (i.e. path 
+   following) now exists
+ * There is now a 'script' room reset type. Runs a script on the initiator 
+   (room, loaded mob, object, etc) as 'me'. Intended to set up behaviors for a 
+   unique instantion of a mob/obj like pathing.
+ * renamed the char_vars module to dyn_vars. It now applies to objects and rooms
+ * added a initialize hook before we enter the gameloop
+ * the commands command now displays room-specific commands
+ * Made generic_find() search equipment before inventory
+ * Python rooms are now hashable
+ * Characters can no longer call act() in Python unless they have a room (i.e.,
+   no actions if a character's prototype is still initializing the character)
+ * Fixed bug with lists not properly handling element removals
+ * Fixed a bug where a char/obj/room would potentially not properly dereference
+   after its prototype script had being run over it
+ * Fixed problem with nested calls to hookRun overwriting eachothers' argument 
+   list
+ * Fixed a buffer overflows in storage.c parse_line, parse_string, and 
+   write_string_data
+ * Removed night descs. Their functionality can be reproduced with embedded 
+   Python scripts.
+ * Fixed memory leak with Python events not properly decrementing ref counts on
+   owners for interrupted events
+ * Fixed a bug where the python char generation wasn't calling char_to_game,
+   allowing new characters to interact with stuff, but not having stuff be able
+   to interact with them
+ * If the mud is locked down to players, no new players can be created
+   The mud no longer hangs if a person hits enter and nothing else on the first
+   connection prompt
+
+
+VERSION 3.3 (Dec 25/06)
+  * If a Python module has errors when initialized, the MUD halts booting and 
+    prints a traceback to standard out.
+  * Gave Python access to the input handler and prompt
+  * The main prompt is now contained in pymudsys.c and can be overwritten with 
+    the Python command, mudsys.show_prompt = new_prompt_here. Demo contained in
+    the doc folder
+  * Rewrote login and account generation in Python
+  * Rewrote character generation in Python
+  * Moved color and universal newline code into Python
+  * added getAuxiliary() to Python rooms and objects
+  * Gave Python access to char, obj, room, etc... without them having to 
+    actually be in game (i.e. for char gen). Still need to be extracted after 
+    being used.
+  * Replaced some send_to_char oopsies with ch.send in the python code
+  * Deprecated the Python event.start_update; recursively call 
+    event.start_event now
+  * Fixed some bugs with ch or vict being NULL in message()
+  * cmd_delay now accepts floating point delay values
+  * Fixed bugs where Py_None returned without increasing its reference count
+  * Fixed bug with completed Python events not decrementing data reference count
+    Bug still exists for interrupted events.
+  * Optional SCons build system introduced
+
+
+VERSION 3.2.1 (Jul 09/06)
+  * Fixed bug with NPCs becoming unable to speak
+  * Mysty mysteriously stopped loading. She now loads again
+  * Fixed bug with lockdown not working
+  * Fixed a memory leak in Python char.list_chars() and char.list_sockets()
+  * Fixed bug with atoi() not being imported in cmd_admin.py
+  * Gave Python access to a character's notepad
+  * Fixed various spelling mistakes
+
+
+VERSION 3.2 (Jul 01/06)
+  * Python now has access to parse_args()
+  * Python now has access to hooks. Hooks rewritten to accomodate for this
+  * Most of the cmd_xxx functions were rewritten in Python (lib/pymodules)
+  * Almost all remaining commands shuffled around into modules
+  * Python modules can now have an __unload__ method that is called whenever 
+    they are reloaded with the pyload command. Useful for removing commands or
+    hooks
+  * Room resets now apply recursively to prototypes
+  * Added builder commands: rcopy, dig, fill
+  * Modified the "commands" command to accept a group list
+  * Fixed python aux data crash bug introduced in 3.1
+  * Fixed bug not allowing exits to link between zones
+
+
+VERSION 3.1 (Dec  04/05)
+  * Let dynamic descriptions be embedded with a Python-like, markup 
+    language-like style. For example:
+    You're in a [if ch.race=="fairy"]HUGE[elif ch.race=="giant"]tiny[/if] cave.
+  * Prototypes and triggers now re-use code objects when they are run multiple
+    times, instead of recompiling from source every time
+  * Similarly, characters, objects, and room now reuse their Python 
+    representations instead of remaking one every time it is needed
+  * Redid the way hooks work, to make them more flexible.
+  * Added new hooks for account and character creation
+  * Changed functionality of next_space_in to to check for newlines, carriage 
+    returns, and tabs
+  * Made bodies reset when races are changed in Python scripts
+  * Characters' equipment can now be accessed in Python
+  * Changed parse_keywords and parse_strings to return a list of strings rather
+    than an array of strings
+  * Rooms now auto-reload after being edited in OLC
+  * Prototypes now print errors if their parents cannot be found when run
+  * Exit descriptions can now have embedded python scripts
+  * Added new hook types for after looking at rooms, exits, objects, and chars
+  * Python now has access to functions in the time module
+  * Made some small changes to the functionality of Sets
+  * Added warning message to OLC for people making closable exits w/o keywords
+  * Carriage returns are now stripped from triggers when they are edited
+  * Parse now handles multiple words surrounded by " and " as a single word
+  * Redid try_equip to work with more than just worn items
+  * Added set methods for the Integer, Double, and Long structs. Also added a 
+    new struct, Boolean.
+  * Fixed bug with Python event module method list not being terminated properly
+  * Fixed bug with PyChar_act editing PyStrings when it shouldn't
+  * Fixed crash bug with PyChar_geton
+  * Fixed many memory leaks caused by improper handling of Python objects
+  * Fixed some buffer formatting problems
+  * Fixed problem with dynamic descs crashing the mud
+  * Fixed problem with OLC not liking " in descriptions. This problem still 
+    exists in short and room descriptions, but not paragraph descriptions.
+  * Fixed bug with mud crashing if players do not have a room but use a command
+  * Fixed bug with exits not being able to be set as closable
+  * Fixed a bug with the "enter" command not working properly
+  * Fixed alignment problems in worn item type OLC menus
+  * Fixed bug with embedded scripts not expanding for char or obj descs
+  * Fixed a bug with redit not generating night descriptions properly
+  * Fixed bug with python load_obj not being able to equip characters.
+  * Fixed bug with oedit, medit, and redit not handling spaces in extra code 
+  * properly
+
+
+VERSION 3.0 (Oct  07/05)
+  * things in the game database (rooms, objects, mobs, triggers) now have string
+    keys instead of vnums. Each key has two parts: a name and a locale (zone 
+    key). So, for instance, Mysty which was vnum 100 in v2.7 is now 
+    mysty@examples
+  * rooms, objects, and mobiles now support inheritance.
+  * mob, obj, and room prototypes are now stored as python scripts.
+  * scripts now run in a special restricted environment to prevent scripters 
+    from running malicious code. Modules written in python are still run in the
+    normal Python environment.
+  * rooms must now be rreload-ed before changes made in OLC are updated.
+  * replaced load/delete_account/player with get/unreference_account/player to 
+    prevent multiple copies of the same account/player from being loaded into 
+    memory.
+  * created general framework for setting up hooks.
+  * commands no longer have a subcmd integer value associated with them.
+  * dialogs have been removed from the codebase, and will be re-released as an 
+    optional module (forthcoming)
+  * new function, parse_args, added to parse command input into appropriate 
+    values.
+  * rooms can now have their own commands
+  * exits now have python representations
+  * rewrote OLC (yet again... hopefully the last time!)
+  * added new OLC commands (mpedit, opedit, rpedit) for editing the python code
+    for prototypes directly
+  * room reset rules are no longer stored on rooms themselves. They now have 
+    their own entries in the world database.
+  * replaced all occurences of strdup(var ? var : "") with strdupsafe(var)
+  * many bug fixes and other minor changes
+
+
+VERSION 2.7 (July 31/05)
+  * changed the way the world is saved to disk
+  * added lazy loading for the game world
+  * removed some unused types defined in mud.h
+  * added wrappers for int, double, and long so they can be passed around as
+    pointers
+  * added lazy loading; massive changes to how zones are stored on disk
+  * added python wrapper for generic_find()
+  * Fixed bug with setting an object type that does not exist (thanks Venzor)
+  * Fixed bug with transfer crashing when target did not exist (thanks Venzor)
+  * Modified scrun so scripts can be run from a person's notepad (thanks Venzor)
+  * Changed the scriptGetNotepad function to return the entire buffer, and not 
+    just the string
+  * Terrain saving fixed AGAIN... apparently, I didn't add the changes last
+    version. This time, terrain values save as strings, not ints. Easier 
+    reading in the zone files. Yay readability.
+  * Fixed bug with deleteRoom crashing us whenever the room contained objs or
+    mobs
+  * New function: build_who()  ... returns a buffer of the who list, rather 
+    than the who list just being accessable through a command.
+  * Fixed bug with admins not being able to edit all zones
+  * Extraction of objs/mobs is now a two-stage process: first, all of the stuff
+    is done to prepare them for extraction (e.g. remove all pointers in game to
+    them, remove them from rooms/containers). Then, at the end of the pulse, 
+    they are removed from game and deleted. This is to help prevent against 
+    problems with referencing bad memory when trying to use something in a 
+    function after it has been extracted in the same function.
+  * Added new admin command, force
+  * expanded generic_find() so it can return lists of characters if all.xxx is
+    used
+  * Added script editor option for supressing auto-indent (easier pasting of 
+    code)
+
+
+VERSION 2.6 (July 06/05)
+  * Fixed HUGE memory leak with zones saving. Storage sets weren't closing!!
+  * Fixed bug with room terrains saving as ints but loading as strings (they 
+    save/load as ints. Ideally, I would have liked to do it as strings, but 
+    then I'd have to write a conversion patch. Maybe next version)
+  * Helpfiles can now be viewed from olc
+  * resized the column width for help listings and command listings
+  * Added a new method to pychars which allows strings to be paged rather than 
+    sent, for easy reading of long text
+  * set_val now works on offline characters
+  * Added new scripter command, scstat to pull up script info for a vnum
+  * Fixed bug with count_occurences not working properly.
+  * Aliases be embedded in other aliases. Aliases can be multi-command
+  * Fixed bug with set not working on one's self
+  * Special exits can now have their "opposite" direction set in OLC When 
+    closing/opening or locking/unlocking an exit, the opposite exit on the other
+    side will also do the same.
+  * Made special exits check before normal commands
+
+
+VERSION 2.5 (June 18/05)
+  * New manual for scripts and extending the mud in Python
+  * Gave python access to storage sets, auxiliary data, event handler,
+    action handler, and way more variables + functions
+  * Fixed bug with gcc not building dependencies properly on some OSes
+  * Fixed bug with wearable items not being, well, wearable!! oops...
+  * A bunch of random utility functions, and minor changes
+
+
+VERSION 2.4 (June 4/05)
+  * Redid big chunks of the Makefile so output is easier to read. 
+  * New make command added: make backup. Backs up lib, src, and doc directories
+  * redid some of the message() command. There are no longer TO_NOTCHAR and 
+    TO_NOTVICT flags (they are redundant)
+  * Fixed a couple minor bugs in OLC that could potentially get you stuck at
+    a menu screen with no way to exit
+  * Gave python access to more aspects of rooms, characters, objects...
+  * Python packages can now be imported, in addition to modules
+  * Fixed a buffer overflow bug when loading python modules
+  * Fixed a problem with text displaying on the same line as a prompt
+  * Fixed problem with who displaying the wrong group status for people
+
+
+VERSION 2.3 (May 27/05)
+  * Removed levels, added "user groups" for command priviledges
+  * Fixed bug with purge trying to extract null objects or characters
+  * Fixed bug with unequipping objects more than once that are on more than 
+    one bodypart
+  * Python objects are now extendable from outside modules
+  * Commands can be written in python
+  * Modules written in python can now be loaded into NakedMud
+
+
+VERSION 2.2 (May 12/05)
+  * Accounts have been added to the MUD.
+  * Minor fixes to input handling and flushing of output when we don't have a
+    prompt to display after the flushing.
+  * ./autorun.py can now be used to start up the autorun file
+  * Added an MOTD command
+  * Added read/store_bool to storage.h
+  * new admin command, lockdown, that can bar players of certain levels from
+    entering the game.
+  * sets now auto-expand themselves like hashtables
+
+
+VERSION 2.1.1 (May 08/05)
+  * Fixed two major bugs: property_tables will no longer give a key a negative
+    bucket number. Copyover now works. Socket data wasn't being zeroed before
+    it was being used, causing us to crash on some platforms. Thanks go out to
+    Rhaelar for pointing out and helping me find both of these bugs
+
+
+VERSION 2.1 (Apr 24/05)
+  * scripts can now attach/detach other scripts from rooms, objs, and mobs
+  * hashtables no longer need a size specified when they are made; they will
+    also automatically expand themselves as needed
+  * major bugs with olc2 fixed; when editing a new object or mobile, the item
+    will actually be created now
+  * minor bug with "fill" fixed. When filling an exit that doesn't link back to
+    the room you are filling from, the mud will no longer crash
+  * oedit and medit can now be used to edit mobs and objects in your room or
+    in your inventory, respectively
+  * new script type: runnable. New command: scrun
+  * bitvector edit added to olc2
+
+
+VERSION 2.0 (Apr 15/05)
+  * changed the way file dependencies are created during make (calculating
+    dependencies is an automatic process now)
+  * The code had a *huge* number of changes. The more prominent changes listed:
+  * Completely redid OLC. There is now a new module called OLC2
+  * Made some modules _neccessary_ to NakedMud (e.g. scripts, olc, and other
+    core modules)
+  * Stacked input handlers for sockets, instead of socket states
+  * A new, more robust, more easily extendable text editor
+  * hashIn will now correctly return TRUE if there is a key with a value pair 
+    of null
+  * Fixed the "copyover" bug that was introduced by the last version's directory
+    structure.
+  * Fixed the min/max position problem with socials. These parameters now work.
+  * Changed the hashtable to be case-insensitive
+
+
+VERSION 1.5 (Jan 29/05)
+  * Created a new unordered storage type, SET
+  * helpfile system completed
+  * Added a linecount to the end of the text editor.
+  * Added a new 'write' command that allows players to enter a basic text 
+    editor so they can compose messages. Used with editing helpfiles, and later
+    for mail and board messages.
+  * Re-did races.c so new ones can be added by modules
+  * Added auxiliary data to zones
+  * moved try_buildwalk() from cmd_builder.c to movement.c
+  * renamed admin.c to cmd_admin.c and builder.c to cmd_builder.c
+  * Added a "transfer" so wizzies can move players around.
+  * Added a "stop" command to interrupt player actions
+  * Looking at an exit now displays the objects/characters in the room as well
+  * Killed a bunch of the terrain data that seemed out of place for NakedMud
+  * Changed roomGetExitNames to return pointers to the exit names instead of 
+    strdups of them, so users don't have to worry about garbage collection.
+  * Immortals can now go invisible
+  * added a new type of event -> updates. They will automatically add themselves
+    back into the event queue after they fire
+  * Made vnums show for mob/objects in lists when builders and above see them. 
+    Still needs to be done for mobiles on furniture, and the furniture itself
+  * Made characters save after creation
+  * Mobile gender can now be changed in OLC
+  * Problem with gender names fixed (male/female/neutral names were mixed up)
+  * removed the "exit" parameter from scripts
+  * removed the "comment" parameter from all of the store_xxx functions in 
+    the storage utility.
+
+
+VERSION 1.4 (Jan 18/05)
+Too many changes to list. Some of the major ones include:
+  * NakedMUD should now be set up to compile under most linux systems rather
+    than Mac OSX - us OSX'ers are probably the minority.
+  * Makefiles were completely redone. Compiling modules is much easier now.
+    Many thanks go out to Tyche for pointing me in the direction of a paper
+    that allowed me to redo the makefiles nicely.
+  * You can now pull an element out of a list, even if you are iterating over 
+    the element.
+  * Aliases were extracted out of character.c and added as a new module
+  * char_vars were extracted out of character.c and added as a new module.
+    char_vars can now be numerical values AND strings.
+  * scripts were updated to reflect changes to char_vars
+  * socials were added, plus an OLC for them (socedit).
+  * some work was done to generic_find() and its related functions
+  * various bug-fixes here and there.
+
+
+VERSION 1.0 (Dec 26/04)
+  * First public release of NakedMud

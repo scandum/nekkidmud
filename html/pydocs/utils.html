@@ -1,0 +1,51 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: utils</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>utils</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hollis/Desktop/nakedmud/lib/pymodules/utils.py">/Users/hollis/Desktop/nakedmud/lib/pymodules/utils.py</a></font></td></tr></table>
+    <p><tt>utils.py<br>
+&nbsp;<br>
+Various&nbsp;utility&nbsp;functions&nbsp;used&nbsp;by&nbsp;other&nbsp;Python&nbsp;modules.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="mud.html">mud</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-aan"><strong>aan</strong></a>(word)</dt><dd><tt>return&nbsp;"a"&nbsp;or&nbsp;"an",&nbsp;depending&nbsp;on&nbsp;the&nbsp;word.</tt></dd></dl>
+ <dl><dt><a name="-build_show_list"><strong>build_show_list</strong></a>(ch, list, s_func, m_func<font color="#909090">=None</font>, joiner<font color="#909090">='<font color="#c040c0">\r\n</font>'</font>, and_end<font color="#909090">=False</font>)</dt><dd><tt>builds&nbsp;a&nbsp;list&nbsp;of&nbsp;things&nbsp;to&nbsp;show&nbsp;a&nbsp;character.&nbsp;s_func&nbsp;is&nbsp;the&nbsp;description&nbsp;if<br>
+there&nbsp;is&nbsp;only&nbsp;a&nbsp;single&nbsp;item&nbsp;of&nbsp;the&nbsp;type.&nbsp;m_func&nbsp;is&nbsp;the&nbsp;description&nbsp;if<br>
+there&nbsp;are&nbsp;multiple&nbsp;occurences&nbsp;of&nbsp;the&nbsp;thing&nbsp;in&nbsp;the&nbsp;list</tt></dd></dl>
+ <dl><dt><a name="-chk_conscious"><strong>chk_conscious</strong></a>(ch, cmd)</dt></dl>
+ <dl><dt><a name="-find_all_chars"><strong>find_all_chars</strong></a>(looker, list, name, proto<font color="#909090">=None</font>, must_see<font color="#909090">=True</font>)</dt><dd><tt>returns&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;chars&nbsp;that&nbsp;match&nbsp;the&nbsp;supplied&nbsp;constraints</tt></dd></dl>
+ <dl><dt><a name="-find_all_objs"><strong>find_all_objs</strong></a>(looker, list, name, proto<font color="#909090">=None</font>, must_see<font color="#909090">=True</font>)</dt><dd><tt>returns&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;objects&nbsp;that&nbsp;match&nbsp;the&nbsp;supplied&nbsp;constraints</tt></dd></dl>
+ <dl><dt><a name="-find_char"><strong>find_char</strong></a>(looker, list, num, name, proto<font color="#909090">=None</font>, must_see<font color="#909090">=True</font>)</dt><dd><tt>returns&nbsp;the&nbsp;numth&nbsp;char&nbsp;to&nbsp;match&nbsp;the&nbsp;supplied&nbsp;constraints</tt></dd></dl>
+ <dl><dt><a name="-find_obj"><strong>find_obj</strong></a>(looker, list, num, name, proto<font color="#909090">=None</font>, must_see<font color="#909090">=True</font>)</dt><dd><tt>returns&nbsp;the&nbsp;numth&nbsp;object&nbsp;to&nbsp;match&nbsp;the&nbsp;supplied&nbsp;constraints</tt></dd></dl>
+ <dl><dt><a name="-get_count"><strong>get_count</strong></a>(str)</dt><dd><tt>separates&nbsp;a&nbsp;name&nbsp;and&nbsp;a&nbsp;count,&nbsp;and&nbsp;returns&nbsp;the&nbsp;two</tt></dd></dl>
+ <dl><dt><a name="-has_proto"><strong>has_proto</strong></a>(ch, proto)</dt><dd><tt>returns&nbsp;whether&nbsp;or&nbsp;not&nbsp;the&nbsp;character&nbsp;has&nbsp;on&nbsp;his&nbsp;or&nbsp;her&nbsp;person&nbsp;an&nbsp;object<br>
+that&nbsp;inherits&nbsp;from&nbsp;the&nbsp;given&nbsp;prototype</tt></dd></dl>
+ <dl><dt><a name="-is_keyword"><strong>is_keyword</strong></a>(kw, word, abbrev_ok<font color="#909090">=False</font>)</dt><dd><tt>returns&nbsp;whether&nbsp;or&nbsp;not&nbsp;the&nbsp;word&nbsp;(or&nbsp;list&nbsp;of&nbsp;words)&nbsp;is&nbsp;a&nbsp;keyword</tt></dd></dl>
+ <dl><dt><a name="-is_one_keyword"><strong>is_one_keyword</strong></a>(kw, word, abbrev_ok<font color="#909090">=False</font>)</dt><dd><tt>returns&nbsp;whether&nbsp;or&nbsp;not&nbsp;the&nbsp;single&nbsp;word&nbsp;is&nbsp;a&nbsp;keyword&nbsp;in&nbsp;the&nbsp;list</tt></dd></dl>
+ <dl><dt><a name="-olc_display_table"><strong>olc_display_table</strong></a>(sock, list, num_cols, disp<font color="#909090">=&lt;function &lt;lambda&gt; at 0x765e70&gt;</font>)</dt><dd><tt>used&nbsp;by&nbsp;OLC&nbsp;functions&nbsp;to&nbsp;display&nbsp;a&nbsp;list&nbsp;of&nbsp;options&nbsp;in&nbsp;a&nbsp;table&nbsp;form.<br>
+Also&nbsp;displays&nbsp;each&nbsp;option's&nbsp;position&nbsp;number&nbsp;and&nbsp;colorizes&nbsp;everything.</tt></dd></dl>
+ <dl><dt><a name="-parse_keywords"><strong>parse_keywords</strong></a>(kw)</dt><dd><tt>turns&nbsp;a&nbsp;comma-separated&nbsp;list&nbsp;of&nbsp;strings&nbsp;to&nbsp;a&nbsp;list&nbsp;of&nbsp;keywords</tt></dd></dl>
+ <dl><dt><a name="-show_list"><strong>show_list</strong></a>(ch, list, s_func, m_func<font color="#909090">=None</font>)</dt><dd><tt>shows&nbsp;a&nbsp;list&nbsp;of&nbsp;things&nbsp;to&nbsp;the&nbsp;character.&nbsp;s_func&nbsp;is&nbsp;the&nbsp;description&nbsp;if<br>
+there&nbsp;is&nbsp;only&nbsp;a&nbsp;single&nbsp;item&nbsp;of&nbsp;the&nbsp;type.&nbsp;m_func&nbsp;is&nbsp;the&nbsp;description&nbsp;if<br>
+there&nbsp;are&nbsp;multiple&nbsp;occurences&nbsp;of&nbsp;the&nbsp;thing&nbsp;in&nbsp;the&nbsp;list</tt></dd></dl>
+</td></tr></table>
+</body></html>

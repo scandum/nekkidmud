@@ -1,0 +1,90 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: mud</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>mud</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>The&nbsp;mud&nbsp;module,&nbsp;for&nbsp;all&nbsp;MUD&nbsp;misc&nbsp;mud&nbsp;utils.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-erase_global"><strong>erase_global</strong></a>(...)</dt><dd><tt><a href="#-erase_global">erase_global</a>(name)<br>
+&nbsp;<br>
+Delete&nbsp;a&nbsp;value&nbsp;from&nbsp;the&nbsp;global&nbsp;variable&nbsp;table.</tt></dd></dl>
+ <dl><dt><a name="-expand_text"><strong>expand_text</strong></a>(...)</dt><dd><tt><a href="#-expand_text">expand_text</a>(text,&nbsp;dict={},&nbsp;newline=False)<br>
+&nbsp;<br>
+Take&nbsp;text&nbsp;with&nbsp;embedded&nbsp;Python&nbsp;statements.&nbsp;Statements&nbsp;can&nbsp;be&nbsp;embedded<br>
+between&nbsp;[&nbsp;and&nbsp;].&nbsp;Expand&nbsp;them&nbsp;out&nbsp;and&nbsp;return&nbsp;the&nbsp;new&nbsp;text.&nbsp;Variables&nbsp;can<br>
+be&nbsp;added&nbsp;to&nbsp;the&nbsp;scripting&nbsp;environment&nbsp;by&nbsp;specifying&nbsp;their&nbsp;names&nbsp;and<br>
+values&nbsp;in&nbsp;an&nbsp;optional&nbsp;dictionary.&nbsp;Statements&nbsp;are&nbsp;expanded&nbsp;in&nbsp;the&nbsp;default<br>
+scripting&nbsp;environment.</tt></dd></dl>
+ <dl><dt><a name="-extract"><strong>extract</strong></a>(...)</dt><dd><tt><a href="#-extract">extract</a>(thing)<br>
+&nbsp;<br>
+Extracts&nbsp;an&nbsp;object,&nbsp;character,&nbsp;or&nbsp;room&nbsp;from&nbsp;the&nbsp;game.</tt></dd></dl>
+ <dl><dt><a name="-format_string"><strong>format_string</strong></a>(...)</dt><dd><tt><a href="#-format_string">format_string</a>(text,&nbsp;indent=True,&nbsp;width=80)<br>
+&nbsp;<br>
+Format&nbsp;a&nbsp;block&nbsp;of&nbsp;text&nbsp;to&nbsp;be&nbsp;of&nbsp;the&nbsp;specified&nbsp;width,&nbsp;possibly&nbsp;indenting<br>
+paragraphs.</tt></dd></dl>
+ <dl><dt><a name="-generic_find"><strong>generic_find</strong></a>(...)</dt><dd><tt>Deprecated.&nbsp;Use&nbsp;mud.parse_args&nbsp;instead.</tt></dd></dl>
+ <dl><dt><a name="-get_global"><strong>get_global</strong></a>(...)</dt><dd><tt><a href="#-get_global">get_global</a>(name)<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;non-persistent&nbsp;global&nbsp;variable,&nbsp;or&nbsp;None.</tt></dd></dl>
+ <dl><dt><a name="-get_greeting"><strong>get_greeting</strong></a>(...)</dt><dd><tt><a href="#-get_greeting">get_greeting</a>()<br>
+&nbsp;<br>
+returns&nbsp;the&nbsp;mud's&nbsp;connection&nbsp;greeting.</tt></dd></dl>
+ <dl><dt><a name="-get_hour"><strong>get_hour</strong></a>(...)</dt><dd><tt><a href="#-get_hour">get_hour</a>()<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;current&nbsp;in-game&nbsp;hour&nbsp;of&nbsp;day.</tt></dd></dl>
+ <dl><dt><a name="-get_motd"><strong>get_motd</strong></a>(...)</dt><dd><tt><a href="#-get_motd">get_motd</a>()<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;mud's&nbsp;message&nbsp;of&nbsp;the&nbsp;day.</tt></dd></dl>
+ <dl><dt><a name="-get_time"><strong>get_time</strong></a>(...)</dt><dd><tt><a href="#-get_time">get_time</a>()<br>
+&nbsp;<br>
+Return&nbsp;time&nbsp;of&nbsp;day&nbsp;(morning,&nbsp;afternoon,&nbsp;evening,&nbsp;night).</tt></dd></dl>
+ <dl><dt><a name="-is_afternoon"><strong>is_afternoon</strong></a>(...)</dt><dd><tt>True&nbsp;or&nbsp;False&nbsp;if&nbsp;it&nbsp;is&nbsp;afternoon.</tt></dd></dl>
+ <dl><dt><a name="-is_evening"><strong>is_evening</strong></a>(...)</dt><dd><tt>True&nbsp;or&nbsp;False&nbsp;if&nbsp;it&nbsp;is&nbsp;evening.</tt></dd></dl>
+ <dl><dt><a name="-is_morning"><strong>is_morning</strong></a>(...)</dt><dd><tt>True&nbsp;or&nbsp;False&nbsp;if&nbsp;it&nbsp;is&nbsp;morning.</tt></dd></dl>
+ <dl><dt><a name="-is_night"><strong>is_night</strong></a>(...)</dt><dd><tt>True&nbsp;or&nbsp;False&nbsp;if&nbsp;it&nbsp;is&nbsp;night.</tt></dd></dl>
+ <dl><dt><a name="-is_race"><strong>is_race</strong></a>(...)</dt><dd><tt><a href="#-is_race">is_race</a>(name)<br>
+&nbsp;<br>
+Returns&nbsp;True&nbsp;or&nbsp;False&nbsp;if&nbsp;the&nbsp;string&nbsp;is&nbsp;a&nbsp;valid&nbsp;race&nbsp;name.</tt></dd></dl>
+ <dl><dt><a name="-ite"><strong>ite</strong></a>(...)</dt><dd><tt><a href="#-ite">ite</a>(logic_statement,&nbsp;if_statement,&nbsp;else_statement=None)<br>
+&nbsp;<br>
+A&nbsp;functional&nbsp;form&nbsp;of&nbsp;if/then/else.</tt></dd></dl>
+ <dl><dt><a name="-keys_equal"><strong>keys_equal</strong></a>(...)</dt><dd><tt><a href="#-keys_equal">keys_equal</a>(key1,&nbsp;key2)<br>
+&nbsp;<br>
+Returns&nbsp;whether&nbsp;two&nbsp;world&nbsp;database&nbsp;keys&nbsp;are&nbsp;equal,&nbsp;relative&nbsp;to&nbsp;the<br>
+locale&nbsp;(if&nbsp;any)&nbsp;that&nbsp;the&nbsp;current&nbsp;script&nbsp;is&nbsp;running&nbsp;in.</tt></dd></dl>
+ <dl><dt><a name="-list_races"><strong>list_races</strong></a>(...)</dt><dd><tt><a href="#-list_races">list_races</a>(player_only=False)<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;list&nbsp;of&nbsp;available&nbsp;races.&nbsp;If&nbsp;player_only&nbsp;is&nbsp;True,&nbsp;list&nbsp;only&nbsp;the<br>
+races&nbsp;that&nbsp;players&nbsp;have&nbsp;access&nbsp;to.</tt></dd></dl>
+ <dl><dt><a name="-log_string"><strong>log_string</strong></a>(...)</dt><dd><tt><a href="#-log_string">log_string</a>(mssg)<br>
+Send&nbsp;a&nbsp;message&nbsp;to&nbsp;the&nbsp;mud's&nbsp;log.</tt></dd></dl>
+ <dl><dt><a name="-message"><strong>message</strong></a>(...)</dt><dd><tt><a href="#-message">message</a>(ch,&nbsp;vict,&nbsp;obj,&nbsp;vobj,&nbsp;show_invis,&nbsp;range,&nbsp;mssg)<br>
+&nbsp;<br>
+Send&nbsp;a&nbsp;message&nbsp;via&nbsp;the&nbsp;mud&nbsp;messaging&nbsp;system&nbsp;using&nbsp;$&nbsp;expansions.&nbsp;Range<br>
+can&nbsp;be&nbsp;'to_room',&nbsp;'to_char',&nbsp;'to_vict',&nbsp;or&nbsp;'to_world'.</tt></dd></dl>
+ <dl><dt><a name="-parse_args"><strong>parse_args</strong></a>(...)</dt><dd><tt><a href="#-parse_args">parse_args</a>(ch,&nbsp;show_usage_errors,&nbsp;cmd,&nbsp;args,&nbsp;format)<br>
+&nbsp;<br>
+equivalent&nbsp;to&nbsp;parse_args&nbsp;written&nbsp;in&nbsp;C.&nbsp;See&nbsp;parse.h&nbsp;for&nbsp;information.</tt></dd></dl>
+ <dl><dt><a name="-send"><strong>send</strong></a>(...)</dt><dd><tt><a href="#-send">send</a>(list,&nbsp;mssg,&nbsp;dict&nbsp;=&nbsp;None,&nbsp;newline&nbsp;=&nbsp;True)<br>
+&nbsp;<br>
+Sends&nbsp;a&nbsp;message&nbsp;to&nbsp;a&nbsp;list&nbsp;of&nbsp;characters.&nbsp;Messages&nbsp;can&nbsp;have&nbsp;scripts<br>
+embedded&nbsp;in&nbsp;them,&nbsp;using&nbsp;[&nbsp;and&nbsp;].&nbsp;If&nbsp;so,&nbsp;a&nbsp;variable&nbsp;dictionary&nbsp;must&nbsp;be<br>
+provided.&nbsp;By&nbsp;default,&nbsp;'ch'&nbsp;references&nbsp;each&nbsp;character&nbsp;being&nbsp;sent&nbsp;the<br>
+message,&nbsp;for&nbsp;embedded&nbsp;scripts.</tt></dd></dl>
+ <dl><dt><a name="-set_global"><strong>set_global</strong></a>(...)</dt><dd><tt><a href="#-set_global">set_global</a>(name,&nbsp;val)<br>
+&nbsp;<br>
+Sets&nbsp;a&nbsp;non-persistent&nbsp;global&nbsp;variable.&nbsp;Val&nbsp;can&nbsp;be&nbsp;any&nbsp;type.</tt></dd></dl>
+</td></tr></table>
+</body></html>

@@ -1,0 +1,51 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: char_gen</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>char_gen</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hollis/Desktop/nakedmud/lib/pymodules/char_gen.py">/Users/hollis/Desktop/nakedmud/lib/pymodules/char_gen.py</a></font></td></tr></table>
+    <p><tt>char_gen.py<br>
+&nbsp;<br>
+The&nbsp;basic&nbsp;character&nbsp;generation&nbsp;module.&nbsp;Allows&nbsp;accounts&nbsp;to&nbsp;create&nbsp;new&nbsp;characters<br>
+with&nbsp;basic&nbsp;selection&nbsp;for&nbsp;name,&nbsp;sex,&nbsp;and&nbsp;race.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="char.html">char</a><br>
+<a href="hooks.html">hooks</a><br>
+</td><td width="25%" valign=top><a href="mud.html">mud</a><br>
+<a href="mudsys.html">mudsys</a><br>
+</td><td width="25%" valign=top><a href="socket.html">socket</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-__unload__"><strong>__unload__</strong></a>()</dt><dd><tt>removes&nbsp;the&nbsp;hooks&nbsp;for&nbsp;character&nbsp;generation</tt></dd></dl>
+ <dl><dt><a name="-cg_finish_handler"><strong>cg_finish_handler</strong></a>(sock, arg)</dt></dl>
+ <dl><dt><a name="-cg_finish_prompt"><strong>cg_finish_prompt</strong></a>(sock)</dt></dl>
+ <dl><dt><a name="-cg_name_handler"><strong>cg_name_handler</strong></a>(sock, arg)</dt></dl>
+ <dl><dt><a name="-cg_name_prompt"><strong>cg_name_prompt</strong></a>(sock)</dt></dl>
+ <dl><dt><a name="-cg_race_handler"><strong>cg_race_handler</strong></a>(sock, arg)</dt></dl>
+ <dl><dt><a name="-cg_race_prompt"><strong>cg_race_prompt</strong></a>(sock)</dt></dl>
+ <dl><dt><a name="-cg_sex_handler"><strong>cg_sex_handler</strong></a>(sock, arg)</dt></dl>
+ <dl><dt><a name="-cg_sex_prompt"><strong>cg_sex_prompt</strong></a>(sock)</dt></dl>
+ <dl><dt><a name="-char_gen_hook"><strong>char_gen_hook</strong></a>(info)</dt><dd><tt>Put&nbsp;a&nbsp;socket&nbsp;into&nbsp;the&nbsp;character&nbsp;generation&nbsp;menu&nbsp;when&nbsp;character&nbsp;generation<br>
+hooks&nbsp;are&nbsp;called.</tt></dd></dl>
+ <dl><dt><a name="-check_char_name"><strong>check_char_name</strong></a>(arg)</dt><dd><tt>checks&nbsp;to&nbsp;make&nbsp;sure&nbsp;the&nbsp;character&nbsp;name&nbsp;is&nbsp;valid.&nbsp;Names&nbsp;are&nbsp;valid&nbsp;if&nbsp;they<br>
+are&nbsp;greater&nbsp;than&nbsp;2&nbsp;characters,&nbsp;less&nbsp;than&nbsp;13,&nbsp;and&nbsp;comprise&nbsp;only&nbsp;alpha<br>
+characters.</tt></dd></dl>
+ <dl><dt><a name="-guest_gen_hook"><strong>guest_gen_hook</strong></a>(info)</dt></dl>
+</td></tr></table>
+</body></html>

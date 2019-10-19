@@ -1,0 +1,45 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: olc</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>olc</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>This&nbsp;is&nbsp;the&nbsp;Python&nbsp;wrapper&nbsp;for&nbsp;the&nbsp;online&nbsp;creation&nbsp;module.&nbsp;Allows&nbsp;users<br>
+to&nbsp;set&nbsp;up&nbsp;new&nbsp;menus&nbsp;and&nbsp;handlers&nbsp;for&nbsp;editing&nbsp;data,&nbsp;such&nbsp;as&nbsp;characters,<br>
+while&nbsp;online.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-do_olc"><strong>do_olc</strong></a>(...)</dt><dd><tt><a href="#-do_olc">do_olc</a>(sock,&nbsp;menu_func,&nbsp;chooser_func,&nbsp;parse_func,&nbsp;saver_func,&nbsp;data,&nbsp;autosave=False)<br>
+&nbsp;<br>
+Entry&nbsp;point&nbsp;to&nbsp;the&nbsp;olc&nbsp;system.&nbsp;See&nbsp;olc2/olc.h&nbsp;for&nbsp;documentation.</tt></dd></dl>
+ <dl><dt><a name="-extend"><strong>extend</strong></a>(...)</dt><dd><tt><a href="#-extend">extend</a>(olc_type,&nbsp;optname,&nbsp;menu_func,&nbsp;chooser_func,&nbsp;parse_func&nbsp;=&nbsp;None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fromproto_func&nbsp;=&nbsp;None,&nbsp;toproto_func&nbsp;=&nbsp;None)<br>
+&nbsp;<br>
+Register&nbsp;a&nbsp;new&nbsp;olc&nbsp;menu&nbsp;extender.&nbsp;Types&nbsp;are&nbsp;medit,&nbsp;redit,&nbsp;and&nbsp;oedit.&nbsp;See<br>
+olc2/olc_extender.h&nbsp;for&nbsp;documentation.</tt></dd></dl>
+ <dl><dt><a name="-item_add_olc"><strong>item_add_olc</strong></a>(...)</dt><dd><tt><a href="#-item_add_olc">item_add_olc</a>(itemtype,&nbsp;menu_func,&nbsp;chooser_func,&nbsp;parse_func,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fromproto_func,&nbsp;toproto_func)<br>
+&nbsp;<br>
+Register&nbsp;a&nbsp;new&nbsp;olc&nbsp;handler&nbsp;for&nbsp;an&nbsp;item&nbsp;type.&nbsp;See&nbsp;items/iedit.h&nbsp;for<br>
+documentation.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>MENU_CHOICE_INVALID</strong> = -1<br>
+<strong>MENU_CHOICE_OK</strong> = -2<br>
+<strong>MENU_NOCHOICE</strong> = 0</td></tr></table>
+</body></html>

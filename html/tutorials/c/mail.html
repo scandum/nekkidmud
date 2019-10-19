@@ -1,0 +1,222 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Mail Module
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">The Mail Module</div>
+<div class="info">
+This basic incarnation of the mail module will allow players to send written
+messages to one another. Send mail will not be persistent (it will not save
+over reboots or crashes). That feature will be postponed until the section on
+Storage Sets.
+<p></p>
+To start, create a new structure to represent a piece of sent mail. Add this to
+<i>mail.c</i>:
+
+<pre class="code">
+typedef struct {
+  char *sender;       // name of the char who sent this mail
+  char   *time;       // the time it was sent at
+  BUFFER *mssg;       // the accompanying message
+} MAIL_DATA;
+</pre>
+
+Now, write some functions for a couple procedures that will be needed down
+the road -- the creation and deletion of mail:
+
+<pre class="code">
+// create a new piece of mail.
+MAIL_DATA *newMail(CHAR_DATA *sender, const char *mssg) {
+  MAIL_DATA *mail = malloc(sizeof(MAIL_DATA));
+  mail->sender = strdup(charGetName(sender));
+  mail->time   = strdup(get_time());
+  mail->mssg   = newBuffer(strlen(mssg));
+  bufferCat(mail->mssg, mssg);
+  return mail;
+}
+
+// free all of the memory that was allocated to make this piece of mail
+void deleteMail(MAIL_DATA *mail) {
+  if(mail->sender) free(mail->sender);
+  if(mail->time)   free(mail->time);
+  if(mail->mssg)   deleteBuffer(mail->mssg);
+  free(mail);
+}
+</pre>
+
+Now that the basic steps for creating and deleting mail are complete, we
+can set up some commands to allow players to send mail:
+
+<pre class="code">
+// mails a message to the specified person. This command must take the 
+// following form:
+//   mail <person>
+//
+// The contents of the character's notepad will be used as the body of the
+// message. The character's notepad must not be empty.
+COMMAND(cmd_mail) {
+  // make sure the character exists
+  if(!player_exists(arg))
+    send_to_char(ch, "Noone named %s is registered on %s.\r\n",
+                 arg, "<insert mud name here>");
+  // make sure we have a socket - we'll need access to its notepad
+  else if(!charGetSocket(ch))
+    send_to_char(ch, "Only characters with sockets can send mail!\r\n");
+  // make sure our notepad is not empty
+  else if(!*bufferString(socketGetNotepad(charGetSocket(ch))))
+    send_to_char(ch, "Your notepad is empty. "
+                 "First, try writing something with {cwrite{n.\r\n");
+  // the character exists. Let's parse the items and send the mail
+  else {
+    MAIL_DATA *mail = newMail(ch, bufferString(socketGetNotepad(charGetSocket(ch))));
+    
+    // if we had some way of storing mail, we'd now do that. But since we
+    // don't, let's just delete the mail.
+    //***********
+    // FINISH ME
+    //***********
+    deleteMail(mail);
+
+    // let the character know we've sent the mail
+    send_to_char(ch, "You send a message to %s.\r\n", arg);
+  }
+}
+</pre>
+
+We will also want to add this new command to the main command table. To do that,
+make a call to add_cmd in init_mail:
+
+<pre class="code">
+// boot up the mail module
+void init_mail(void) {
+  // add all of the commands that come with this module
+  add_cmd("mail", NULL, cmd_mail, "player", FALSE);
+}
+</pre>
+
+The first incarnation of the mail module is just about complete. The only thing
+needed now is a way to store mail that has been sent. To do this, there needs
+to be some way of mapping characters to their received mail, and a command for
+them to access that mail. Let us create a hashtable to map character names to
+their mail. Do this at the top of mail.c, just before the MAIL_DATA structure
+is defined:
+
+<pre class="code">
+// maps charName to a list of mail they have received
+HASHTABLE *mail_table = NULL;
+</pre>
+
+The hashtable will also need to be initialized. This can be done in the
+init_mail function:
+
+<pre class="code">
+// boot up the mail module
+void init_mail(void) {
+  // initialize the mail table
+  mail_table = newHashtable();
+
+  // add all of the commands that come with this module
+  add_cmd("mail", NULL, cmd_mail, "player", FALSE);
+}
+</pre>
+
+Earlier, the mail command was left unfinished because there was no way to store
+mail. Now that there is a hashtable for serving this function, go back to
+cmd_mail and fill in the unfinishedp art:
+
+<pre class="code">
+  // the character exists. Let's parse the items and send the mail
+  else {
+    MAIL_DATA *mail = newMail(ch, bufferString(socketGetNotepad(charGetSocket(ch))));
+    
+    // see if the receiver already has a mail list
+    LIST *mssgs = hashGet(mail_table, arg);
+    
+    // if he doesn't, create one and add it to the hashtable
+    if(mssgs == NULL) {
+      mssgs = newList();
+      hashPut(mail_table, arg, mssgs);
+    }
+
+    // add the new mail to our mail list
+    listPut(mssgs, mail);
+
+    // let the character know we've sent the mail
+    send_to_char(ch, "You send a message to %s.\r\n", arg);
+  }
+</pre>
+
+It's all well and good being able to send mail, but what about receiving mail?
+Here is a way to write a command for performing that function:
+
+<pre class="code">
+// checks to see if the character has any mail. If he does, convert each piece
+// of mail into an object, and transfer them all into the character's inventory.
+COMMAND(cmd_receive) {
+  // Remove the character's mail list from our mail table
+  LIST *mail_list = hashRemove(mail_table, charGetName(ch));
+
+  // make sure the list exists
+  if(mail_list == NULL || listSize(mail_list) == 0)
+    send_to_char(ch, "You have no new mail.\r\n");
+  // hand over all of the mail
+  else {
+    // go through each piece of mail, make an object for it, 
+    // and transfer the new object to us
+    LIST_ITERATOR *mail_i = newListIterator(mail_list);
+    MAIL_DATA       *mail = NULL;
+    ITERATE_LIST(mail, mail_i) {
+      OBJ_DATA *obj  = newObj();
+      objSetName      (obj, "a letter");
+      objSetKeywords  (obj, "letter, mail");
+      objSetRdesc     (obj, "A letter is here.");
+      objSetMultiName (obj, "A stack of %d letters");
+      objSetMultiRdesc(obj, "A stack of %d letters are here.");
+      bprintf(objGetDescBuffer(obj),
+             "Sender   : %s\r\n"
+             "Date sent: %s\r\n"
+             "%s", mail->sender, mail->time, bufferString(mail->mssg));
+      
+      // give the object to the character
+      obj_to_game(obj);
+      obj_to_char(obj, ch);
+    } deleteListIterator(mail_i);
+
+    // let the character know how much mail he received
+    send_to_char(ch, "You receive %d letter%s.\r\n", 
+                 listSize(mail_list), (listSize(mail_list) == 1 ? "" : "s"));
+  }
+  
+  // delete the mail list, and all of its contents
+  if(mail_list != NULL) deleteListWith(mail_list, deleteMail);
+}
+</pre>
+
+Like with cmd_mail, add the receive command to the global command table. You
+can copy and paste from what already exists. Once that is done, you have the
+first pass at a mail module. You could probably add lots to this module, like
+parcels of items, fees for sending mail, checks to make sure mail is only sent
+at mailboxes, etc... but for our purposes of demonstrating how modules work,
+this will suffice. The rest of the features will be left to you as an exercise.
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

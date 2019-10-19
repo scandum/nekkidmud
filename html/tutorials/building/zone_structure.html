@@ -1,0 +1,71 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Zone Structure
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Zones</div>
+<div class="info">
+Zones are organizational units for builders. Each zone houses a list of
+mobiles, objects, rooms, triggers, reset instructions, and potentially other
+additions, henceforth called contents. Each zone can be assigned a list of 
+builders who have editing access.
+</div>
+
+<div class="head">Zone Keys</div>
+<div class="info">
+Each zone has a unique reference key associated with it. Likewise, each zone
+content also has a unique zone-relative key. Most muds accomplish this with use
+of a virtual number (vnum) based referencing system. That each, each unique
+zone, room, object, mobile, etc... has a unique key number associated with it.
+In many DIKU muds, the default start room has a vnum of 1204. Whenever a builder
+would want to reference this start room, they would use the number 1204 as a
+reference key to access it.
+<p></p>
+NakedMud uses a string based referencing system. Each content of a zone is
+assigned a unique string-based key (e.g., fido, mayor, town_square) instead of
+a number. Contents of different types (e.g., mobiles vs. objects) can share the
+same unique key. Key reference is context-dependent, and will identify the
+correct type of content you are referring to. Zones also have unique keys. When
+a content key is referenced, it is implicit that the user means the content key
+of the zone they are currently within. For instance, using the command:
+<pre class="mud">
+> <font class="cmd">goto town_square</font>
+</pre>
+would attempt to take you to the room with key town_square in city1 if you are
+currently in city1, or the room with key town_square in city2 if you are
+currently in city2. Keys from other zones may be referenced by following the
+content key with an '@' symbol and the relevant zone key. For instance, if you 
+are  currently in city1 but would like to go to the town square of city2, you 
+could use the command:
+<pre class="mud">
+> <font class="cmd">goto town_square@city2</font>
+</pre>
+</div>
+
+<div class="head">Zone contents</div>
+<div class="info">
+By default, zones support room, object, mobile, and trigger contents. However,
+new content types can be added to the game (discussed in C basics). Additional
+modules are available for Quest and NPC dialog contents.
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

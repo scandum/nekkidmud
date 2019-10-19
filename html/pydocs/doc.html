@@ -1,0 +1,58 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: doc</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>doc</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hollis/Desktop/nakedmud/lib/pymodules/doc.py">/Users/hollis/Desktop/nakedmud/lib/pymodules/doc.py</a></font></td></tr></table>
+    <p><tt>doc.py<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;allows&nbsp;documentation&nbsp;for&nbsp;Python&nbsp;classes&nbsp;and&nbsp;modules&nbsp;to&nbsp;be&nbsp;viewed<br>
+in-game&nbsp;via&nbsp;the&nbsp;'doc'&nbsp;command.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="display.html">display</a><br>
+</td><td width="25%" valign=top><a href="mudsys.html">mudsys</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="pydoc.html">pydoc</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-cmd_doc"><strong>cmd_doc</strong></a>(ch, cmd, arg)</dt><dd><tt>Return&nbsp;Python&nbsp;documentation&nbsp;for&nbsp;the&nbsp;specified&nbsp;module,&nbsp;class,&nbsp;function,<br>
+etc...&nbsp;for&nbsp;example:<br>
+&nbsp;<br>
+&gt;&nbsp;doc&nbsp;char.Char<br>
+&nbsp;<br>
+Will&nbsp;return&nbsp;all&nbsp;available&nbsp;documentation&nbsp;for&nbsp;the&nbsp;Char&nbsp;class.</tt></dd></dl>
+ <dl><dt><a name="-cmd_htmldoc"><strong>cmd_htmldoc</strong></a>(ch, cmd, arg)</dt><dd><tt>Creates&nbsp;html&nbsp;documentation&nbsp;for&nbsp;all&nbsp;registered&nbsp;modules.&nbsp;html&nbsp;files&nbsp;will<br>
+be&nbsp;saved&nbsp;to&nbsp;html/pydocs/</tt></dd></dl>
+ <dl><dt><a name="-register_module_doc"><strong>register_module_doc</strong></a>(modname, package<font color="#909090">=None</font>, root<font color="#909090">='pymodules'</font>)</dt><dd><tt>Add&nbsp;a&nbsp;new&nbsp;module&nbsp;name&nbsp;to&nbsp;suggested_reading.&nbsp;If&nbsp;modname&nbsp;is&nbsp;a&nbsp;package,<br>
+recursively&nbsp;add&nbsp;its&nbsp;packages&nbsp;as&nbsp;well</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>HTML_DOC_DIR</strong> = '../html/pydocs'<br>
+<strong>builtins</strong> = ['char', 'room', 'obj', 'exit', 'account', 'mudsock', 'mud', 'mudsys', 'hooks', 'event', 'auxiliary', 'storage', 'olc']<br>
+<strong>fname</strong> = 'utils.pyc'<br>
+<strong>mod</strong> = 'olc'<br>
+<strong>modname</strong> = 'utils'<br>
+<strong>shortcuts</strong> = {'ch': 'char', 'sock': 'mudsock'}<br>
+<strong>suggested_reading</strong> = ['char', 'room', 'obj', 'exit', 'account', 'mudsock', 'mud', 'mudsys', 'hooks', 'event', 'auxiliary', 'storage', 'olc', 'account_handler', 'char_gen', 'cmd_admin', 'cmd_comm', 'cmd_inform', 'cmd_manip', 'cmd_misc', ...]</td></tr></table>
+</body></html>

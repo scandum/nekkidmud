@@ -1,0 +1,85 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Room Commands
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Room Comands</div>
+<div class="info">
+NakedMud has a global command handler. When a new command is added to the game,
+it is entered into the global command handler. However, each individual room
+also has a local command handler. Rooms can have their own unique commands
+added. In fact, when a room has a unique exit, all that happens is a command
+is added to the room that allows movement between multiple rooms. Commands are
+functions that take three arguments: a character, the command name, and the
+argument supplied to the command:
+
+<pre class="code">
+def cmd_touch(ch, cmd, arg):
+    try:
+        obj, = parse_args(ch, True, cmd, arg, "[the] obj.room")
+    except: return
+
+    # are we touching the activator device?
+    if obj.isinstance("mage_teleport_orb"):
+        try:
+            map  = {"mage_guild_entrance@moonhaven" : "magic_tower01@moonhaven",
+                    "magic_tower01@moonhaven" : "mage_guild_entrance@moonhaven"}
+            dest = map[ch.room.proto]
+        except:
+            # no destination (or source) was found
+            message(ch, obj, None, None, False, "to_char",
+                    "You reach out and touch $o, but nothing happens.")
+            return
+
+        ch.send("As you reach out and touch the orb, your mind clouds with a "
+                "blue haze. Once the haze fades, you find your surroundings "
+                "have changed.")
+        ch.room = dest
+        ch.act("look")
+
+    # or are we just touching any old random object?
+    else:
+        message(ch, obj, None, None, False, "to_char",
+                "You reach out and touch $o, but nothing happens.")
+
+me.add_cmd("touch", None, cmd_touch, "player", True)
+</pre>
+
+Rooms, like the mud module, has an add_cmd method that can be called. Commands
+can be set up and added in the extra code section of a room prototype. The
+add_cmd method takes five arguments: the command name, and abbrevation (if any, 
+e.g., ne for northeast), the command itself, the player group that can use the
+command, and a truth value whether or not mobiles can use the command.
+<p></p>
+Checks can also be added to room commands:
+<pre class="code">
+def chk_unconscious(ch, cmd):
+  if ch.pos == "unconscious" or ch.pos == "sleeping":
+    return False
+  return True
+
+me.add_cmd_check("touch", chk_unconscious)
+</pre>
+
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

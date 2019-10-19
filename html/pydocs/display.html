@@ -1,0 +1,55 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: display</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>display</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hollis/Desktop/nakedmud/lib/pymodules/display.py">/Users/hollis/Desktop/nakedmud/lib/pymodules/display.py</a></font></td></tr></table>
+    <p><tt>display.py<br>
+&nbsp;<br>
+Various&nbsp;utilities&nbsp;for&nbsp;displaying&nbsp;information&nbsp;such&nbsp;as&nbsp;tables&nbsp;and&nbsp;metered&nbsp;values.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="mud.html">mud</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-meter"><strong>meter</strong></a>(val, char<font color="#909090">='{p#'</font>, empty<font color="#909090">=' '</font>, lcap<font color="#909090">='['</font>, rcap<font color="#909090">=']'</font>, align<font color="#909090">='left'</font>, width<font color="#909090">=20</font>)</dt><dd><tt>Return&nbsp;a&nbsp;horizontal&nbsp;meter&nbsp;representing&nbsp;a&nbsp;numeric&nbsp;value&nbsp;ranging&nbsp;between<br>
+[0,1].</tt></dd></dl>
+ <dl><dt><a name="-pagedlist"><strong>pagedlist</strong></a>(category_map, order<font color="#909090">=None</font>, header<font color="#909090">=None</font>, height<font color="#909090">=21</font>)</dt><dd><tt>Display&nbsp;lists&nbsp;of&nbsp;information&nbsp;as&nbsp;flips&nbsp;within&nbsp;a&nbsp;book.&nbsp;category_map&nbsp;is&nbsp;a<br>
+mapping&nbsp;between&nbsp;section&nbsp;headers&nbsp;and&nbsp;lists&nbsp;of&nbsp;entries&nbsp;to&nbsp;display&nbsp;for&nbsp;that<br>
+category.&nbsp;If&nbsp;you&nbsp;are&nbsp;only&nbsp;displaying&nbsp;one&nbsp;category,&nbsp;have&nbsp;a&nbsp;map&nbsp;from<br>
+the&nbsp;section&nbsp;header,&nbsp;Topics,&nbsp;to&nbsp;your&nbsp;list&nbsp;of&nbsp;entries.&nbsp;If&nbsp;the&nbsp;categories<br>
+should&nbsp;be&nbsp;displayed&nbsp;in&nbsp;a&nbsp;specific&nbsp;(or&nbsp;partially&nbsp;specific)&nbsp;order,&nbsp;that<br>
+can&nbsp;be&nbsp;specified.&nbsp;Header&nbsp;is&nbsp;text&nbsp;that&nbsp;can&nbsp;appear&nbsp;at&nbsp;front&nbsp;of&nbsp;the&nbsp;book<br>
+display.</tt></dd></dl>
+ <dl><dt><a name="-table_row"><strong>table_row</strong></a>(info, align<font color="#909090">='left'</font>, caps<font color="#909090">='|'</font>, space<font color="#909090">=' '</font>, center_filler<font color="#909090">=' '</font>, width<font color="#909090">=79</font>)</dt><dd><tt>display&nbsp;a&nbsp;table&nbsp;row&nbsp;like&nbsp;this:<br>
+|&nbsp;info&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</tt></dd></dl>
+ <dl><dt><a name="-table_splitrow"><strong>table_splitrow</strong></a>(left, right, align<font color="#909090">='left'</font>, caps<font color="#909090">='|'</font>, space<font color="#909090">=' '</font>, center_filler<font color="#909090">=' '</font>, width<font color="#909090">=79</font>)</dt><dd><tt>display&nbsp;two&nbsp;columns&nbsp;like&nbsp;this:<br>
+|&nbsp;left&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;right&nbsp;&nbsp;&nbsp;&nbsp;|</tt></dd></dl>
+ <dl><dt><a name="-table_splitrows"><strong>table_splitrows</strong></a>(left, right, align<font color="#909090">='left'</font>, caps<font color="#909090">='|'</font>, space<font color="#909090">=' '</font>, center_filler<font color="#909090">=' '</font>, width<font color="#909090">=79</font>)</dt><dd><tt>return&nbsp;a&nbsp;list&nbsp;of&nbsp;split&nbsp;rows</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>seperator</strong> = '-------------------------------------------------------------------------------'<br>
+<strong>table_border</strong> = '+-----------------------------------------------------------------------------+'<br>
+<strong>table_filler</strong> = '|                                                                             |'</td></tr></table>
+</body></html>

@@ -1,0 +1,126 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: storage</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>storage</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>The&nbsp;storage&nbsp;module&nbsp;allows&nbsp;users&nbsp;to&nbsp;save&nbsp;information&nbsp;to&nbsp;disk&nbsp;as&nbsp;key:value<br>
+pairs&nbsp;without&nbsp;having&nbsp;to&nbsp;interact&nbsp;with&nbsp;files&nbsp;directly.&nbsp;This&nbsp;module&nbsp;gives<br>
+users&nbsp;access&nbsp;to&nbsp;two&nbsp;classes:&nbsp;StorageSets&nbsp;and&nbsp;StorageLists.&nbsp;Sets&nbsp;match<br>
+keys&nbsp;to&nbsp;values.&nbsp;Lists&nbsp;hold&nbsp;multiple&nbsp;sets.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="storage.html#StorageList">StorageList</a>
+</font></dt><dt><font face="helvetica, arial"><a href="storage.html#StorageSet">StorageSet</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="StorageList">class <strong>StorageList</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#StorageList-__init__">__init__</a>(self,&nbsp;list=None)<br>
+&nbsp;<br>
+Create&nbsp;a&nbsp;new&nbsp;storage&nbsp;list.&nbsp;A&nbsp;Python&nbsp;list&nbsp;of&nbsp;storage&nbsp;sets&nbsp;may&nbsp;be<br>
+supplied,&nbsp;from&nbsp;which&nbsp;to&nbsp;build&nbsp;the&nbsp;storage&nbsp;list.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="StorageList-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#StorageList-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<dl><dt><a name="StorageList-add"><strong>add</strong></a>(...)</dt><dd><tt><a href="#StorageList-add">add</a>(storage_set)<br>
+&nbsp;<br>
+Append&nbsp;a&nbsp;new&nbsp;storage&nbsp;set&nbsp;to&nbsp;the&nbsp;storage&nbsp;list.</tt></dd></dl>
+
+<dl><dt><a name="StorageList-sets"><strong>sets</strong></a>(...)</dt><dd><tt><a href="#StorageList-sets">sets</a>()<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;python&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;sets&nbsp;in&nbsp;the&nbsp;storage&nbsp;list.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x6fca0&gt;<dd><tt>T.<a href="#StorageList-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="StorageSet">class <strong>StorageSet</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#StorageSet-__init__">__init__</a>(self,&nbsp;filename=None)<br>
+&nbsp;<br>
+Create&nbsp;a&nbsp;new&nbsp;storage&nbsp;set.&nbsp;If&nbsp;a&nbsp;file&nbsp;name&nbsp;is&nbsp;supplied,&nbsp;read&nbsp;a&nbsp;storage&nbsp;set<br>
+in&nbsp;from&nbsp;the&nbsp;specified&nbsp;file.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="StorageSet-__contains__"><strong>__contains__</strong></a>(...)</dt><dd><tt><a href="#StorageSet-__contains__">__contains__</a>(name)&nbsp;&lt;==&gt;&nbsp;name&nbsp;in&nbsp;self</tt></dd></dl>
+
+<dl><dt><a name="StorageSet-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#StorageSet-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<dl><dt><a name="StorageSet-close"><strong>close</strong></a>(...)</dt><dd><tt><a href="#StorageSet-close">close</a>()<br>
+&nbsp;<br>
+Recursively&nbsp;close&nbsp;a&nbsp;storage&nbsp;set&nbsp;and&nbsp;all&nbsp;of&nbsp;its&nbsp;children&nbsp;sets&nbsp;and&nbsp;lists.<br>
+MUST&nbsp;be&nbsp;called&nbsp;when&nbsp;the&nbsp;storage&nbsp;set&nbsp;has&nbsp;finished&nbsp;being&nbsp;used.&nbsp;Garbage<br>
+collection&nbsp;will&nbsp;not&nbsp;delete&nbsp;the&nbsp;set.</tt></dd></dl>
+
+<dl><dt><a name="StorageSet-contains"><strong>contains</strong></a>(...)</dt><dd><tt><a href="#StorageSet-contains">contains</a>(name)<br>
+&nbsp;<br>
+Returns&nbsp;True&nbsp;or&nbsp;False&nbsp;if&nbsp;the&nbsp;set&nbsp;contains&nbsp;an&nbsp;entry&nbsp;by&nbsp;the&nbsp;given&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="StorageSet-readBool"><strong>readBool</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;readString,&nbsp;for&nbsp;booleans.&nbsp;Returns&nbsp;False&nbsp;if&nbsp;entry&nbsp;does&nbsp;not&nbsp;exist.</tt></dd></dl>
+
+<dl><dt><a name="StorageSet-readDouble"><strong>readDouble</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;readString,&nbsp;for&nbsp;floating&nbsp;points.&nbsp;Returns&nbsp;0&nbsp;if&nbsp;entry&nbsp;does&nbsp;not&nbsp;exist..</tt></dd></dl>
+
+<dl><dt><a name="StorageSet-readInt"><strong>readInt</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;readString,&nbsp;for&nbsp;integers.&nbsp;Returns&nbsp;0&nbsp;if&nbsp;entry&nbsp;does&nbsp;not&nbsp;exist.</tt></dd></dl>
+
+<dl><dt><a name="StorageSet-readList"><strong>readList</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;readString,&nbsp;for&nbsp;storage&nbsp;lists.&nbsp;Returns&nbsp;an&nbsp;empty&nbsp;storage&nbsp;list<br>
+if&nbsp;entry&nbsp;does&nbsp;not&nbsp;exist.</tt></dd></dl>
+
+<dl><dt><a name="StorageSet-readSet"><strong>readSet</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;readString,&nbsp;for&nbsp;storage&nbsp;sets.&nbsp;Returns&nbsp;an&nbsp;empty&nbsp;set&nbsp;if&nbsp;entry<br>
+does&nbsp;not&nbsp;exist.</tt></dd></dl>
+
+<dl><dt><a name="StorageSet-readString"><strong>readString</strong></a>(...)</dt><dd><tt><a href="#StorageSet-readString">readString</a>(name)<br>
+&nbsp;<br>
+Read&nbsp;a&nbsp;string&nbsp;value&nbsp;from&nbsp;the&nbsp;storage&nbsp;set.&nbsp;Return&nbsp;empty&nbsp;string&nbsp;if&nbsp;the<br>
+storage&nbsp;set&nbsp;does&nbsp;not&nbsp;contain&nbsp;an&nbsp;entry&nbsp;by&nbsp;the&nbsp;given&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="StorageSet-storeBool"><strong>storeBool</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;storeString,&nbsp;for&nbsp;boolean&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="StorageSet-storeDouble"><strong>storeDouble</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;storeString,&nbsp;for&nbsp;floating&nbsp;point&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="StorageSet-storeInt"><strong>storeInt</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;storeString,&nbsp;for&nbsp;integers.</tt></dd></dl>
+
+<dl><dt><a name="StorageSet-storeList"><strong>storeList</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;storeString,&nbsp;for&nbsp;storage&nbsp;lists.</tt></dd></dl>
+
+<dl><dt><a name="StorageSet-storeSet"><strong>storeSet</strong></a>(...)</dt><dd><tt>Same&nbsp;as&nbsp;storeString,&nbsp;for&nbsp;storage&nbsp;sets.</tt></dd></dl>
+
+<dl><dt><a name="StorageSet-storeString"><strong>storeString</strong></a>(...)</dt><dd><tt><a href="#StorageSet-storeString">storeString</a>(name,&nbsp;val)<br>
+&nbsp;<br>
+Store&nbsp;a&nbsp;string&nbsp;value&nbsp;in&nbsp;the&nbsp;storage&nbsp;set.</tt></dd></dl>
+
+<dl><dt><a name="StorageSet-write"><strong>write</strong></a>(...)</dt><dd><tt><a href="#StorageSet-write">write</a>(filename)<br>
+&nbsp;<br>
+Write&nbsp;the&nbsp;contents&nbsp;of&nbsp;a&nbsp;storage&nbsp;set&nbsp;to&nbsp;the&nbsp;specified&nbsp;file&nbsp;name.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x6fac0&gt;<dd><tt>T.<a href="#StorageSet-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+</td></tr></table></td></tr></table>
+</body></html>

@@ -1,0 +1,140 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Dynamic Descriptions
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Dynamic descriptions</div>
+<div class="info">
+One of the most powerful building features in NakedMud is the ability to embed
+Python code within text. This applies to room, mobile, object, and exit 
+descriptions. But potentially, code can be embedded into any piece of text a 
+player reads, if the codebase is set up to allow for it. To embed a piece of
+Python code, it must simply be encased in a [ and a ]. The value of the code
+will be processed as the text is seen. Here is an example from a room that
+will display a character's race and gender back to them, as well as the room's
+name.
+<pre class="mud">
+==========================================================================
+Begin editing. /q on a new line to quit, /a to abort. /h for help         
+==========================================================================
+] <font class="cmd">Your name is [ch.name] and you are [ch.sex].</font>
+] <font class="cmd">You are currently standing in [ch.room.name].</font>
+] 
+</pre> 
+Here is what is seen when I look while standing in the room.
+<pre class="mud">
+> <font class="cmd">look</font>
+[example_room@tutorials] [Inside] An Example Room
+Your name is Alister and you are male. You are currently standing in An 
+Example Room.
+</pre>
+
+Any piece of Python code that evaluates to a string or number can be embedded
+within a description. A list of useful functions and content properties that can
+be accessed with embedded code is covered in the scripting tutorial. You may
+have noticed that I make reference to the variable, 'ch'. This refers to the
+person performing the look command. And of course, ch.name refers to that 
+person's name.
+<p></p>
+Embedded scripts have two important variables defined within 
+them: ch and me. The first variable, ch, is the person doing the looking.
+me is the place or thing being looked at. Therefore, the exact same output
+could be obtained with the following embedded script:
+<pre class="mud">
+==========================================================================
+Begin editing. /q on a new line to quit, /a to abort. /h for help         
+==========================================================================
+] <font class="cmd">Your name is [ch.name] and you are [ch.sex].</font>
+] <font class="cmd">You are currently standing in <font class="highlight">[me.name]</font>.</font>
+] 
+</pre> 
+</div>
+
+<div class="head">Conditional descriptions</div>
+<div class="info">
+So far, we have discussed how to embed code within descriptions. However, we 
+have only shown how to unconditionally display pieces of code. NakedMud also
+allows you to conditionally display information. To do this, you need to make
+use of [if], [elif], [else], and [/if]. Any text (or code) that appears between
+a conditional evaluation, [if], and its closing statement, [/if], will only be
+displayed if the evaluation is true. Here is an example of a room that will
+display back a character's name to males.
+<pre class="mud">
+==========================================================================
+Begin editing. /q on a new line to quit, /a to abort. /h for help         
+==========================================================================
+] <font class="cmd"><font class="highlight">[if ch.sex=="male"]</font>Your name is [ch.name].<font class="highlight">[/if]</font></font>
+] <font class="cmd">You are currently standing in [me.name].</font>
+] 
+</pre> 
+
+Conditionals can also have alternatives. For instance, you can display something
+different to men and women by providing an [else] before the [/if].
+<pre class="mud">
+==========================================================================
+Begin editing. /q on a new line to quit, /a to abort. /h for help         
+==========================================================================
+] <font class="cmd">[if ch.sex=="male"]Your name is [ch.name].</font>
+] <font class="cmd"><font class="highlight">[else]Hey baby, what's your name?</font>[/if]</font>
+] <font class="cmd">You are currently standing in [me.name].</font>
+] 
+</pre> 
+Finally, you can have a list of conditionals evaluate in succession, with
+the first one that evaluates true being displayed. This is done with the 
+[elif] option.
+<pre class="mud">
+==========================================================================
+Begin editing. /q on a new line to quit, /a to abort. /h for help         
+==========================================================================
+] <font class="cmd">[if ch.sex=="male"]Your name is [ch.name].</font>
+] <font class="cmd"><font class="highlight">[elif ch.sex=="female"]</font>Hey baby, what's your name?</font>
+] <font class="cmd">[else]What ARE You?[/if]</font>
+] <font class="cmd">You are currently standing in [me.name].</font>
+] 
+</pre> 
+</div>
+
+<div class="head">Applying dynamic descriptions</div>
+<div class="info">
+One application of dynamic descriptions is to provide different room 
+descriptions depending on whether it is day or night. Or maybe you might
+make it so important information about the surroundings is only displayed if
+a player's perception is above a certain amount. Embedded code is extremely 
+flexible, and the details of its use are limited only by your imagination (and
+ability to script). Here is a practical example of changing a city street's 
+description, depending on the time of day.
+<pre class="mud">
+==========================================================================
+Begin editing. /q on a new line to quit, /a to abort. /h for help         
+==========================================================================
+] <font class="cmd">The street is nicely kept cobblestone.  Buildings of various sizes dot the </font>
+] <font class="cmd">north and south sides of the street. <font class="highlight">[if is_night()]</font> The doors and windows on</font>
+] <font class="cmd">most are shut, suggesting the town has gone to bed for the night.<font class="highlight">[/if]</font></font>
+] <font class="cmd"><font class="highlight">[if is_evening() or is_night()]</font> Flames flicker at the tops of tall polls </font>
+] <font class="cmd">lining either side of the street. They give off basic illumination.<font class="highlight">[/if]</font></font>
+]
+</pre>
+</div>
+
+
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

@@ -1,0 +1,71 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Viewing Commands
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Listing contents</div>
+<div class="info">
+Zones, and each content type has an associated list command, which will list 
+all the keys for contents of that type in a zone, or zones themselves. For 
+zones, mobiles, objects, rooms, and triggers, these commands are zlist, mlist,
+olist, rlist, and tlist, respectively. When listing zones, the list will display
+each zone's key, its name, who can edit it, and its reset timer. These
+variables will be discussed later. For now, it suffices to see an example:
+<pre class="mud">
+> <font class="cmd">zlist</font>
+ Key            Name                                             Editors  Timer
+--------------------------------------------------------------------------------
+ admintools     Administrative tools                             Alister     -1
+ examples       The "proof of concept" zone                      Alister      1
+ limbo          The null zone                                                -1
+ loot           generic magical items                            Alister     -1
+ moonhaven      Alister's zone                                   Alister     -1
+ templates      game templates                                   Alister     -1
+</pre>
+The display for zone contents is slightly different. Contents will display the
+key name, other contents it inherits from, and whether it is is abstract (and 
+thus cannot be instantiated, only inherited from). Inheritance and abstractness
+ will be discussed later; NakedMud zone contents are loosely structured like 
+classes in an object oriented programming language with multiple inheritance. 
+For now, it suffices to see an example:
+<pre class="mud">
+> <font class="cmd">olist moonhaven</font>
+ Key                     Parents                                       Abstract 
+--------------------------------------------------------------------------------
+ duelist_guild_sign      generic_obj@templates                               no
+ duelist_statue          generic_obj@templates                               no
+ fire_pit                generic_obj@templates                               no
+ fire_shrine             generic_obj@templates                               no
+ julianna_token          generic_obj@templates                               no
+ mage_teleport_orb       generic_obj@templates                               no
+ rolling_pin             generic_obj@templates                               no
+ town_fountain           generic_obj@templates                               no
+ underground_lake        generic_obj@templates                               no
+</pre>
+Contents from other zones can be listed, simply by specifying the appropriate
+zone key after the list command. If no zone key is specified, the currently
+occupied zone will be defaulted to. As always, the current zone is implicitly
+assumed for all key references, unless otherwise is explicitly specified.
+
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

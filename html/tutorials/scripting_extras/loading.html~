@@ -1,0 +1,73 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Load and Extract
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Extracting</div>
+<div class="info">
+Objects and mobiles are typically loaded when zones are reset. They can be
+extracted for various reasons (e.g., a player quitting the game, dying, an
+object being junked). Scripts have access to this functionality as well. To
+extract a mobile or object, simply call the extract function on it. Information
+about loading is discussed next.
+</div>
+
+<div class="head">Loading</div>
+<div class="info">
+Objects are loaded with the load_obj function. An object prototype must be
+specified, as well as a destination for the object.
+<pre class="code">
+# load a candle into the room this trigger is attached to, 
+# and into the inventory of every mob in the room
+load_obj("candle@basic_items", me)
+for ch in me.chars:
+  load_obj("candle@basic_items", ch)
+</pre>
+
+When objects are loaded onto a character, they are loaded into the character's
+inventory by default. Objects can also be equipped onto a character by 
+specifying which bodyparts the object is to occupy:
+<pre class="code">
+# load a glove onto the character's left hand
+load_obj("white_glove@basic_items", me, "left hand")
+
+# now load the character's jacket
+load_obj("leather_jacket@basic_items", me, "left arm, right arm, torso")
+
+# now, load a belt to the default location instead of the inventory
+load_obj("leather_belt@basic_items", me, "")
+</pre>
+
+To load a mobile, the load_mob function is called. It works exactly like 
+load_obj except the destination must always be a room, and of course does not
+take an optional third argument. Both load_obj and load_mob return the thing
+they have loaded.
+
+<pre class="code">
+# when a character enters the arena, give them a sword
+obj = load_obj(ch, "gladius@weapons")
+message(ch, obj, None, None, True, "to_char", 
+        "You have been given $o. Prepare to fight!")
+</pre>
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

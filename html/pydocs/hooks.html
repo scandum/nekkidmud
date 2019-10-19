@@ -1,0 +1,39 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: hooks</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>hooks</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>The&nbsp;python&nbsp;module&nbsp;for&nbsp;registering&nbsp;and&nbsp;running&nbsp;hooks.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-add"><strong>add</strong></a>(...)</dt><dd><tt><a href="#-add">add</a>(type,&nbsp;function)<br>
+&nbsp;<br>
+Register&nbsp;a&nbsp;new&nbsp;hook&nbsp;function.&nbsp;Hook&nbsp;functions&nbsp;should&nbsp;take&nbsp;one&nbsp;argument:<br>
+an&nbsp;information&nbsp;string&nbsp;that&nbsp;can&nbsp;be&nbsp;parsed&nbsp;with&nbsp;hooks.parse_info</tt></dd></dl>
+ <dl><dt><a name="-build_info"><strong>build_info</strong></a>(...)</dt><dd><tt><a href="#-build_info">build_info</a>(format,&nbsp;args)<br>
+&nbsp;<br>
+Returns&nbsp;hook&nbsp;information&nbsp;from&nbsp;a&nbsp;string&nbsp;format&nbsp;and&nbsp;a&nbsp;tuple&nbsp;of&nbsp;values&nbsp;for<br>
+the&nbsp;format.&nbsp;Format&nbsp;arguments&nbsp;must&nbsp;be&nbsp;space-separated.&nbsp;They&nbsp;include:<br>
+ch,&nbsp;rm,&nbsp;obj,&nbsp;ex,&nbsp;sk,&nbsp;str,&nbsp;int,&nbsp;dbl.</tt></dd></dl>
+ <dl><dt><a name="-parse_info"><strong>parse_info</strong></a>(...)</dt><dd><tt><a href="#-parse_info">parse_info</a>(info)<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;tuple&nbsp;of&nbsp;parsed&nbsp;hook&nbsp;information.</tt></dd></dl>
+ <dl><dt><a name="-remove"><strong>remove</strong></a>(...)</dt><dd><tt><a href="#-remove">remove</a>(type,&nbsp;function)<br>
+&nbsp;<br>
+Unregister&nbsp;a&nbsp;hook&nbsp;function.</tt></dd></dl>
+ <dl><dt><a name="-run"><strong>run</strong></a>(...)</dt><dd><tt><a href="#-run">run</a>(hooktypes)<br>
+&nbsp;<br>
+Runs&nbsp;hooks&nbsp;registered&nbsp;to&nbsp;the&nbsp;given&nbsp;type.</tt></dd></dl>
+</td></tr></table>
+</body></html>

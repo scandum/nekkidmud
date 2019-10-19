@@ -1,0 +1,53 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: path</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>path</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hollis/Desktop/nakedmud/lib/pymodules/path.py">/Users/hollis/Desktop/nakedmud/lib/pymodules/path.py</a></font></td></tr></table>
+    <p><tt>path.py<br>
+&nbsp;<br>
+Plugs&nbsp;into&nbsp;the&nbsp;routine&nbsp;module&nbsp;to&nbsp;allow&nbsp;for&nbsp;the&nbsp;easy&nbsp;construction&nbsp;of&nbsp;paths&nbsp;and<br>
+path&nbsp;following.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="mud.html">mud</a><br>
+</td><td width="25%" valign=top><a href="mudsys.html">mudsys</a><br>
+</td><td width="25%" valign=top><a href="room.html">room</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-build_patrol"><strong>build_patrol</strong></a>(rms, reverse<font color="#909090">=True</font>, ignore_doors<font color="#909090">=False</font>, stay_zone<font color="#909090">=True</font>)</dt><dd><tt>builds&nbsp;a&nbsp;set&nbsp;of&nbsp;directions&nbsp;that&nbsp;need&nbsp;to&nbsp;be&nbsp;followed&nbsp;to&nbsp;do&nbsp;a&nbsp;patrol<br>
+between&nbsp;the&nbsp;rooms.&nbsp;If&nbsp;reverse&nbsp;is&nbsp;true,&nbsp;also&nbsp;supplies&nbsp;the&nbsp;directions<br>
+to&nbsp;loop&nbsp;back&nbsp;on&nbsp;itself</tt></dd></dl>
+ <dl><dt><a name="-cmd_path"><strong>cmd_path</strong></a>(ch, cmd, arg)</dt><dd><tt>Usage:&nbsp;path&nbsp;&lt;room&gt;<br>
+&nbsp;<br>
+Prints&nbsp;out&nbsp;a&nbsp;Python&nbsp;list&nbsp;of&nbsp;the&nbsp;directions&nbsp;needed&nbsp;to&nbsp;move&nbsp;from&nbsp;your<br>
+current&nbsp;location&nbsp;to&nbsp;a&nbsp;specified&nbsp;destination.</tt></dd></dl>
+ <dl><dt><a name="-leads_to"><strong>leads_to</strong></a>(frm, to)</dt><dd><tt>returns&nbsp;whether&nbsp;from&nbsp;leads&nbsp;directly&nbsp;to&nbsp;to</tt></dd></dl>
+ <dl><dt><a name="-path_to_dirs"><strong>path_to_dirs</strong></a>(path)</dt><dd><tt>takes&nbsp;a&nbsp;path&nbsp;of&nbsp;rooms&nbsp;and&nbsp;converts&nbsp;it&nbsp;to&nbsp;directions</tt></dd></dl>
+ <dl><dt><a name="-shortest_path"><strong>shortest_path</strong></a> = shortest_path_bfs(frm, to, ignore_doors<font color="#909090">=False</font>, stay_zone<font color="#909090">=True</font>, ignore<font color="#909090">=None</font>)</dt><dd><tt>calculates&nbsp;the&nbsp;shortest&nbsp;path,&nbsp;but&nbsp;uses&nbsp;a&nbsp;breadth&nbsp;first&nbsp;search.&nbsp;More<br>
+efficient&nbsp;than&nbsp;depth-first&nbsp;seach&nbsp;for&nbsp;very&nbsp;short&nbsp;paths&nbsp;with&nbsp;lots&nbsp;of<br>
+branches&nbsp;or&nbsp;very&nbsp;large&nbsp;muds.</tt></dd></dl>
+ <dl><dt><a name="-shortest_path_bfs"><strong>shortest_path_bfs</strong></a>(frm, to, ignore_doors<font color="#909090">=False</font>, stay_zone<font color="#909090">=True</font>, ignore<font color="#909090">=None</font>)</dt><dd><tt>calculates&nbsp;the&nbsp;shortest&nbsp;path,&nbsp;but&nbsp;uses&nbsp;a&nbsp;breadth&nbsp;first&nbsp;search.&nbsp;More<br>
+efficient&nbsp;than&nbsp;depth-first&nbsp;seach&nbsp;for&nbsp;very&nbsp;short&nbsp;paths&nbsp;with&nbsp;lots&nbsp;of<br>
+branches&nbsp;or&nbsp;very&nbsp;large&nbsp;muds.</tt></dd></dl>
+ <dl><dt><a name="-shortest_path_dfs"><strong>shortest_path_dfs</strong></a>(frm, to, ignore_doors<font color="#909090">=False</font>, stay_zone<font color="#909090">=True</font>, ignore<font color="#909090">=None</font>)</dt><dd><tt>returns&nbsp;the&nbsp;steps&nbsp;needed&nbsp;to&nbsp;take&nbsp;to&nbsp;go&nbsp;from&nbsp;one&nbsp;room&nbsp;to&nbsp;another.&nbsp;More<br>
+efficient&nbsp;than&nbsp;breadth-first&nbsp;search&nbsp;for&nbsp;very&nbsp;long&nbsp;paths&nbsp;with&nbsp;only&nbsp;a&nbsp;few<br>
+branches,&nbsp;or&nbsp;very&nbsp;small&nbsp;muds.</tt></dd></dl>
+ <dl><dt><a name="-step"><strong>step</strong></a>(frm, to, ignore_doors<font color="#909090">=False</font>, stay_zone<font color="#909090">=True</font>)</dt><dd><tt>returns&nbsp;the&nbsp;first&nbsp;step&nbsp;needed&nbsp;to&nbsp;take&nbsp;to&nbsp;go&nbsp;from&nbsp;one&nbsp;room&nbsp;to&nbsp;another</tt></dd></dl>
+</td></tr></table>
+</body></html>

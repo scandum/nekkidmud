@@ -1,0 +1,271 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Title Here
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Auxiliary Data</div>
+<div class="info">
+Auxiliary Data is perhaps the most important part of NakedMud's design. 
+Auxiliary Data allows you to add new variables to the various datatypes 
+NakedMud handles within the game (objects, rooms, mobiles, accounts, sockets) 
+without touching the files that house those data structures. The biggest gain 
+from this is the ability to modularize your code by what it is intended to do; 
+all of the code related to combat - including new variables that must be 
+created - can stay in one module. As was mentioned in modules section, this will
+help with the ability to maintain and distribute pieces of your code in the 
+future. Designing new auxiliary data is very simple, but it does require a bit 
+of effort if you have not done it in the past. This tutorial will walk you 
+through the steps of writing and installing new auxiliary data.
+</div>
+
+<div class="head">Recap</div>
+<div class="info">
+In the section on modules, we designed a 'proof of concept' for a mail system. 
+One feature we did not add was the ability for unreceived mail to be persistent.
+If the MUD ever crashed or rebooted, all mail not yet received would be lost. 
+This inconvenience was addressed in the section on storage sets. However, we 
+ran into another problem with the saving procedure being inefficient: to save 
+any change to someone's unreceived mail status, we effectively had to re-save 
+everyone's unreceived mail. This section will address the problem by attaching 
+a character's unread mail to that character's actual data structure. Now, 
+whenever we want to the unread mail for a character, we will only have to save 
+that character, and not all unread mail in existence.
+</div>
+
+<div class="head">Creating Auxiliary Data</div>
+<div class="info">
+The first thing we will need to do is add the headers for interacting with 
+auxiliary data and storage sets. Do this where we include all the other headers
+we need for interacting with core features of the mud. Add the new headers right
+after the <i>handler.h</i> header:
+
+<pre class="code">
+#include "../handler.h"       // for giving mail to characters
+#include "../storage.h"       // for saving/loading auxiliary data
+#include "../auxiliary.h"     // for creating new auxiliary data
+#include "../world.h"         // for loading offline chars receiving mail
+</pre>
+
+Because we will save unread mail as auxiliary data within character data, we 
+will no longer need a hashtable for keeping everything stored. Therefore, search
+and destroy all references to the mail_table. Right after we finish including 
+all of our headers, delete:
+
+<pre class="code">
+// maps charName to a list of mail they have received
+HASHTABLE *mail_table = NULL;
+</pre>
+
+In cmd_mail, delete the entire section within the last else statement:
+
+<pre class="code">
+    MAIL_DATA *mail = newMail(ch, bufferString(socketGetNotepad(charGetSocket(ch))));
+    
+    // see if the receiver already has a mail list
+    LIST *mssgs = hashGet(mail_table, arg);
+    
+    // if he doesn't, create one and add it to the hashtable
+    if(mssgs == NULL) {
+      mssgs = newList();
+      hashPut(mail_table, arg, mssgs);
+    }
+
+    // add the new mail to our mail list
+    listPut(mssgs, mail);
+
+    // let the character know we've sent the mail
+    send_to_char(ch, "You send a message to %s.\r\n", arg);
+</pre>
+
+At the very start of cmd_receive, remove the reference to hashRemove, and for 
+the time being, set mail\_list to NULL:
+
+<pre class="code">
+  // Remove the character's mail list from our mail table
+  LIST *mail_list = hashRemove(mail_table, charGetName(ch));
+</pre>
+  
+Finally, remove our creation of the mail_table in init_mail:
+<pre class="code">
+  // initialize our mail table
+  mail_table = newHashtable();
+</pre>
+
+Before we start writing our auxiliary data, we are going to have to provide a 
+couple functions for handling the saving, reading, and copying of mail. Right 
+after newMail and deleteMail, add these 3 new functions:
+<pre class="code">
+// parse a piece of mail from a storage set
+MAIL_DATA *mailRead(STORAGE_SET *set) {
+  // allocate some memory for the mail
+  MAIL_DATA *mail = malloc(sizeof(MAIL_DATA));
+  mail->mssg      = newBuffer(1);
+
+  // read in all of our values
+  mail->sender = strdup(read_string(set, "sender"));
+  mail->time   = strdup(read_string(set, "time"));
+  bufferCat(mail->mssg, read_string(set, "mssg"));
+  return mail;
+}
+
+// represent a piece of mail as a storage set
+STORAGE_SET *mailStore(MAIL_DATA *mail) {
+  // create a new storage set
+  STORAGE_SET *set = new_storage_set();
+  store_string(set, "sender", mail->sender);
+  store_string(set, "time",   mail->time);
+  store_string(set, "mssg",   bufferString(mail->mssg));
+  return set;
+}
+
+// copy a piece of mail. This will be needed by our auxiliary
+// data copy functions
+MAIL_DATA *mailCopy(MAIL_DATA *mail) {
+  MAIL_DATA *newmail = malloc(sizeof(MAIL_DATA));
+  newmail->sender = strdup(mail->sender);
+  newmail->time   = strdup(mail->time);
+  newmail->mssg   = bufferCopy(mail->mssg);
+  return newmail;
+}
+</pre>
+  
+Now we're ready to start writing our auxiliary data. Auxiliary Data require 7 
+things: a new structure that is the auxiliary data, a function that constructs 
+the auxiliary data, a function that deletes the auxiliary data, a function that
+copies the auxiliary data, a function that copies the auxiliary data to another
+instance of the same auxiliary data, a function that reads the auxiliary data 
+from a storage set, and a function that writes the auxiliary data to a storage 
+set. Below, we lay out all of those things. There is quite a bit of code but, 
+as you will notice, it is all very simple (perhaps with the exception of the 
+read and write functions). Right below the the mailCopy function, add the 
+following bit of code:
+
+<pre class="code">
+// our mail auxiliary data. 
+// Holds a list of all the unreceived mail a person has
+typedef struct {
+  LIST *mail; // our list of unread mail
+} MAIL_AUX_DATA;
+
+// create a new instance of mail aux data, for us to put onto a character
+MAIL_AUX_DATA *newMailAuxData(void) {
+  MAIL_AUX_DATA *data = malloc(sizeof(MAIL_AUX_DATA));
+  data->mail = newList();
+  return data;
+}
+
+// delete a character's mail aux data
+void deleteMailAuxData(MAIL_AUX_DATA *data) {
+  if(data->mail) deleteListWith(data->mail, deleteMail);
+  free(data);
+}
+
+// copy one mail aux data to another
+void mailAuxDataCopyTo(MAIL_AUX_DATA *from, MAIL_AUX_DATA *to) {
+  if(to->mail)   deleteListWith(to->mail, deleteMail);
+  if(from->mail) to->mail = listCopyWith(from->mail, mailCopy);
+  else           to->mail = newList();
+}
+
+// return a copy of a mail aux data
+MAIL_AUX_DATA *mailAuxDataCopy(MAIL_AUX_DATA *data) {
+  MAIL_AUX_DATA *newdata = newMailAuxData();
+  mailAuxDataCopyTo(data, newdata);
+  return newdata;
+}
+
+// parse a mail aux data from a storage set
+MAIL_AUX_DATA *mailAuxDataRead(STORAGE_SET *set) {
+  MAIL_AUX_DATA *data = malloc(sizeof(MAIL_AUX_DATA));
+  data->mail          = gen_read_list(read_list(set, "mail"), mailRead);
+  return data;
+}
+
+// represent a mail aux data as a storage set
+STORAGE_SET *mailAuxDataStore(MAIL_AUX_DATA *data) {
+  STORAGE_SET *set = new_storage_set();
+  store_list(set, "mail", gen_store_list(data->mail, mailStore));
+  return set;
+}
+</pre>
+
+Finally, we will want to ensure this new auxiliary data exists on characters. 
+When our mail module boots up, we will want to install this new bit of 
+auxiliary data:
+
+<pre class="code">
+// boot up the mail module
+void init_mail(void) {
+  // install our auxiliary data
+  auxiliariesInstall("mail_aux_data",
+		     newAuxiliaryFuncs(AUXILIARY_TYPE_CHAR,
+                               newMailAuxData, deleteMailAuxData,
+                               mailAuxDataCopyTo, mailAuxDataCopy,
+                               mailAuxDataStore, mailAuxDataRead));
+  
+  // add all of the commands that come with this module
+  add_cmd("mail", NULL, cmd_mail, "player", FALSE);
+  add_cmd("receive", NULL, cmd_receive, "player", FALSE);
+}
+</pre>
+
+Our mail auxiliary data is installed and completely functional! Now, we will 
+want to go back to cmd_mail and cmd_receive to ensure they use the auxiliary 
+data in replacement of the hashtable we used before. Let's start with the new
+code for cmd_mail. In the last else block, add the following bit of code:
+
+<pre class="code">
+    // create the new piece of mail
+    MAIL_DATA *mail = newMail(ch, bufferString(socketGetNotepad(charGetSocket(ch))));
+
+    // get a copy of the player, send mail, and save
+    CHAR_DATA *recv = get_player(arg);
+    send_to_char(recv, "You have new mail.\r\n");
+    
+    // let's pull out the character's mail aux data, and add the new piece
+    MAIL_AUX_DATA *maux = charGetAuxiliaryData(recv, "mail_aux_data");
+    listPut(maux->mail, mail);
+    save_player(recv);
+      
+    // get rid of our reference, and extract from game if need be
+    unreference_player(recv);      
+
+    // let the character know we've sent the mail
+    send_to_char(ch, "You send a message to %s.\r\n", arg);
+</pre>
+
+Now make it so players can receive their unread mail. At the very start of 
+cmd_receive, add the following bit of code:
+
+<pre class="code">
+COMMAND(cmd_receive) {
+  // Remove the character's mail list from our mail table
+  MAIL_AUX_DATA *maux = charGetAuxiliaryData(ch, "mail_aux_data");
+  LIST *mail_list     = maux->mail;
+  // replace our old list with a new one. Our old one will be deleted soon
+  maux->mail = newList();
+</pre>
+
+Players can now send and receive mail.
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

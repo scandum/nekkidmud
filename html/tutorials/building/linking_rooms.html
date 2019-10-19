@@ -1,0 +1,234 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Linking rooms
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">dig</div>
+<div class="info">
+There are numerous ways to set up connections between rooms. Like most muds,
+NakedMud supports the four cardinal directions, up and down, northeast, 
+southeast, southwest, and northwest. In addition, NakedMud also provides the
+ability to open-endedly define your own movement commands on a per-room basis.
+Dive, jump, enter, flee -- whatever you want.
+<p></p>
+The most basic way to link rooms is through the dig command. Dig allows you to
+connect your current room to another room, via a specified direction. Let us
+look at a basic example of dig:
+<pre class="mud">
+> <font class="cmd">look</font>
+[mainstreet03@moonhaven] [City] Main Street
+The street is nicely kept cobblestone.  Buildings of various sizes dot the 
+north and south sides of the street.  The doors and windows on most are shut, 
+suggesting the town has gone to bed for the night.  Flames flicker at the tops 
+of tall polls lining either side of the streeet.  They give the street basic 
+illumination.  A large tavern can be seen on the north side of the street.
+Silhouettes of moving people are projected against the smoky windows of the 
+tavern from inside lights.  The sound of music emits from within.
+
+> <font class="cmd">dig mainstreet02 south</font>
+You link mainstreet03@moonhaven [south] to mainstreet02@moonhaven [north].
+
+> <font class="cmd">look</font>
+[mainstreet03@moonhaven] [City] Main Street
+The street is nicely kept cobblestone.  Buildings of various sizes dot the 
+north and south sides of the street.  The doors and windows on most are shut, 
+suggesting the town has gone to bed for the night.  Flames flicker at the tops 
+of tall polls lining either side of the streeet.  They give the street basic 
+illumination.  A large tavern can be seen on the north side of the street.
+Silhouettes of moving people are projected against the smoky windows of the 
+tavern from inside lights.  The sound of music emits from within.
+<font class="highlight">  south      :: [mainstreet02@moonhaven] Main Street</font>
+
+>
+</pre>
+The dig command will automatically attempt to re-link the destination room to
+the source room, by setting up a returning path in the opposite direction.
+However, if you provide a unique direction command, the destination room will
+not be re-linked to the source room because it is not obvious what the return
+direction would be. This can be made explicit by supplying a return direction
+at the end of the dig command.
+<pre class="mud">
+> <font class="cmd">dig tavern enter leave</font>
+You link mainstreet03@moonhaven [enter] to tavern@moonhaven [leave].
+</pre>
+In principle, any word can be used as a movement command. If a return direction
+is not supplied, a returning link is simply not added.
+</div>
+
+<div class="head">Fill</div>
+<div class="info">
+In addition to being able to dig exits, you can also fill exits. Fill will
+attempt to close off an exit in the specified direction, and the returning
+exit as well, if possible. For example:
+<pre class="mud">
+> <font class="cmd">fill north</font>
+You unlink mainstreet03@moonhaven [north] and mainstreet02@moonhaven [south].
+</pre>
+You can similarly fill exits with unique names by specifying the direction name
+(and a returning direction, if you want to fill that as well).
+</div>
+
+<div class="head">redit</div>
+<div class="info">
+Exits can also be created and deleted through the room edit interface. In the
+redit interface, there are two commands: E and F, for editing and filling exits.
+In addition, this method of working with exits allows builders to manipulate
+custom properties of the exit.
+<pre class="mud">
+> <font class="cmd">redit mainstreet03</font>
+[mainstreet03@moonhaven]
+1) Abstract: no
+2) Inherits from prototypes:
+mainstreet
+3) Name
+
+4) Description
+A large tavern can be seen on the west side of the street.  [if is_evening() 
+or is_night()] Silhouettes of moving people are projected against the smoky 
+windows of the tavern from inside lights.[/if] The sound of music emits from 
+within.
+L) Land type [leave unchanged]
+B) Set Bits: 
+Z) Room can be reset: no
+R) Room reset menu
+X) Extra descriptions menu
+T) Trigger menu
+E) Edit exit
+F) Fill exit
+   north      : nowhere                   east       : nowhere
+   south      : nowhere                   west       : nowhere
+   up         : nowhere                   down       : nowhere             
+   northeast  : nowhere                   southeast  : nowhere             
+   southwest  : nowhere                   northwest  : nowhere             
+
+C) Extra code
+
+Enter choice, ? [topic] for help, or Q to quit: <font class="cmd">e</font>
+What is the name of the exit you wish to edit: <font class="cmd">north</font>
+</pre>
+Built-in exits can be specified by their aliases (n, w, s, e, u, d, nw, sw, se,
+ne) or their full names. Unique exits must, of course, have a full name 
+provided. Specifying an exit to edit brings you to a new menu, where you can
+edit various properties of the exit, including the message it sends the room
+when a character leaves or enters through it, as well as descriptions when
+the exit is looked at, and keywords for interacting with it. For now, let us
+simply link the exit back to the other part of main street
+<pre class="mud">
+1) Door name
+<NONE>
+2) Door keywords
+<NONE>
+3) Leave message
+<DEFAULT>
+4) Enter message
+<DEFAULT>
+5) Description
+
+6) Exits to    : 
+8) Key         : 
+7) Closable    : [    No]
+9) Pick diff   : [     0]
+0) Spot diff   : [     0]
+O) Opposite dir: <DEFAULT>
+
+Enter choice, ? [topic] for help, or Q to quit: <font class="cmd">6</font>
+Enter a new destination: <font class="cmd">mainstreet02</font>
+</pre>
+</div>
+<div class="head">Extra exit customization</div>
+<div class="info">
+You may have noticed that exits seem to support the ability to be closed, 
+locked, picked, and hidden. Currently, exits can only be closed, opened, locked,
+or unlocked. The ability to pick or hide exits is not built in, but variables
+have been put in place so developers can implement this functionality as needed.
+If an exit has a key specified, a player must have that item in their inventory
+to lock or unlock that exit. The exit must also be closable to be (un)lockable.
+Here is an example:
+<pre class="mud">
+1) Door name
+
+2) Door keywords
+
+3) Leave message
+
+4) Enter message
+
+5) Description
+
+6) Exits to    : mainstreet02
+8) Key         : 
+7) Closable    : [    No]
+9) Pick diff   : [     0]
+0) Spot diff   : [     0]
+O) Opposite dir: 
+
+Enter choice, ? [topic] for help, or Q to quit: <font class="cmd">7</font>
+
+1) Door name
+
+2) Door keywords
+
+3) Leave message
+
+4) Enter message
+
+5) Description
+
+6) Exits to    : mainstreet02
+8) Key         : 
+7) Closable    : [   <font class="highlight">Yes</font>]
+9) Pick diff   : [     0]
+0) Spot diff   : [     0]
+O) Opposite dir: 
+
+Enter choice, ? [topic] for help, or Q to quit: <font class="cmd">8</font>
+Enter a new key name: <font class="cmd">iron_gate_key</font>
+</pre>
+
+<p></p>
+Custom enter and leave messages can be specified on exits. Player names are
+referenced with use of the $n symbol. This symbol will crop up over and over
+in scripting. Its relevance will be explained in scripting tutorials. Suffice
+to know for now, $n is a proxy for an acting character's name.
+<pre class="mud">
+1) Door name
+
+2) Door keywords
+
+3) Leave message
+
+4) Enter message
+
+5) Description
+
+6) Exits to    : mainstreet02
+8) Key         : iron_gate_key
+7) Closable    : [   Yes]
+9) Pick diff   : [     0]
+0) Spot diff   : [     0]
+O) Opposite dir: 
+
+Enter choice, ? [topic] for help, or Q to quit: <font class="cmd">3</font>
+Enter a new leave message: <font class="cmd">$n swaggers down the street.</font>
+</pre>
+</div>
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

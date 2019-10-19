@@ -1,0 +1,131 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Hooks
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Hooks</div>
+<div class="info">
+NakedMud functions can be open-endedly extended in key areas, through the use 
+of hooks. When a character enters a room, a few things might need to be done.
+If there are hostile NPCs in the room, they might start attacking the character.
+If the player is walking over soft earth, footprints might need to be placed.
+If a trap is present, it might need to go off. If the character is a king, his
+servants might need to greet him. If NPCs have other scripted behavior, it might
+also need to be resolved. Adding checks for this in the enter and exit function
+leads to unwieldy and unmanageable code. Instead, NakedMud provides a framework
+that allows you to specify places where functions can register to 'hook' on to.
+Those functions will then be called whenever the designated place is reached.
+</div>
+
+<div class="head">Creating a Hook Point</div>
+<div class="info">
+In lib/pymodules/movement.c, there is a function called try_move. It it the
+main function for handling all directional movement. After a character has
+sucessfully moved between rooms, this line of code is called:
+
+<pre class="code">
+import hooks
+...
+hooks.run("enter", hooks.build_info("ch rm", (ch, ch.room)))
+</pre>
+
+This provides a point for other functions to hook on to. They can register to be
+called whenever this point in the code is reached. Hooks are not ordered, nor
+are they blocking. You cannot guarantee they will run in a particular ordering,
+nor can you stop sucessive hooks from executing if something special happens in
+a previous one.
+</div>
+
+<div class="head" style="text-transform: none;">hooks.run(type, info)</div>
+<div class="info">
+The run function takes two arguments. The first is the type of the hooks to
+run. It can be any string. The second is a specially formatted list of 
+variables to pass on to registered functions. This list is created with a call 
+to hooks.build_info
+</div>
+
+<div class="head" style="text-transform: none;">hooks.build_info(format, variables)</div>
+<div class="info">
+Hook points pass arguments to their attached hooks through a special information
+string that stores the argument information. Arguments can be characters,
+objects, rooms, exits, sockets, strings, integers, or doubles. Argument strings
+need to be built from a format string and a tuple of the variables that will be
+stored in the argument information. The format string is a space-separated list
+of shorthands for the argument types. The shorthands are:
+
+<div class="table">
+  <table width=100% border=1>
+    <thead>
+    <tr>
+      <th> formatting </th>
+      <th> argument type </th>
+    <tr>
+    </thead>
+    <tbody>
+      <tr class="odd"> <td>ch</td>    <td>characters</td></tr>
+      <tr class="even"><td>obj</td>   <td>objects</td></tr>
+      <tr class="odd"> <td>rm</td>    <td>rooms</td></tr>
+      <tr class="even"><td>ex</td>    <td>exits</td></tr>
+      <tr class="odd"> <td>sk</td>    <td>sockets</td></tr>
+      <tr class="even"><td>str</td>   <td>strings</td></tr>
+      <tr class="odd"> <td>int</td>   <td>integers</td></tr>
+      <tr class="even"><td>dbl</td>   <td>doubles</td></tr>
+    <tbody>
+  </table>
+</div>
+</div>
+
+<div class="head" style="text-transform: none;">hooks.add(type, function)</div>
+<div class="info">
+To add a hook, a call to hooks.add must be made during initialization. The add
+function takes two arguments: the type of hook point to attach to, and a
+function to be called. The function itself should take one argument: an argument
+string that is created by the hook point, with hooks.build_info
+
+<pre class="code">
+def footstep_hook(info):
+  """make crunchy footstep sounds when we enter a room with snow."""
+  ############
+  # FINISH ME
+  ############
+
+hooks.add("enter", footstep_hook)
+</pre>
+</div>
+
+<div class="head" style="text-transform: none;">hooks.parse_info(info)</div>
+<div class="info">
+Hooks take a single argument: an information string, that can be unpacked to
+retreive the original arguments passed to hooks.build_info by the hook point.
+This function will return a tuple of the original arguments. Here is a
+continuation of the footstep hook:
+
+<pre class="code">
+def footstep_hook(info):
+  """make crunchy footstep sounds when we enter a room with snow."""
+  ch, room = hooks.parse_info(info)
+  if room.terrain == "snow":
+    ch.send("Snow crunches beneath your feet.")
+</pre>
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

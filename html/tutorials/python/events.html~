@@ -1,0 +1,107 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Events
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Events</div>
+<div class="info">
+NakedMud provides support for delayed events. These are simply functions that
+are called after a pre-specified amount of time. They are not to be confused
+with Events in, say, Java, which refer to specific things that take place
+(such as someone clicking on a mouse) which have a set of 'listeners' that
+execute some function once the event occurs. NakedMud supports this sort of
+behavior as well, in the form of hooks.
+<p></p>
+The most basic thing that could be done with events is creating a command that
+delays another command for a specified amount of time. Here is how something
+like that would be written:
+
+<pre class="code">
+import mudsys, event, mud
+
+def delayed_cmd_event(owner, data, arg):
+    ch.act(arg)
+
+def cmd_delay(ch, cmd, arg):
+    '''attempt to delay a command by a specified amount of time.'''
+    try:
+        # take two arguments: the delay time, and the command to execute
+        time, todo = mud.parse_args(ch, True, cmd, arg, "int(time) string(cmd)")
+    except: return
+
+    # notify the character that their command has been delayed,
+    # and start the event handler
+    ch.send("In %d seconds you will perform '%s'." % (time, todo))
+    event.start_event(ch, time, delayed_cmd_event, None, todo)
+
+mudsys.add_cmd("delay", None, cmd_delay, "player", False)
+</pre>
+
+Events have three parameters. An owner, data (possibly None), and a string 
+argument (possibly None). The owner is the person, place, or thing the event
+belongs to. If the owner ever leaves the game, the event is canceled. The
+owner can be None. For instance, you may want to write a combat update event 
+that iterates across all characters and makes them perform an attack every
+second. To do this, you could start the event up without an owner when your 
+module is initialized, and have the event do its work, and re-start itself 
+whenever it is called.
+<p></p>
+Data can be anything you want it to be. Suppose you want to implement a delayed
+fireball spell that hurts everyone in the room except for the person who set it
+up. The owner would be the room, and the data might be the character. You could
+possibly do it as the owner being the character and the data being None, but
+think what might happen if the character decided to move before the event went
+off! Here is one way to do a delayed fireball event
+
+<pre class="code">
+import mudsys, event
+
+def delayed_fireball_event(room, caster, arg):
+    '''do the delayed fireball event. Hurt everyone in the room except the
+       caster. arg is None.'''
+    room.send("With violent force, a delayed fireball explodes in the room!")
+    for ch in room:
+        if ch != caster:
+            # do something mean here
+            ############
+            # FINISH ME
+            ############
+
+def cmd_delayed_fireball(ch, cmd, arg):
+    '''cast a delayed fireball.'''
+    ch.send("You set up a delayed fireball to go off in 5 seconds!")
+    event.start_event(ch.room, 5, delayed_fireball_event, ch, None)
+
+mudsys.add_cmd("df", None, cmd_delayed_fireball, "player", False)
+</pre>
+
+Once an event is started, it cannot be canceled unless its owner is removed
+from the game, so be certain to design your events with this in mind.
+<p></p>
+Events are started with a call to start_event. This function takes three
+mandatory arguments, and two optional ones. The first argument is the owner,
+the second is the time to delay the event, and the third is the event itself.
+The fourth and fifth are the data and the string argument, respectively.
+</div>
+
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

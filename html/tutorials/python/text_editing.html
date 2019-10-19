@@ -1,0 +1,86 @@
+<html>
+<head>
+<link href="../tutorial.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="header">
+The NakedMud Tutorial :: Text Editing
+</div>
+
+<!-- content starts here -->
+<div class="content-wrap"><div class="content-body-wrap"><div class="content">
+<div class="head">Text Editing</div>
+<div class="info">
+NakedMud has a simple, built-in text and script editor. This can be useful for
+writing and editing game content. The OLC system and helpfiles make copious
+use of the editor. The editor can be accessed via Python as well as C. This
+tutorial explains how to use it via Python to edit a player's description.
+</div>
+
+<div class="head">Describing Yourself</div>
+<div class="info">
+Sockets can enter text editor mode with the edit_text method. This method takes
+three arguments. The first is a string, setting the initial content of the text
+editor. The second is a function, called after the text editor is quit. This
+will be used to read the output of the text editor, and allow you to save it
+somewhere. The third is optional; you can specify whether you want to enter
+"text" or "script" mode. This will change syntax highlighting and formatting
+rules for the editor, as appropriate for either pure-text or python script
+editing.
+<p></p>
+Here are a set of functions that allow a player to change his or her own
+description:
+
+<pre class="code">
+import mudsys # needed for add_cmd
+
+def finish_desc_editor(sock, editor_output):
+    '''this function is passed to edit_text, and called after a socket exits the
+       text editor.'''
+    # make sure our character has not somehow vanished.
+    # If it is still around, change its description to the output of the editor
+    if sock.ch != None:
+        sock.ch.desc = editor_output
+
+def cmd_describe(ch, cmd, arg):
+    '''Allows a character to set his or her own description.'''
+    # first, make sure we have a socket. The text editor pushes an input
+    # handler onto the socket's stack. Thus, the socket needs to exist.
+    if ch.sock != None:
+        ch.send("You seem to be missing a socket.")
+    else:
+        # edit text editor mode. Set the initial value of the text editor to
+        # our current description. When the text editor is finished, call the
+        # function we're passing in
+        ch.sock.edit_text(ch.desc, finish_desc_editor)
+
+# add the 'describe' command to the game
+mudsys.add_cmd("describe", None, cmd_describe, "player", True)
+</pre>
+</div>
+
+<div class="head">Script Editing</div>
+<div class="info">
+NakedMud also has an Python mode for the text editor. This is what is used for
+writing triggers and the 'extra code' section of game content. If you instead
+wante to edit script editor mode, specify this as a third argument to edit_text:
+
+<pre class="code">
+sock.edit_text(initial_value, finish_function, "script")
+</pre>
+</div>
+
+<!-- content ends here-->
+</div></div></div>
+
+<!-- navigation starts here -->
+<div class="nav-wrap"><div class="nav">
+<iframe src="nav.html" height="100%" width="100%" scrolling=no frameborder=0>
+</iframe>
+<!-- navigation ends here -->
+</div></div>
+
+<!--div class="footer">Edit Date: Nov 15, 2008. By Geoff Hollis</div-->
+</body>
+</html>

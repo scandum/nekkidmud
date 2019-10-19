@@ -1,0 +1,101 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: routine</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>routine</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hollis/Desktop/nakedmud/lib/pymodules/routine.py">/Users/hollis/Desktop/nakedmud/lib/pymodules/routine.py</a></font></td></tr></table>
+    <p><tt>routine.py<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;a&nbsp;module&nbsp;for&nbsp;setting&nbsp;up&nbsp;one-time&nbsp;or&nbsp;repeatable&nbsp;routines&nbsp;for&nbsp;mobs.&nbsp;This<br>
+can&nbsp;include&nbsp;walking&nbsp;a&nbsp;path,&nbsp;forging&nbsp;a&nbsp;sword,&nbsp;singing&nbsp;verses&nbsp;of&nbsp;a&nbsp;song,&nbsp;or<br>
+anything&nbsp;else.&nbsp;This&nbsp;was&nbsp;primarily&nbsp;meant&nbsp;to&nbsp;be&nbsp;for&nbsp;path-following,&nbsp;but&nbsp;I&nbsp;figured<br>
+it&nbsp;was&nbsp;worth&nbsp;the&nbsp;time&nbsp;to&nbsp;generalize&nbsp;it&nbsp;out&nbsp;for&nbsp;more&nbsp;complex&nbsp;actions</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="auxiliary.html">auxiliary</a><br>
+<a href="event.html">event</a><br>
+</td><td width="25%" valign=top><a href="mud.html">mud</a><br>
+<a href="mudsys.html">mudsys</a><br>
+</td><td width="25%" valign=top><a href="storage.html">storage</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="routine.html#RoutineAuxData">RoutineAuxData</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="RoutineAuxData">class <strong>RoutineAuxData</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Holds&nbsp;character&nbsp;data&nbsp;related&nbsp;to&nbsp;character&nbsp;routines.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="RoutineAuxData-__init__"><strong>__init__</strong></a>(self, set<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="RoutineAuxData-copy"><strong>copy</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="RoutineAuxData-copyTo"><strong>copyTo</strong></a>(self, to)</dt></dl>
+
+<dl><dt><a name="RoutineAuxData-read"><strong>read</strong></a>(self, set)</dt></dl>
+
+<dl><dt><a name="RoutineAuxData-store"><strong>store</strong></a>(self)</dt></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-cmd_routine"><strong>cmd_routine</strong></a>(ch, cmd, arg)</dt><dd><tt>Appends&nbsp;a&nbsp;routine&nbsp;onto&nbsp;a&nbsp;character.&nbsp;The&nbsp;second&nbsp;argument&nbsp;needs&nbsp;to&nbsp;be&nbsp;an<br>
+evaluable&nbsp;list&nbsp;statement.&nbsp;Put&nbsp;it&nbsp;in&nbsp;parentheses&nbsp;to&nbsp;avoid&nbsp;being&nbsp;cut&nbsp;off<br>
+as&nbsp;spaces,&nbsp;since&nbsp;parse&nbsp;treats&nbsp;it&nbsp;as&nbsp;a&nbsp;single&nbsp;word.&nbsp;Example:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&gt;&nbsp;routine&nbsp;man&nbsp;"['say&nbsp;hi',&nbsp;(3,&nbsp;'say&nbsp;I&nbsp;am&nbsp;a&nbsp;little&nbsp;teapot')]"&nbsp;True<br>
+&nbsp;<br>
+this&nbsp;will&nbsp;say&nbsp;hi&nbsp;after&nbsp;the&nbsp;default&nbsp;delay,&nbsp;and&nbsp;I&nbsp;am&nbsp;a&nbsp;little&nbsp;teapot&nbsp;after<br>
+a&nbsp;delay&nbsp;of&nbsp;3.&nbsp;It&nbsp;will&nbsp;then&nbsp;loop&nbsp;through&nbsp;this&nbsp;process&nbsp;indefinitely.<br>
+Alternatively,&nbsp;these&nbsp;commands&nbsp;can&nbsp;be&nbsp;replaced&nbsp;with&nbsp;function&nbsp;calls.</tt></dd></dl>
+ <dl><dt><a name="-do_step"><strong>do_step</strong></a>(ch)</dt><dd><tt>Performs&nbsp;the&nbsp;current&nbsp;step&nbsp;increments</tt></dd></dl>
+ <dl><dt><a name="-register_routine_check"><strong>register_routine_check</strong></a>(check)</dt><dd><tt>adds&nbsp;a&nbsp;routine&nbsp;check&nbsp;to&nbsp;the&nbsp;global&nbsp;list.&nbsp;Must&nbsp;be&nbsp;a&nbsp;function&nbsp;taking&nbsp;one<br>
+argument,&nbsp;which&nbsp;is&nbsp;the&nbsp;character&nbsp;doing&nbsp;the&nbsp;routine.&nbsp;Return&nbsp;should&nbsp;be<br>
+True&nbsp;if&nbsp;the&nbsp;check&nbsp;succeeded&nbsp;(i.e.,&nbsp;we&nbsp;should&nbsp;not&nbsp;do&nbsp;a&nbsp;routine)</tt></dd></dl>
+ <dl><dt><a name="-routine_event"><strong>routine_event</strong></a>(owner, data, arg)</dt><dd><tt>this&nbsp;is&nbsp;the&nbsp;event&nbsp;that&nbsp;perpetuates&nbsp;NPC&nbsp;routines.&nbsp;Each&nbsp;NPC&nbsp;that&nbsp;has&nbsp;a<br>
+routine&nbsp;running&nbsp;has&nbsp;one&nbsp;of&nbsp;these&nbsp;events&nbsp;tied&nbsp;to&nbsp;him&nbsp;or&nbsp;her.&nbsp;When&nbsp;the<br>
+routine&nbsp;time&nbsp;expires,&nbsp;a&nbsp;check&nbsp;is&nbsp;made&nbsp;to&nbsp;see&nbsp;if&nbsp;the&nbsp;routine&nbsp;can&nbsp;go&nbsp;on.<br>
+If&nbsp;it&nbsp;can,&nbsp;the&nbsp;routine&nbsp;step&nbsp;is&nbsp;performed&nbsp;and&nbsp;the&nbsp;step&nbsp;number&nbsp;is<br>
+incremented</tt></dd></dl>
+ <dl><dt><a name="-set_routine"><strong>set_routine</strong></a>(ch, routine, repeat<font color="#909090">=False</font>, checks<font color="#909090">=None</font>)</dt><dd><tt>Sets&nbsp;a&nbsp;routine&nbsp;to&nbsp;a&nbsp;character.&nbsp;Routine&nbsp;steps&nbsp;can&nbsp;constain&nbsp;commands<br>
+(character&nbsp;strings),&nbsp;functions&nbsp;(one&nbsp;argument,&nbsp;ch),&nbsp;or&nbsp;tuples<br>
+(delay,&nbsp;string&nbsp;|&nbsp;function).&nbsp;If&nbsp;a&nbsp;tuple&nbsp;is&nbsp;not&nbsp;supplied,&nbsp;the&nbsp;default<br>
+step&nbsp;time&nbsp;is&nbsp;used</tt></dd></dl>
+ <dl><dt><a name="-start_routine"><strong>start_routine</strong></a>(ch)</dt><dd><tt>starts&nbsp;a&nbsp;character&nbsp;routine&nbsp;event&nbsp;in&nbsp;motion</tt></dd></dl>
+ <dl><dt><a name="-try_step"><strong>try_step</strong></a>(ch)</dt><dd><tt>Checks&nbsp;to&nbsp;see&nbsp;if&nbsp;we&nbsp;can&nbsp;perform&nbsp;a&nbsp;step&nbsp;in&nbsp;the&nbsp;routine.&nbsp;Returns&nbsp;true&nbsp;or<br>
+false&nbsp;if&nbsp;it&nbsp;did&nbsp;or&nbsp;not</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__dflt_routine_step_time__</strong> = 10<br>
+<strong>__global_routine_checks__</strong> = [&lt;function &lt;lambda&gt; at 0x105b170&gt;]</td></tr></table>
+</body></html>
