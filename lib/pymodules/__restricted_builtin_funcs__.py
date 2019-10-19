@@ -8,7 +8,7 @@
 ################################################################################
 import __builtin__
 
-def r_import(name, globals = {}, locals = {}, fromlist = []):
+def r_import(name, globals = {}, locals = {}, fromlist = [], level = -1):
     '''Restricted __import__ only allows importing of specific modules'''
 
     ok_modules = ("mud", "obj", "char", "room", "exit", "account", "mudsock",
