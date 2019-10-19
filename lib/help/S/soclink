@@ -1,0 +1,35 @@
+keywords  : soclink, socunlink
+info      :~
+  There are 9 fields assocciated with social editing; two are for messages when
+  the social has no target. Two are for messages when the target is the character
+  performing the social. Three are for situations when a target other than the
+  character is provided for the social. The remaining two are the minimum and
+  maximum positions the socials can be used from. If a social is not to have a
+  target, the "target" fields can be left blank. Likewise, if the social is never
+  to have the character as a target, the assocciated fields can be left blank.
+  When trying to reference character information, the following symbols can be
+  used:
+  
+    $n character name
+    $N target name
+    $e character he/she
+    $E target he/she
+    $m character him/her
+    $M target him/her
+    $s character his/hers
+    $S target his/hers
+  
+  To see examples of how to write socials, check some of the pre-existing ones.
+  To generate a list of all socials, type "socials".
+  
+  If you would like more than one command to trigger the same social, you can
+  link a new command to a pre-existing social. Likewise, if you would like to
+  disable a social command, that is possible too.
+  
+  Commands:
+    soclink [new command] [old command]
+    socunlink [command]
+    socedit [social]
+    socials
+user_group: builder
+-

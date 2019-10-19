@@ -1,0 +1,60 @@
+keywords  : aliases
+info      :~
+  Usage:
+    alias                            list current aliases
+    alias <command> <format>         assign a new alias to the given command
+    alias <command>                  delete an existing alias
+  
+  Aliases are used to restring one command into another command. Aliases can
+  take arguments, and they can also reference other aliases. If you would like
+  to make an alias take arguments, you must use $1, $2, ... $9 in the alias
+  format, where the number specifies which word in a list of arguments the
+  argument will expand to.
+  
+  Example:
+    > alias dyslexia say $2 $1
+    Alias set.
+  
+    > dyslexia hello, world!
+    You say, 'world! hello,'
+  
+  In addition to the $1, $2, ... $9 arguments, there is also a catch-all $*
+  argument which means "all of the arguments together".
+  
+  Example:
+    > alias chat chat --> $* <--
+    Alias set.
+  
+    > chat hello, world!
+    You chat, '--> hello, world! <--'
+  
+  Notice that in the above example, even though the alias called itself, the
+  normal 'chat' command still executed? This is because when an alias is
+  executed, it tells the mud it does not need to expand aliases any more. If
+  you would like to embed an alias within another alias, you have to put square
+  brackets around it. Like normal aliases, these embedded aliases can also take
+  arguments by putting them within the square brackets as well.
+  
+  Example:
+    > alias greeting hello
+    Alias set.
+  
+    > alias greet [chat [greeting], $*! How are you?]
+    Alias set.
+  
+    > greet world
+    You chat, '--> hello, world! How are you? <--'
+  
+  You can also set up aliases to perform multiple commands. Each command must
+  be separated by a semicolon.
+  
+  Example:
+    > alias multigreet [chat [greeting], $*!]; [chat How are you?]
+    Alias set.
+  
+    > multigreet world
+    You chat, '--> hello, world! <--'
+  
+    >
+    You chat, '--> How are you? <--'
+-

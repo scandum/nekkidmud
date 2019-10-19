@@ -1,0 +1,24 @@
+resets:=
+  type    : 0
+  times   : 1
+  chance  : 100
+  max     : 0
+  room_max: 1
+  arg     : bar
+  on      :=
+    type    : 1
+    times   : 4
+    chance  : 100
+    max     : 0
+    room_max: 8
+    arg     : barfly
+    -
+  -
+  type    : 1
+  times   : 1
+  chance  : 100
+  max     : 1
+  room_max: 0
+  arg     : julesz
+  -
+-

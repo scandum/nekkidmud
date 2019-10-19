@@ -1,0 +1,16 @@
+keywords  : rcopy
+info      :~
+  usage: rcopy <from> <to> <times>
+  
+  This command can be used to create instanced rooms from a prototype, up to a 
+  specified number of times.  For instance, if you have a template for all rooms 
+  on main street (e.g., mainstreet@zone), instead of manually having to create 
+  the 10 rooms on mainstreet, you can use the rcopy command to make instanced 
+  rooms that all inherit from mainstreet.  For example: 
+  
+   > rcopy mainstreet mainstreet 10
+  
+  Will create rooms: mainstreet01, mainstreet02, ..., mainstreet03, all
+  non-abstract, and all inheriting from the mainstreet prototype.
+user_group: builder
+-

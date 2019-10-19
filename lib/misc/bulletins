@@ -1,0 +1,23 @@
+list:=
+  key: admin
+  val:-
+    groups: admin
+    -
+  -
+  key: builder
+  val:-
+    groups: builder
+    -
+  -
+  key: general
+  val:-
+    posts :=
+      poster: Alister
+      time  : Sun Jul  9 14:53:08 2006
+      title : hello, world!
+      mssg  :~
+        this is a test post. I am making sure posts save and such.
+      -
+    -
+  -
+-

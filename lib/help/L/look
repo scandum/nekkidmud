@@ -1,0 +1,22 @@
+keywords  : look
+info      :~
+  Look allows you to glean extra information about your environment, as well as
+  people and items in it. Look can be used to peer into containers, glance at
+  your room, examine the finer details of an item, among other things.
+  
+  Usage: 
+    > look [at the <target>] [in the <container>] [on the <thing or person>]
+  
+  Examples: 
+    > look
+    > look bob
+    > look at bob
+    > look at the bob
+    > look at the mole on bob
+    > look in sheath
+    > look hilt on sword in sheath
+    > look at the hilt on the sword in the sheath
+  
+  Looking at an object that is a container will also peer inside and list its
+  contents (provided the container is opened).
+-

@@ -1,0 +1,8 @@
+keywords  : pyload
+info      :~
+  Usage: pyload <module>
+  
+  Attempts to (re)load the specified Python module.  If it is already loaded, a 
+  call to the module's __unload__() function will be made.
+user_group: admin
+-

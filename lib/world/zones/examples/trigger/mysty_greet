@@ -1,0 +1,24 @@
+name: mysty greets new players
+type: enter
+code:~
+  # Entrance script no. 2 - greeting characters. This script is intended to
+  # be attached to Mysty (mob vnum 100). When she meets someone for the
+  # first time, she will greet that person and flag him/her as having been met
+  
+  # check to make sure that:
+  #   a) this is a PC
+  #   b) we've never met the person before
+  if ch.is_pc and not ch.hasvar("met_mysty"):
+  
+    # send different message to different gendered characters
+    if ch.sex == "male":
+      me.act("say Well hello there, darlin'. I've never had the pleasure of " \
+             "seeing your pretty face around these parts. If you need a hand, " \
+             "or perhaps a drink, just ask me for help.")
+    else:
+      me.act("say Welcome to the Stuck Swine! I hope it's to your liking here. " \
+      "If you need a hand, or perhaps a drink, just ask me for help.")
+    
+    # set a variable so we know we've met Mysty before
+    ch.setvar("met_mysty", 1)
+-

@@ -1,0 +1,7 @@
+min        : 0
+max        : 99
+pulse_timer: -1
+name       : The null zone
+desc       :~
+     This zone has no purpose and should be taken out when the MUD is first 
+-

@@ -1,0 +1,10 @@
+keywords  : dig, fill
+info      :~
+  Dig allows you to link together two rooms. Fill allows you to close a down a
+  link between two rooms.
+  
+  Commands:
+    dig [direction] [room id]
+    fill [direction]
+user_group: builder
+-

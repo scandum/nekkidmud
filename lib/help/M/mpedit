@@ -1,0 +1,12 @@
+keywords  : mpedit, opedit, rpedit
+info      :~
+  usage: <command> <person | place | thing>
+  
+  The scripter's analogue to medit, oedit, and redit. Opens up the raw script
+  for the person, place, or thing, that can be edited directly rather than
+  having to go through the builder interface. {cWARNING:{n the OLC interface
+  is very finnicky about formatting, and if the proper commenting syntax and
+  indentation is not adhered to, it may break OLC's ability to read in generation
+  scripts.
+user_group: scripter
+-

@@ -1,0 +1,13 @@
+keywords  : hedit, hdelete
+info      :~
+  usage: hedit <helpfile>
+  usage: hdelete <helpfile>
+  
+  These two commands are used for adding and removing helpfiles from the MUD.
+  Once you enter the help editor, you can set priviledges for viewing helpfiles,
+  as well as linking other keywords to them (e.g., you could have entries for
+  combat, death, sword, and kill all link to the same combat helpfile). Of
+  course, hdelete will delete a help file, and all keywords linking to that
+  helpfile.
+user_group: admin
+-

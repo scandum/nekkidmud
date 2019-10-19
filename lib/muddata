@@ -1,0 +1,4 @@
+start_room       : tavern_entrance@examples
+pulses_per_second: 10
+puid             : 4
+-

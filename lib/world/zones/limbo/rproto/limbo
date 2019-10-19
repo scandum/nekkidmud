@@ -1,0 +1,5 @@
+abstract: no
+script  :~
+  me.name = "Floating in Limbo"
+  me.desc = format_string("You are surrounded by nothingness.")
+-

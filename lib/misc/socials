@@ -1,0 +1,144 @@
+socials:=
+  cmds         : twiddle
+  to_char_notgt: You idly twiddle your thumbs.
+  to_room_notgt: $n idly twiddles $s thumbs.
+  to_char_tgt  : You reach for $N's thumbs and begin twiddling with them.
+  to_vict_tgt  : $n reaches for your thumbs and starts twiddling them.
+  to_room_tgt  : $n reaches for $N's thumbs and begins twiddling with them.
+  min_pos      : sitting
+  max_pos      : flying
+  -
+  cmds         : dance
+  to_char_notgt: You do a little dance.
+  to_room_notgt: $n does a little dance.
+  to_char_self : You get down with your bad self.
+  to_room_self : $n can't find anyone else to dance with, so $e dances with $mself.
+  to_char_tgt  : You sweep $N across the dancefloor.
+  to_vict_tgt  : $n sweeps you across the dancefloor! How romantic!
+  to_room_tgt  : $n sweeps $N across the dancefloor! How romantic!
+  min_pos      : standing
+  max_pos      : standing
+  -
+  cmds         : ponder
+  to_char_notgt: You sink deeply into your thoughts.
+  to_room_notgt: $n sinks deeply into $s thoughts.
+  to_char_tgt  : You ponder the plight of $N.
+  to_vict_tgt  : $n looks to be deep in thought at $e stares at you.
+  to_room_tgt  : $n looks deep in thought as $e stares at $N.
+  min_pos      : sitting
+  max_pos      : flying
+  -
+  cmds         : snicker
+  to_char_notgt: You snicker softly.
+  to_room_notgt: $n snickers softly.
+  to_char_tgt  : You snicker at $N.
+  to_vict_tgt  : $n snickers at you.
+  to_room_tgt  : $n snickers at $N.
+  min_pos      : sitting
+  max_pos      : flying
+  -
+  cmds         : smile
+  to_char_notgt: You smile happily.
+  to_room_notgt: A happy smile forms on $n's face.
+  to_char_self : You smile privately with yourself.
+  to_room_self : $n gets a faint hint of a smile on $s face.
+  to_char_tgt  : You smile happily at $N.
+  to_vict_tgt  : $n smiles happily at you.
+  to_room_tgt  : $n smiles happily at $N.
+  min_pos      : sitting
+  max_pos      : flying
+  -
+  cmds         : ruffle
+  to_char_notgt: Who are you trying to ruffle?
+  to_char_self : You mess up your hair.
+  to_room_self : $n makes $s hair all messy.
+  to_char_tgt  : You playfully ruffle $N's hair.
+  to_vict_tgt  : $n playfully ruffles your hair.
+  to_room_tgt  : $n playfully ruffles $N's hair.
+  min_pos      : sitting
+  max_pos      : flying
+  -
+  cmds         : grin
+  to_char_notgt: You grin evilly.
+  to_room_notgt: $n grins evilly.
+  to_char_tgt  : You flash $N an evil grin.
+  to_vict_tgt  : $n flashes you an evil grin.
+  to_room_tgt  : $n flashes $N an evil grin.
+  min_pos      : sitting
+  max_pos      : flying
+  -
+  cmds         : jig
+  to_char_notgt: You do a little jig.
+  to_room_notgt: $n performs a little jig.
+  to_char_tgt  : To jig with another is not to jig at all.
+  min_pos      : standing
+  max_pos      : standing
+  -
+  cmds         : wiggle
+  to_char_notgt: You wiggle your bottom.
+  to_room_notgt: $n wiggles $s bottom.
+  to_char_tgt  : You wiggle your bottom at $N.
+  to_vict_tgt  : $n wiggles $s bottom at you.
+  to_room_tgt  : $n wiggles $s bottom at $N.
+  min_pos      : standing
+  max_pos      : flying
+  -
+  cmds         : tip
+  to_char_notgt: You gallantly tip your hat.
+  to_room_notgt: $n gallantly tips his hat.
+  to_char_tgt  : You gallantly tip your hat towards $N.
+  to_vict_tgt  : $n gallantly tips $s hat in your direction.
+  to_room_tgt  : $n gallantly tips $s hat in $N's direction.
+  min_pos      : sitting
+  max_pos      : flying
+  -
+  cmds         : tackle
+  to_char_notgt: You jump up into the air and tackle... who?
+  to_room_notgt: $n jumps wildly into the air and... falls flat on $s face.
+  to_char_self : Pow! You knock yourself to the ground! I bet you didn't see that one coming, eh?
+  to_room_self : $n suddenly wraps $s arms around $mself, and heaves $mself to the ground.
+  to_char_tgt  : You playfully tackle $n, and you both go rolling to the ground.
+  to_vict_tgt  : $n playfully tackles you, and you both go rolling to the ground.
+  to_room_tgt  : $n playfully tackles $N, and they both go rolling to the ground.
+  min_pos      : standing
+  max_pos      : flying
+  -
+  cmds         : giggle
+  to_char_notgt: You let out a giggle.
+  to_room_notgt: $n lets out a giggle.
+  to_char_self : It was funny, wasn't it?
+  to_room_self : $n shares a little giggle with $mself.
+  to_char_tgt  : $E is funny, isn't $E?
+  to_vict_tgt  : $n giggles at you.
+  to_room_tgt  : $n giggles at $N.
+  min_pos      : sitting
+  max_pos      : flying
+  -
+  cmds         : laugh, lol
+  to_char_notgt: You give out a loud, hearty laugh.
+  to_room_notgt: A loud, hearty laugh bursts from $n's mouth.
+  to_char_self : It was funny, wasn't it?
+  to_room_self : $n seems to be having a private laugh with $mself.
+  to_char_tgt  : You burst out laughing at $N.
+  to_vict_tgt  : $n bursts out laughing at you!
+  to_room_tgt  : $n bursts out laughing at $N!
+  min_pos      : sitting
+  max_pos      : flying
+  -
+  cmds         : faint
+  to_char_notgt: You suddenly feel very lightheaded.
+  to_room_notgt: $n suddenly goes very pale, and faints!
+  min_pos      : sitting
+  max_pos      : flying
+  -
+  cmds         : tango
+  to_char_notgt: But it takes two to tango!
+  to_char_self : You passionately grab your left hand in your right hand, and dance seductively with yourself. 
+  to_room_self : $n passionately grabs $s left hand with $s right hand, and dances seductively with $mself. How bizarre.
+  to_char_tgt  : You pull $N up close to you, and perform a seductive tango.
+  to_vict_tgt  : $n pulls you up close to $m, and dances a seductive tango with you.
+  to_room_tgt  : $n pulls $N up close to $m and dances a seductive tango.
+  min_pos      : standing
+  max_pos      : standing
+  -
+-

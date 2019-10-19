@@ -1,0 +1,8 @@
+keywords  : buildwalk
+info      :~
+  usage: buildwalk
+  
+  With buildwalk on, you can walk around in directions that do not exist to spawn
+  new exits. Buildwalk can be toggled on and off by simply typing buildwalk.
+user_group: builder
+-

@@ -1,0 +1,9 @@
+keywords  : attach, detach
+info      :~
+  usage: attach <trigger> [to] <ch | room | object>
+  usage: detach <trigger> [from] <ch | room | object>
+  
+  Attempts to attach or detach a trigger with the specified id from a person,
+  place, or thing.
+user_group: scripter
+-

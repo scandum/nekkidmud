@@ -1,0 +1,21 @@
+pulse_timer: 1
+name       : The "proof of concept" zone
+desc       :~
+     The ambition of this zone is to act as a repository for "proofs of 
+  concept".  Hopefully, there will be enough examples in this zone to act as a 
+  decent tutorial for people learning how to build and script on NakedMud.
+editors    : Alister
+resettable :=
+  room: tavern_entrance
+  -
+  room: test03
+  -
+  room: test02
+  -
+  room: test01
+  -
+  room: dark_corner
+  -
+  room: the_bar
+  -
+-

@@ -1,0 +1,9 @@
+keywords  : write
+info      :~
+  usage: write [script]
+  
+  With write, you can enter a text editor and compose a message. Currently,
+  this message buffer is not being used for anything, but it can easily be
+  adapted for inter-MUD mailing, or building purposes. Using {cwrite script{n
+  enters script editor mode, for builders and admins.
+-

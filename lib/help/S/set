@@ -1,0 +1,10 @@
+keywords  : set, setpad
+info      :~
+  Usage: set <person | place | object> <attribute> <value>
+  Usage: setpad <person | place | object> <attribute>
+  
+  Attempts to set an attribute for the person, place, or object to the specified 
+  value. Setpad sets the value from the contents of your {cwrite{n buffer.
+user_group: admin
+related   : write
+-

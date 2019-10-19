@@ -1,0 +1,9 @@
+keywords  : delay
+info      :~
+  usage: delay [seconds] [command]
+  
+  example:
+    delay 2 say hello, world!
+  
+  Allows the user to prepare a command to be executed in the future.
+-

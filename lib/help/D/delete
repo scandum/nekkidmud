@@ -1,0 +1,12 @@
+keywords  : delete, odelete, mdelete, rdelete, ddelete, tdelete
+info      :~
+  As a builder, you may at times create rooms, objects, mobiles, triggers,
+  etc... that you do not want to be part of your zone. You can delete these
+  things with the line of delete functions available. There should be one for
+  each major type of editable zone content. When deleting rooms, anyone in the
+  room will be removed from the game, and sockets will be disconnected.
+  
+  delete commands are: odelete, mdelete, rdelete, tdelete, and ddelete. Syntax
+  is as follows: <delete command> <reference to delete>
+user_group: builder
+-

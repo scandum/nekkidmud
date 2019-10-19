@@ -1,0 +1,23 @@
+keywords  : OLC, redit, oedit, medit, tedit, dedit, zedit, socedit
+info      :~
+  On-Line Creation (OLC) is a set of utilities designed to allow builders to
+  design their zones while on the MUD. OLC includes utilities for editing zones,
+  rooms, objects, mobiles, triggers, and dialogues. The following commands are
+  available to the online builder:
+  
+        edits                command                 listing command
+        rooms                redit                   rlist <zone key>
+        objects              oedit                   olist <zone key>
+        mobiles              medit                   mlist <zone key>
+        triggers             tedit                   tlist <zone key>
+        dialogs              dedit                   dlist <zone key>
+        socials              socedit                 socials
+        zones                zedit                   zlist
+  
+  To create a new zone, a special command must be used. It's format is:
+    zedit new <zone key> 
+  
+  All other OLC commands can set up new things (rooms, objects, mobiles, etc..)
+  simply by using the corresponding edit command on a key that has not been used.
+user_group: builder
+-

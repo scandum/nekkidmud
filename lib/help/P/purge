@@ -1,0 +1,6 @@
+keywords  : purge
+info      :~
+  Removes an instance of an object or mobile from the game.  If used on a person,
+  it will disconnect them from the game.
+user_group: builder
+-

@@ -1,0 +1,28 @@
+keywords  : ANSI
+info      :~
+NekkidMUD supports ANSI, 256, and TRUE colors, and you can access them by
+using the '^^' character, followed by the colorkey from the table below.
+
+        ^^a - dark azure                 ^^A - azure
+        ^^b - dark blue                  ^^B - blue
+        ^^c - dark cyan                  ^^C - cyan
+        ^^e - dark ebony                 ^^E - ebony
+        ^^g - dark green                 ^^G - green
+        ^^j - dark jade                  ^^J - jade
+        ^^l - dark lime                  ^^L - lime
+        ^^m - dark magenta               ^^M - magenta
+        ^^o - dark orange                ^^O - orange
+        ^^p - dark pink                  ^^P - pink
+        ^^r - dark red                   ^^R - red
+        ^^s - dark silver                ^^S - silver
+        ^^t - dark tan                   ^^T - tan
+        ^^v - dark violet                ^^V - violet
+        ^^w - dark white                 ^^W - white
+        ^^y - dark yellow                ^^Y - yellow
+
+        ^^? - random color
+
+  The 'n' key is the default NakedMud color, and the mudcolor will always
+  revert to this color at the end of a string. You can use the 'N' key to
+  reset the background color.
+-

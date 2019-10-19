@@ -1,0 +1,14 @@
+name     : Floating in Limbo
+desc     :~
+  You are surrounded by nothingness.
+vnum     : 0
+terrain  : Inside
+edescs   :-
+  list:=
+    keywords: nothingness
+    desc    :~
+         Well, there's not too much of it, that's for sure.  Or maybe that's all 
+      there is.  It's quite mind blowing, really.
+    -
+  -
+-

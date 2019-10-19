@@ -1,0 +1,8 @@
+keywords  : credits
+info      :~
+  Thanks go out to Brian Graversen for creating SocketMud(tm), which NakedMud(tm)
+  was built on top of. I know nothing (yet) about TCP/IP, and SocketMud(tm) made 
+  my life that much easier.
+
+  MTH 1.5 (Mud Telopt Handler) enhancements by Igor van den Hoven
+-

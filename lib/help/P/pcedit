@@ -1,0 +1,8 @@
+keywords  : pcedit
+info      :~
+  Usage: pcedit <player>
+  
+  Enters an OLC interface for editing a specified player characer's attributes.
+  Can be used on offline characters.
+user_group: admin
+-
