@@ -1,0 +1,103 @@
+from distutils.sysconfig import get_config_var, get_python_inc
+from glob import glob
+from os import listdir
+from os.path import isdir, isfile, join
+from sys import platform, version_info
+from time import localtime, strftime
+
+# First, a couple of helper functions
+
+def probe_directory(directory):
+    """
+    Examine the contents of directory, and return a list that
+    satisfies the following properties:
+
+    1. If the directory does not contain a file called '.suppress',
+       all .c files in that directory.
+
+    2. If the directory contains a file called '.suppress', all .c
+       files in that directory that are not named by .suppress
+
+    3. If the directory contains a file called '.suppress', and the
+       file contains the line 'all', return the empty list.
+    """
+    try:
+        suppress = open(join(directory, '.suppress'), 'r')
+        suppress_files = [x.replace('\n', '') for x in suppress.readlines()]
+        suppress.close()
+    except IOError:
+        # Assume file not found
+        suppress_files = []
+    if 'all' in suppress_files:
+        return []
+    # Can't do this earlier because it mangles the 'all' line.
+    suppress_files = [join(directory, x) for x in suppress_files]
+    c_files = recursive_glob(directory, '*.c')
+    return [x for x in c_files if x not in suppress_files]
+
+def recursive_glob(directory, pattern):
+    """
+    Return a list of all files in directory that match the given pattern.
+    """
+    files = []
+    directories = [directory] + [x for x in listdir(directory) if isdir(x)]
+    while directories != []:
+        directories += [x for x in [join(directories[0], y) for y in listdir(directories[0])] if isdir(x)]
+        files += glob(join(directories[0], pattern))
+        directories = directories[1:]
+    return files
+
+# Initialise the build environment
+nakedmud = Environment()
+nakedmud.Append(CPPPATH=[get_python_inc()])
+# The following seems to break under Mac OSX, so we'll just filter it out. It still seems to work without it...
+if platform == 'darwin':
+    nakedmud.Append(LINKFLAGS=get_config_var('LINKFORSHARED').split())
+nakedmud.Append(LIBS=['python%d.%d' % version_info[0:2]])
+
+# The name of the binary file to build
+binary = 'NakedMud'
+
+# Required modules
+modules = ['dyn_vars', 'set_val', 'olc2', 'editor', 'items', 'scripts']
+
+# Optional modules
+modules += ['time', 'socials', 'alias', 'help2']
+
+# Compiler flags
+nakedmud.Append(CCFLAGS=['-Wall', '-g', '-ggdb', '-O2'])
+
+# Required libraries
+nakedmud.Append(LIBS=['z', 'pthread'])
+
+# non-darwin OSes need to include crypt
+if platform != 'darwin':
+   nakedmud.Append(LIBS=['crypt'])
+
+# The big list of source files.
+nakedmud['NAKEDMUD_SOURCES'] = glob('*.c')
+
+# Export the nakedmud environment in case SConscripts need to modify it
+Export('nakedmud')
+
+# Work through the module dirs and append to the sources list
+for module in modules:
+    nakedmud['NAKEDMUD_SOURCES'] += probe_directory(module)
+    filename = join(module, 'SConscript')
+    if(isfile(filename)):
+        SConscript(filename)
+
+# Default target is build the program
+nakedmud.Default(nakedmud.Program(binary, nakedmud['NAKEDMUD_SOURCES']))
+
+# Backup stuff
+
+# Directories to include when making backups. Note that this is _NOT_ a Python list, it is passed
+# directly to tar.
+backup_dirs = 'src lib doc'
+# Name of the backup file
+backup_file = join('backup', '%s-%s.tar.gz' % (binary.lower(), strftime('%Y-%m-%d-%Hh%Mm', localtime())))
+# Rule for making backups
+nakedmud.Command(backup_file, [], ['cd .. ; tar -zcf %s %s' % (backup_file, backup_dirs)])
+# Alias so `scons backup` will make a backup
+nakedmud.Alias('backup', backup_file)

@@ -1,0 +1,38 @@
+//
+// Here it is... the big ol' datastructure for sockets. Yum.
+struct socket_data {
+  CHAR_DATA     * player;
+  ACCOUNT_DATA  * account;
+  #ifdef MODULE_MTH
+    MTH_DATA      * mth;
+  #endif
+  char          * hostname;
+  char            inbuf[MAX_INPUT_LEN];
+  BUFFER        * next_command;
+  BUFFER        * iac_sequence;
+  // char            next_command[MAX_BUFFER];
+  bool            cmd_read;
+  bool            bust_prompt;
+  bool            closed;
+  int             lookup_status;
+  int             control;
+  int             uid;
+  double          idle;          // how many pulses have we been idle for?
+
+  char          * page_string;   // the string that has been paged to us
+  int             curr_page;     // the current page we're on
+  int             tot_pages;     // the total number of pages the string has
+  
+  BUFFER        * text_editor;   // where we do our actual work
+  BUFFER        * outbuf;        // our buffer of pending output
+
+  LIST          * input_handlers;// a stack of our input handlers and prompts
+  LIST          * input;         // lines of input we have received
+  LIST          * command_hist;  // the commands we've executed in the past
+
+  unsigned char   compressing;                 /* MCCP support */
+  z_stream      * out_compress;                /* MCCP support */
+  unsigned char * out_compress_buf;            /* MCCP support */
+
+  AUX_TABLE     * auxiliary;     // auxiliary data installed by other modules
+};
